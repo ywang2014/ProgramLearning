@@ -11,7 +11,16 @@
 	5.git commit -m 'something...'
 
 	6.git push -u origin master (git push)
+	
+	7.if wrong :
+		
+		git remote rm origin (fatal: remote origin already exists)
 
+		git remote add origin git@github.com:username/repo.git
+
+		git push -u origin master
+
+		wrong: delete [remote "origin"]
 
 
 
