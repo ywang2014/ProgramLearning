@@ -1,0 +1,265 @@
+http://www.r-china.net/forum.php?mod=viewthread&tid=15
+R语言读取EXCEL文件的各种方法
+最近初学R语言，在R语言读入EXCEL数据格式文件的问题上遇到了困难，经过在网上搜索解决了这一问题，下面归纳几种方法，供大家分享：
+
+第一：R中读取excel文件中的数据的路径：
+
+      假定在您的电脑有一个excel文件，原始的文件路径是：D:\work\data\1
+      如果直接把这个路径拷贝到R中，就会出现错误，原因是：
+    \是escape character（转义符），\\才是真正的\字符，或者用/
+      因此，在R中有两种方法读取该路径：
+      1：在R中输入一下路径：D:\\work\\data\\1
+      2：在R中输入一下路径：D:\\work\\data\\1
+第二：R中读取excel文件中的数据的方法：
+      read.table(),read.csv(),read.delim()直接读取EXCEl文件时，都会遇到一下问题：“在读取‘.xls’的TableHeader时遇到不完全的最后一行”。解决的方法有以下几种：假如文件1.1中是一个6乘以2的矩阵，元素为：
+  
+1 23
+2 24
+3 25
+4 26
+5 27
+6 28
+
+      方法1：xls另存为csv格式然后用read.csv：
+具体过程如下：
+
+> data<-read.csv("D:\\work\\data\\1.csv")
+> data
+  X1 X23
+1  2    24
+2  3    25
+3  4    26
+4  5    27
+5  6    28
+> data<-read.csv("D:\\work\\data\\1.csv",header = F)
+> data
+  V1    V2
+1  1 23333
+2  2    24
+3  3    25
+4  4    26
+5  5    27
+6  6    28
+> data<-read.csv("D:\\work\\data\\1.csv",header = T)
+> data
+  X1 X23333
+1  2    24
+2  3    25
+3  4    26
+4  5    27
+5  6    28
+也就是说header = T（TURE）是默认的状态，在这默认状态下，输出的data矩阵是一个5乘以2的矩阵，第一行作为了data的名字，如果header = F（FALSE），则会现实原始的矩阵结果。
+  
+  方法2：xls另存为txt格式然后用read.table：
+如例子所示：
+> data<-read.table("D:\\work\\data\\1.txt",header = T)
+> data
+  X1 X23
+1  2  24
+2  3  25
+3  4  26
+4  5  27
+5  6  28
+> data<-read.table("D:\\work\\data\\1.txt",header = F)
+> data
+  V1 V2
+1  1 23
+2  2 24
+3  3 25
+4  4 26
+5  5 27
+6  6 28
+
+  方法3：打开EXCEL，全选里面的内容，点击复制，然后在R中输入一下命令：
+
+data <- read.table("clipboard", header = T, sep = '\t')
+结果如下所示：
+
+> data <- read.table("clipboard", header = T, sep = '\t')
+> data
+  X1 X23
+1  2  24
+2  3  25
+3  4  26
+4  5  27
+5  6  28
+> data <- read.table("clipboard", header = F, sep = '\t')
+> data
+  V1 V2
+1  1 23
+2  2 24
+3  3 25
+4  4 26
+5  5 27
+6  6 28
+使用这种方法的时候一定要注意复制！剪切板里面没有内容是无法运行的！以上是三种方法，如果还有别的更好的，请大家补充，谢谢！
+
+
+热搜:
+自相关
+apriori
+验证会员
+因子分析
+xlsx
+ggplot
+程序包
+excel输入
+splines
+arules
+153分钟学会R
+路径
+web文本挖掘
+R
+文本挖掘
+关联分析
+plot
+GAM
+代码
+boxplot
+R安装
+LINUX
+R语言中文网
+??
+论坛
+???
+R语言
+???
+R语言讨论
+???
+R语言读取EXCEL文件的各种方法，非常实用
+1
+2
+/ 2 页
+下一页
+返回列表
+发新帖
+查看: 4871|回复: 13
+        
+打印 上一主题 下一主题
+R语言读取EXCEL文件的各种方法，非常实用 [复制链接]
+	
+biostat
+	
+电梯直达
+跳转到指定楼层
+楼主
+发表于 2013-2-13 09:31:36 | 只看该作者 回帖奖励
+R语言读取EXCEL文件的各种方法
+最近初学R语言，在R语言读入EXCEL数据格式文件的问题上遇到了困难，经过在网上搜索解决了这一问题，下面归纳几种方法，供大家分享：
+
+第一：R中读取excel文件中的数据的路径：
+
+      假定在您的电脑有一个excel文件，原始的文件路径是：D:\work\data\1
+      如果直接把这个路径拷贝到R中，就会出现错误，原因是：
+    \是escape character（转义符），\\才是真正的\字符，或者用/
+      因此，在R中有两种方法读取该路径：
+      1：在R中输入一下路径：D:\\work\\data\\1
+      2：在R中输入一下路径：D:\\work\\data\\1
+第二：R中读取excel文件中的数据的方法：
+      read.table(),read.csv(),read.delim()直接读取EXCEl文件时，都会遇到一下问题：“在读取‘.xls’的TableHeader时遇到不完全的最后一行”。解决的方法有以下几种：假如文件1.1中是一个6乘以2的矩阵，元素为：
+  
+1 23
+2 24
+3 25
+4 26
+5 27
+6 28
+
+      方法1：xls另存为csv格式然后用read.csv：
+具体过程如下：
+
+> data<-read.csv("D:\\work\\data\\1.csv")
+> data
+  X1 X23
+1  2    24
+2  3    25
+3  4    26
+4  5    27
+5  6    28
+> data<-read.csv("D:\\work\\data\\1.csv",header = F)
+> data
+  V1    V2
+1  1 23333
+2  2    24
+3  3    25
+4  4    26
+5  5    27
+6  6    28
+> data<-read.csv("D:\\work\\data\\1.csv",header = T)
+> data
+  X1 X23333
+1  2    24
+2  3    25
+3  4    26
+4  5    27
+5  6    28
+也就是说header = T（TURE）是默认的状态，在这默认状态下，输出的data矩阵是一个5乘以2的矩阵，第一行作为了data的名字，如果header = F（FALSE），则会现实原始的矩阵结果。
+  
+  方法2：xls另存为txt格式然后用read.table：
+如例子所示：
+> data<-read.table("D:\\work\\data\\1.txt",header = T)
+> data
+  X1 X23
+1  2  24
+2  3  25
+3  4  26
+4  5  27
+5  6  28
+> data<-read.table("D:\\work\\data\\1.txt",header = F)
+> data
+  V1 V2
+1  1 23
+2  2 24
+3  3 25
+4  4 26
+5  5 27
+6  6 28
+
+  方法3：打开EXCEL，全选里面的内容，点击复制，然后在R中输入一下命令：
+
+data <- read.table("clipboard", header = T, sep = '\t')
+结果如下所示：
+
+> data <- read.table("clipboard", header = T, sep = '\t')
+> data
+  X1 X23
+1  2  24
+2  3  25
+3  4  26
+4  5  27
+5  6  28
+> data <- read.table("clipboard", header = F, sep = '\t')
+> data
+  V1 V2
+1  1 23
+2  2 24
+3  3 25
+4  4 26
+5  5 27
+6  6 28
+使用这种方法的时候一定要注意复制！剪切板里面没有内容是无法运行的！以上是三种方法，如果还有别的更好的，请大家补充，谢谢！
+
+
+个人感觉打开此类文件简洁的方法就是加载xlsx数据包后用read.xlsx打开,如下:
+
+    > setwd("e:/r")
+    > library(xlsx) #加载这个数据包,先下载安装.
+    > data<-read.xlsx(file="1.xlsx",header=T,sheetIndex=1) #打开后缀为.xlsx的excel文件,注意sheetIndex里面有个大写字母.
+    > data
+      X1 X23
+    1  1  23
+    2  2  24
+    3  3  25
+    4  4  26
+    5  5  27
+    6  6  28
+
+    > data<-read.xlsx(file="1.xls",header=T,sheetIndex=1) #打开后缀为.xls的excel文件
+    > data
+      X1 X23
+    1  1  23
+    2  2  24
+    3  3  25
+    4  4  26
+    5  5  27
+    6  6  28
