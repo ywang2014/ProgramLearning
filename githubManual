@@ -9,10 +9,12 @@
 	4.git add filename
 
 	5.git commit -m 'something...'
-
-	6.git push -u origin master (git push)
 	
-	7.if wrong :
+	6.git remote add origin git@github.com:username/repo.git
+
+	7.git push -u origin master (git push)
+	
+	8.if wrong :
 		
 		git remote rm origin (fatal: remote origin already exists)
 
@@ -21,7 +23,16 @@
 		git push -u origin master
 
 		wrong: delete [remote "origin"]
-
+		
+	9.wrong: error: failed to push some refs to 'git@github.com:repo.git
+		
+		出现错误的主要原因是github中的README.md文件不在本地代码目录中
+		
+		本地项目与github上面的项目不一致引起的。
+		
+		git pull --rebase origin master		(pull = fetch+merge) 代码合并
+		
+		git push -u origin master
 
 
 　　2、配置本机的git
