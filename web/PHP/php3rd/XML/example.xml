@@ -1,0 +1,35 @@
+<?xml version = "1.0" ?>	
+<!-- xml example -->
+<note>
+<to> Alice </to>
+<from> Bob </from>
+<heading> Greeting </heading>
+<body> My dear friends, I miss you a lot! </body>
+</note>
+
+<!-- 
+第一行：包含XML申明，定义XML文档的版本号。例子中表示文档将使用XML1.0规范
+第二行：定义了文档的第一个元素：根元素 <note>
+4-6行：定义了根元素的四个子元素：to from heading body 
+7行：根元素结束标志 </note>
+ -->
+ 
+<!--
+ 1.所有的xml元素必须有一个结束标志，html中有的元素不必要结束标志
+ 2.xml标志是大小写敏感的，html不区分大小写的
+ 3.xml元素嵌套必须正确，html中元素可以相互嵌套
+	HTML <b> <i> Test </b> </i>
+	XML <b> <i> Test </i> </b> 
+ 4.xml文档必须有一个跟标志
+ 5.xml文档都必须包含一个 单独的标志对 定义的根元素，其他元素必须嵌套在根元素内
+ 6.所有的元素都可以有子元素，但是子元素必须是成对的且正确嵌套在申明他的父元素内
+ -->
+<!--
+为了使编写的web页面成为有效的xml文档，文中每一添加的标记必须记入一个独立的DTD文档中
+DTD文件使xml页面能包含更多的内容，表现更加复杂的形势
+xml页面信息是结构化的，有些类似与数据库结构，因而更具有访问性，其检索结果更有针对性、更加准确
+-->
+
+<!--
+PHP 的 XML支持是由expat库实现的。expat用c写的，用来解析XML文档
+-->

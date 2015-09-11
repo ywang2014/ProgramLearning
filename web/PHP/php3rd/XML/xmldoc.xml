@@ -1,0 +1,27 @@
+<?xml version = "1.0" standalone = "no" ?>
+<!-- 简单的XML文档结构 -->
+<!-- standalone 表示分析这篇文当的分析器需要一个DTD定义来验证xml文档 -->
+<! DOCTYPE NewsBoy SYSTEM "NewsBoy.dtd">
+<!-- DOCTYPE声明指定DTD存在于独立的文件“NewsBoy.dtd”中，同时指定了xml文档的根元素 -->
+<NewsBoy>
+	<story>
+		<date> 09/11/2015 </date>
+		<slug> Soco Busy! </slug>
+		<text>
+			I haven't posted anything here for a while now as I have been busy with work(have to pay those bills!).
+			<newline> </newline>
+		</text>
+	</story>
+	<story>
+		<date> 09/13/2015 </date>
+		<slug> NewsBoy Class </slug>
+		<text>
+			Converted NewsBoy to a PHP class to allow better abstraction (as far as PHP allows.)
+			<newline> </newline>
+			Guess that means this is version 0.02 ?! 
+			<newline> </newline>
+			NewsBoy will have a section of it's own soon on how to use and customize the class.
+			<newline> </newline>
+		</text>
+	</story>
+</NewsBoy>
