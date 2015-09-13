@@ -1,0 +1,45 @@
+1.建立数据库
+
+// 命令行下，创建数据库和表
+CMD
+	mysqladmin -u root creat mydb
+	首先需要配环境变量，MySQL../bin
+	如果登录密码不为空，则访问不进去
+	
+	mysql -u root -p
+	输入密码，可登录
+	
+	CREATE DATABASE myFristDB
+	USE myFirstDB
+	CREATE TABLE diaocha(id int default '0' not null auto_increment, name char(20),
+						sex varchar(10), age tinyint(4), place varchar(10), primary key(id), unique id(id))
+						
+	exit
+	quit
+	net start mysql
+	net stop mysql
+	
+// php程序创建
+<?php 
+// 包含文件，存放使用到的公共变量
+// common.php
+$hostname = "localhost";
+$username = "root";
+$password = "root";
+$dbname = "mydb";
+$userstable = "diaocha";
+
+?>
+
+<?php
+// create.php
+include <common.php>;
+mysql_connected($hostname, $username, $password) or die("Unable to connect database");
+mysql_select_db("$dbname") or die("Unable to select database");
+$sql = "CREATE TABLE diaocha(id int default '0' not null auto_increment, name char(20),
+							sex varchar(10), age tinyint(4), place varchar(10), primary key(id), unique id(id))";
+mysql_query($sql);
+mysql_close();
+
+?>
+?>

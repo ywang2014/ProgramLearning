@@ -1,0 +1,33 @@
+SQL数据更新
+	insert delete modify
+
+1.插入操作
+
+INSERT INTO TABLE VALUES
+
+	INSERT INTO S VALUES<"S6", "CHEN", 20, "F">
+
+2.更新操作
+
+UPDATE 更新数据记录的命令
+
+	把课程C1的老师改为WANG
+	UPDATE C 
+	SET TEACHER = "WANG"
+	WHERE CN = "C1"
+
+3.删除数据
+
+DELETE FROM <TABLE> WHERE <CONDITION>
+
+	从学员关系S中删除学员S2
+	DELETE FROM S 
+	WHERE SN = S2
+	没有WHERE，则删除全部元组，表存在，为空表
+	
+从数据表中抽取一部分，建立新表
+SELECT INTO EXCL
+FROM SC
+WHERE GRADE >= 90
+SELECT INTO 建立新表(into之后不能是已存在的表)	INSERT INTO 增加新数据记录到已有的表中
+

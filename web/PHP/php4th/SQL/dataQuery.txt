@@ -1,0 +1,90 @@
+SQL的数据查询
+
+SELECT_FROM_WHERE 关系运算符”先选择，后映射“
+
+SELECT P1, P2，P3, ......Pn
+
+FROM R1，R2，R3,......Rn
+
+WHERE Q1 AND Q2 AND......AND Qm
+
+SELECT 指出了需要的属性			选择清单
+FROM 指出了语句要操作的关系		表引用
+WHERE 指出运算所要遵循的条件	搜索条件
+
+# 4.1 找出全部课程的任课教师
+SELECT DISTINCT TEACHER
+FROM C
+"DICTINCT" 表示去掉重复结果，不使用则结果中会有重复
+
+# 4.2 搜索所有学员的全部资料
+SELECT *
+FROM S
+无条件限制，可以把where省略
+
+# 4.3 找出年纪不大于20岁的女生的电话号码
+SELECT TELN
+FROM S
+WHERE AGE <= 20 AND SEX = 'F'
+
+# 4.4 检索所有用字母Z开头的学生的姓名
+SELECT NAME
+FROM S
+WHERE NAME LIKE"Z%"
+"LIKE" 参加LIKE运算的列的类型应该是字符串类型
+	"_" 同任意一个字符匹配
+	"%" 任意长度(0也可以)字符串相匹配
+	其他的只能和显示的字符串匹配，没有特殊含义
+	
+# 4.5 找出至少学习了ZHANG老师一门课程的学生姓名
+SELECT NAME
+FROM S
+WHERE SNIN
+SELECT SN 
+FROM SC
+WHERE CNIN
+SELECT CN 
+FROM C
+WHERE TEACHER = "ZHANG"
+嵌套技术：操作顺序有内层逐渐向外层执行
+
+# 4.6 找出学习所有课程的学生姓名
+SELECT NAME
+FROM S 
+WHERE NOTE XISIS 
+(SELECT *
+FROM C
+WHERE NOTE XISIS 
+(SELECT *
+FROM SC 
+WHERE SC.SN = S.SN AND SC.CN = C.CN))
+
+# 4.7 列出学习了课程C3的所有学生的名字和年龄
+SELECT NAME, AGE 
+FROM S 
+WHERE C3IN 
+SELECT CN 
+FROM SC 
+WHERE SN = S.CN 
+
+SELECT、FROM、WHERE实际使用最多，GROUPBY、ORDERBY、HAVING
+
+# 4.8 检索出每一个年龄上人数超过了30的女同学的具体人数，要求按照年龄从大到小的顺序排好
+SELECT DISTINCT AGE, COUNT(AGE)
+FROM S 
+WHERE SEX = 'F'
+GROUP BY AGE 
+HAVING COUNT(*) > 30
+ORDER BY AGE DESC
+"GROUP BY" 把本快被操作的关系中的全部元组按照BY之后的属性进行分组，使每一个组中所有的元组在指定的属性上都有相同的值
+"HAVING" 用于GROUPBY所分组上，按照后面的条件是否成立来判断取舍
+"ORDER BY" 指出对其后面的属性条件按照ASC或DESC来排序
+
+SQL库函数
+	COUNT	求总数
+	SUM		求和
+	MAX		求最大值
+	AVG		求均值
+	SET		求集合
+	
+	
