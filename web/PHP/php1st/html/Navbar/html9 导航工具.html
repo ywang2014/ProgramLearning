@@ -1,0 +1,16 @@
+﻿<html>
+<head>
+<title> 导航条 </title>
+</head>
+<!--
+导航工具条是框架实现的：左边窗口单击链接，右边的窗口里就出现网页的内容。
+必须伴随一个目录窗口，必须给该框架窗口一个名称，然后设置超链接。
+命名框架：<frameset src = url name = window_name>
+给框架发送网页：<a href = new_url target = window_name> Link Text </a>
+-->
+<frameset cols = "10%, *">
+<frame src = 目录.html>
+<frame src = test.html name = window_name>
+
+</frameset>
+</html>

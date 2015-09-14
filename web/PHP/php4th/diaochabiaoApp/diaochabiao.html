@@ -1,0 +1,58 @@
+<html>
+<!-- diaochabiao.html -->
+	<meta charset = 'utf-8'>
+	<head>
+		<title> 网络调查 </title>
+	</head>
+	
+	<body bgcolor = "#eeeeee">
+		<center>
+			<h1> 你想了解网民的构成吗？</h1>
+			<h1> 请填写此调查表，谢谢！</h1>
+			<h6> 声明：次调查表资料信息严格保密，尊重您的隐私，不用于商业用途 </h6>
+			<form method = "post" action = "diaocha.php">
+				<table border = 0 width = 400>
+					<tr>
+						<td width = 200 align = "right"> 您的姓名：</td>
+						<td> <input type = text name = name> </td>
+					</tr>
+					<tr>
+						<td align = "right"> 您的性别：</td>
+						<td> <input type = "radio" name = "sex" value = "man"> 男
+							 <input type = "radio" name = "sex" value = "woman"> 女
+						</td>
+					</tr>
+					<tr>
+						<td align = "right"> 您的年龄：</td>
+						<td>
+							<select name = age>
+								<option selected value = 10> 15岁以下 </option>
+								<option value = 20> 16 - 25 </option>
+								<option value = 30> 25 - 35 </option>
+								<option value = 40> 36 - 45 </option>
+								<option value = 50> 46 - 55 </option>
+								<option value = 60> 56 - 65 </option>
+								<option value = 70> 66以上 </option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td align = "right"> 您经常在哪里上网？</td>
+						<td>
+							<select class = item name = place size = 1>
+								<option selected value = home> 家里 </option>
+								<option value = Netbar> 网吧 </option>
+								<option value = office> 办公室 </option>
+							</select>
+						</td>
+					</tr>
+				</table>
+				
+				<p>
+					<input name = submit type = submit value = 提交>
+					&nbsp; &nbsp; &nbsp; &nbsp;
+					<input name = reset type = reset value = 重填>
+				</p>
+			</form>
+	</body>
+</html>

@@ -1,0 +1,215 @@
+/*
+ * queen1.c
+ *
+ *  Created on: 2015-9-13
+ *      Author: ZKY
+ *      Recall without Recursion
+ */
+
+#include <stdio.h>
+#define QUEENS 8
+
+int queen1(void);
+int check(void);
+int checkpoint(int i, int value);
+int checkmodify(void);
+void printBoard(void);
+void init(void);
+
+
+int states[9];	// 1,2,3...8 代表棋盘8列
+int count = 0;	// 统计合适的结果数
+
+int main(void)
+{
+	printf("Hello start...\n");
+	queen1();
+}
+
+// 主函数
+int queen1(void)
+{
+	int end = 1;	// 搜索结束标志
+	int i = 1;
+	int k = 0;
+	int values = 1;	// 皇后放的行位置
+	int success = 0;
+	int site = 0;
+
+	states[1] = 1;	// 启始位置，开始搜索
+
+	while (end == 1)
+	{
+		printf("%d:\n", states[1]);	// 第i颗树，states[1]为根节点。
+		i = 2;	// 从第1列开始
+		while (i > 1)	// flag == 1 不需要 states[i] <＝ QUEENS 不需要
+		{
+			//printf("%d %d %d %d %d %d %d %d\n", states[1], states[2], states[3], states[4], states[5], states[6], states[7], states[8]);
+
+			for (k = 1;k <= QUEENS; k++)
+			{
+				// 蛮力搜索，查找适合的点
+				if (checkpoint(i, k) == 0)
+				{
+					states[i] = k;
+					if (i == QUEENS)
+					{
+						printBoard();
+						break;
+					}
+					i++;	// 成功了，才前进一步
+				}
+			}
+
+			// 没有找到合适的时候，退出for循环，才需要回溯，否则不回溯，继续查找
+			if (k > QUEENS)
+			{
+				i--;	// 回退一步，回溯
+				while (i > 1 && states[i] <= QUEENS)
+				{
+					printf("b");
+					if (states[i] == QUEENS)
+					{
+						i--;	// 回退一步，回溯
+					}
+					else
+					{
+						states[i++]++;
+						break;
+					}
+				}
+				if (i == 1)
+				{
+					break;
+				}
+			}
+			else if (k <= QUEENS)	// 成功时，i = 8：
+			{
+				if (states[--i] < QUEENS)
+				{
+					states[i++]++;
+				}
+				else
+				{
+					states[--i]++;
+					i++;
+				}
+			}
+			site = checkmodify();
+			if (site != 0)
+			{
+				i = site - 1;
+				while (i > 1 && states[i] == QUEENS)
+				{
+					i--;
+				}
+				if (site == 2)
+				{
+					break;
+				}
+
+				i = site;
+			}
+		}
+
+		// 所搜完毕，退出程序
+		if (states[1] == 8)
+		{
+			end = 0;
+		}
+		else
+		{
+			states[1]++;	// 保证前进，不在原地方循环
+		}
+	}
+	printf("over!\n");
+}
+
+// 检查棋盘状态是否合法
+int check(void)
+{
+	int i, j;
+
+	for (i = 1; i < QUEENS; i++)
+	{
+		for (j = i + 1; j <= QUEENS; j++)
+		{
+			// 保证每行每列只有一个皇后
+			if (states[i] == states[j])
+			{
+				return -1;
+			}
+
+			// 保证对角线上只有一个皇后
+			if ((states[i] - states[j]) == (i - j) || (states[i] - states[j]) == (j - i))
+			{
+				return -1;
+			}
+		}
+	}
+
+	return 0;
+}
+
+int checkpoint(int i, int value)
+{
+	int j;
+
+	for (j = 1; j < i; j++)	// 只需要考虑排放好了的！！！（既可以不用初始化）
+	{
+		if (value == states[j])
+		{
+			return -1;
+		}
+
+		// 保证对角线上只有一个皇后
+		if ((value - states[j]) == (i - j) || (value - states[j]) == (j - i))
+		{
+			return -1;
+		}
+	}
+
+	return 0;
+}
+
+int checkmodify(void)
+{
+	int k;
+	for (k = 1; k < QUEENS; k++)
+	{
+		if (states[k] > QUEENS)
+		{
+			return k;
+		}
+	}
+	return 0;
+}
+
+void printBoard(void)
+{
+	int k;
+	printf("Start output...\n");
+	// 输出正确结果
+	//if (check() == 0)
+	if (1 == 1)
+	{
+		count++;
+		printf("count%d\t: ", count);
+		for (k = 1; k <= QUEENS; k++)
+		{
+			printf("%d ", states[k]);
+		}
+		printf("\n");
+	}
+}
+
+void init(void)
+{
+	int k = 2;
+	for (k = 2; k <= QUEENS; k++)
+	{
+		states[k] = 0;
+	}
+}
+
+
