@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<!-- 模拟iPhone 6去请求豆瓣首页   豆瓣会返回适合iPhone的移动版网页 -->
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="apple-touch-icon" sizes="57x57" href="http://img3.douban.com/f/shire/e4e817e5a0feec932102cec8e7ab10284112692d/pics/cardkit/launcher/57.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="http://img3.douban.com/f/shire/6740f10994d6d10b37d1dc2668b883f30574bb4a/pics/cardkit/launcher/72.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="http://img3.douban.com/f/shire/69474170d0f31758efb1b61734da269395f55d36/pics/cardkit/launcher/114.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="http://img3.douban.com/f/shire/37888458e2b221c1208acc18c4384de7478617f9/pics/cardkit/launcher/144.png" />
+    
+    <link href="http://img3.douban.com/f/shire/91f5ec2c068e9ac65d3ae5328c65f512fc8952af/css/cardkit/base.css" rel="stylesheet" data-mobile="true"/>
+
+    
+    <link href="http://img3.douban.com/f/sns/680056d3f1fcdfbb8171c7b3c81613741dce6fd4/css/sns/mobile.anonymous_home.css" rel="stylesheet" data-mobile="true" />
+
+    <link rel="stylesheet" href="http://img3.douban.com/misc/mixed_static/2683ae4bd79fe083.css">
+
+        <link rel="shortcut icon" href="http://img3.douban.com/favicon.ico" type="image/x-icon">
+        
+    </head>
+    <body ontouchstart="return ckControl()">
+        
+    
+    <div class="search-msk"></div>
+    <div class="search-box">
+        
+    </div>
+    <div class="ck-root">
+        <div class="ck-main">
+            <header class="ck-header">
+                
+    <span class="ck-top-title"></span>
+    
+    <span class="ck-top-nav">
+        
+
+    </span>
+
+    <span class="ck-top-actions"></span>
+
+    <div class="ckcfg-card-actions">
+      
+    </div>
+    <div class="ckcfg-page-actions">
+      
+    </div>
+
+    <div class="ckcfg-navdrawer">
+        <div class="ckd-hd">
+            <h2 class="main-nav-btn">
+                <img src="http://img3.douban.com/pics/cardkit/logo.png" width="50" alt="douban">
+            </h2>
+            
+
+
+
+
+
+<div class="user">
+        <a href="#" class="nav-accounts ck-login">登录/注册</a>
+</div>
+
+        </div>
+        <div class="ckd-content">
+            
+    <div class="main-nav">
+        <ul>
+            <li class="nav_douban"><a href="http://www.douban.com">首页</a></li>
+            <li class="nav_book"><a href="http://book.douban.com">读书</a></li>
+            <li class="nav_movie"><a href="http://movie.douban.com">电影</a></li>
+            <li class="nav_music"><a href="http://music.douban.com" target="_blank">音乐</a></li>
+            <li class="nav_loc"><a href="http://www.douban.com/location/" target="_blank">同城</a></li>
+            <li class="nav_group"><a href="http://www.douban.com/group/">小组</a></li>
+            <li class="nav_read"><a href="http://read.douban.com" target="_blank">阅读</a></li>
+            <li class="nav_fm"><a href="http://douban.fm" target="_blank">豆瓣FM</a></li>
+            <li class="nav_dongxi"><a href="http://dongxi.douban.com?dcs=mobile-anonymous-home&amp;dcm=douban" target="_blank">东西</a></li>
+            <li class="nav_mobile_app"><a href="http://www.douban.com/mobile/" target="_blank">移动应用</a></li>
+        </ul>
+    </div>
+
+            
+            
+            
+  <ul class="ck-navdrawer-more">
+    <li>
+        <a href="#" class="ck-switchmode switch-to-desktop">切换至桌面风格</a>
+    </li>
+    <li>
+        <a href="#" class="ck-modal-link site-feedback"
+            data-json-url="http://www.douban.com/j/cardkit/feedback?server=pidl1"
+            data-title="使用反馈"
+            data-confirm-text="提交">使用反馈</a>
+    </li>
+  </ul>
+
+        </div>
+    </div>
+            </header>
+            <div class="ck-wrapper">
+                
+  
+    <div class="ck-card" id="ckDefault">
+        
+    <div class="cover">
+        <div class="headline">
+            <div class="login-area" align="right">
+                <a href="https://www.douban.com/accounts/login" class="btn-login">登录/注册</a>
+            </div>
+                <a href="http://www.douban.com/doubanapp/app?channel=Db_MobileAD_Anony&direct_dl=1" class="btn-dl">点击下载APP</a>
+        </div>
+        <div class="search">
+            <form action="http://www.douban.com/search">
+                <input type="text" name="q" placeholder="搜索影视 图书 唱片 活动...">
+            </form>
+        </div>
+
+        
+
+    </div>
+
+    
+    <div class="ck-box-unit" id="album"
+        data-cfg-plainhd="true"
+        data-cfg-paper="true">
+        <h3 class="ckd-hd">热门相册</h3>
+        <div class="ckd-content">
+
+            <div class="album-list-item">
+                <a href="http://www.douban.com/photos/album/78921282/" class="lnk-album">
+                    <img class="album-cover" src="http://img3.douban.com/view/photo/albumcover/public/p2231374035.jpg" />
+                    <div class="title">宋小花</div>
+                    <div class="meta-info">
+                        <span class="meta-num">66</span>
+                        <span class="meta-like">1070</span>
+                    </div>
+                </a>
+            </div>
+            <div class="album-list-item">
+                <a href="http://www.douban.com/photos/album/54514720/" class="lnk-album">
+                    <img class="album-cover" src="http://img3.douban.com/view/photo/albumcover/public/p1158283411.jpg" />
+                    <div class="title">刘雯</div>
+                    <div class="meta-info">
+                        <span class="meta-num">183</span>
+                        <span class="meta-like">2017</span>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    
+        <div class="ck-list-unit" data-style="list" data-cfg-plainhd="true" id="diary">
+            <h3 class="ckd-hd">热门日记</h3>
+            <div class="ckd-item">
+                <a href="http://www.douban.com/note/510927203/" class="ckd-title">肥肠之神</a>
+                <p class="ckd-content">我的表弟小刘是一个上升处女的巨蟹座男人，他综合了这两个星座的特点，一是有洁癖...</p>
+                <div class="ckd-meta meta-info">
+                    <span class="meta-like">2088</span>
+                    <span class="meta-comment">275</span>
+                </div>
+            </div>
+        </div>
+
+    
+        <div class="ck-list-unit" data-style="list" data-cfg-plainhd="true" id="online">
+            <h3 class="ckd-hd">热门线上活动</h3>
+            <div class="ckd-item">
+                <a href="http://www.douban.com/online/12073494/" class="ckd-title">你正在读什么书（有奖品）</a>
+                <img src="http://img3.douban.com/spic/o670164.jpg" class="ckd-icon" />
+                <div class="ckd-desc">时间：6月28日 - 9月27日</div>
+                <div class="ckd-meta">1443人参加</div>
+            </div>
+        </div>
+
+    <div class="ck-box-unit" id="ck-box-find-more" data-cfg-plainhd="true">
+        <h3 class="ckd-hd">发现更多</h3>
+        <div class="ckd-item">
+            <div class="ckd-content">
+                <a class="ck-link-extern sub_link link_movie" href="http://movie.douban.com">豆瓣电影 &gt;</a>
+                <a class="ck-link-extern sub_link sub_link_odd link_dongxi" href="http://dongxi.douban.com?dcs=mobile-anonymous-home&amp;dcm=douban">豆瓣东西 &gt;</a>
+                <a class="ck-link-extern sub_link link_book" href="http://book.douban.com">豆瓣读书 &gt;</a>
+                <a class="ck-link-extern sub_link sub_link_odd link_music" href="http://music.douban.com">豆瓣音乐 &gt;</a>
+                <a class="ck-link-extern sub_link link_group" href="http://www.douban.com/group/">豆瓣小组 &gt;</a>
+                <a class="ck-link-extern sub_link sub_link_odd link_loc" href="http://www.douban.com/location/">豆瓣同城 &gt;</a>
+            </div>
+        </div>
+    </div>
+
+
+        
+    
+    </div>
+    
+
+  
+    <div class="ck-card ck-loading" id="ckLoading">
+        <div>
+            <p><span></span><span></span><span></span></p>
+            <p>加载中...</p>
+        </div>
+    </div>
+
+  <div class="ck-raw">
+    
+  </div>
+                
+    <footer class="ck-footer">
+        <div class="copyright">&copy; 2005－2015 douban.com, all rights reserved </div>
+        <div class="switch-style">
+            <a href="#" class="ck-switchmode back-to-top">回顶部</a>
+            <span class="seperator">&middot;</span>
+            <span>移动风格</span>
+            <span class="seperator">&middot;</span>
+            <a href="#" class="ck-switchmode switch-to-desktop">桌面风格</a>
+        </div>
+    </footer>
+    
+            </div>
+        </div>
+    </div>
+
+    
+    
+<!-- douban ad begin -->
+<section class="promotion-wechat-overlay">
+    <div class="promotion-wechat-dialog">
+        <h1>链接打不开?</h1>
+        <div>请点击右上角</div>
+        <div>选择<span class="promotion-wechat-highlight">"在浏览器中打开"</span></div>
+        <div class="promotion-wechat-arrow"></div>
+    </div>
+</section>
+
+<div class="promotion-app-banner" id="dale_anonym_index_mobile_app_banner"></div>
+
+
+
+
+
+<!-- douban ad end -->
+
+    
+    <script data-mobile="true">
+        window.DOUBAN_LOGIN_URL = 'https://www.douban.com/accounts/login';
+    </script>
+    <script src="http://img3.douban.com/f/shire/940091347bb3b895e48881b0fd9d935e6c0ebb3a/js/cardkit/base.js" data-mobile="true"></script>
+    
+    
+    <script type="text/javascript" src="http://img3.douban.com/misc/mixed_static/15ce77cdf9917a14.js"></script>
+    <!-- pidl1-->
+        
+
+
+<script type="text/javascript" data-mobile="true">
+    (function (global) {
+        var newNode = global.document.createElement('script'),
+            existingNode = global.document.getElementsByTagName('script')[0],
+            adSource = '//erebor.douban.com/',
+            userId = '',
+            browserId = 'YEW1yyovgA0',
+            preview = '',
+            debug = false;
+
+        global.DoubanAdRequest = {src: adSource, uid: userId, bid: browserId, prv: preview, debug: debug};
+
+        newNode.setAttribute('type', 'text/javascript');
+        newNode.setAttribute('src', 'http://img3.douban.com/f/shire/4c17ee7375ad26fd5fac764233b7200dc8d9aeb1/js/ad.js');
+        newNode.setAttribute('async', true);
+        existingNode.parentNode.insertBefore(newNode, existingNode);
+    })(this);
+</script>
+
+
+    </body>
+</html>
