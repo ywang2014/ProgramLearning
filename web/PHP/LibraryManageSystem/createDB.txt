@@ -1,0 +1,49 @@
+创建数据库
+	创建数据表
+	
+	直接在命令行启动 MySQL
+	mysql -u root -p ******
+	
+create database library;
+use libray;
+create table manage(id int(10) auto_increment not null,
+					name varchar(20),
+					password char(20),
+					primary key(id), unique id(id)
+					);
+	修改属性：alter table modify id int(11) primary key auto_increment;	(如果没有设置主键或自动增加，都可以通过此方法修改属性)
+		默认值和 auto_increment 好像不能共存！！！
+	desc manage;  (查看表)
+	
+create table reader(id int(100) auto_increment not null,
+					name varchar(20),
+					sex varchar(10),
+					email char(40),
+					addr varchar(40),
+					tel varchar(15),
+					idnum varchar(20),
+					password char(20),
+					max tinyint,
+					borrowed tinyint,
+					primary key(id), unique id(id)
+					);
+					
+create table book(id int(200) auto_increment not null,
+					name varchar(40),
+					author varchar(20),
+					time char(20),
+					pub varchar(40),
+					memo char(200),
+					num tinyint,
+					lend tinyint,
+					primary key(id), unique id(id)
+					);
+					
+create table booked(id int(10) auto_increment not null,
+					re_id int(100),
+					book_id int(200),
+					returnt int(10),
+					able tinyint,
+					endm tinyint,
+					primary key(id), unique id(id)
+					);
