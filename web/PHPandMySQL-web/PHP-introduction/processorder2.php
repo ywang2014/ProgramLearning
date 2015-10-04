@@ -28,7 +28,7 @@
 			{
 				echo "<p style = \"color: red\">";
 				echo "You did not order anything on the previous page! <br />";
-				echo "</p>"
+				echo "</p>";
 				echo "<script> alert('订单不能全部为空，请返回重填'); history.go(-1); </script>";
 			}
 			else

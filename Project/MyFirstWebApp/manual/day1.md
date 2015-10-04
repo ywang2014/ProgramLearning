@@ -20,4 +20,6 @@
 		
 		manual/		项目开发过程说明
 		
+		sql/		数据库创建文件
+		
 		LICENSE		代码license
