@@ -11,6 +11,7 @@ REST就是一种设计API的模式。最常用的数据格式是JSON
 由于API就是把Web App的功能全部封装了，所以，通过API操作数据，可以极大地把前端和后端的代码隔离，使得后端代码易于测试，前端代码编写更简单。
 
 一个API也是一个URL的处理函数，我们希望能直接通过一个@api来把函数变成JSON格式的REST API，这样，获取注册用户可以用一个API实现如下：
+###### 代码在 handlers.py
 @get('/api/users')
 def api_get_users(*, page='1'):
     page_index = get_page_index(page)
