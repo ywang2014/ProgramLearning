@@ -1,0 +1,6 @@
+Succeed log: 
+Show the whole file: 
+Time: 1444398053
+End of file reached.
+The file test.txt has 47 characters.
+The file test.txt has 100 random numbers.

@@ -1,0 +1,1 @@
+samlpe nginx configuration file
