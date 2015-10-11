@@ -1,0 +1,60 @@
+<html>
+<!-- 新书入库 ma_web5.html -->
+	<head>
+		<meta http-equiv = "Content - Type" content = "text/html"; charset = "utf-8">
+		<meta name = "GENERATOR" content = "Microsoft FrontPage 4.0">
+		<meta name = "Progld" content = "FrontPage.Editor.Document">
+		<title> 新书入库 </title>
+	</head>
+
+	<body bgcolor = "#eeeeee">
+		<center>
+			<h2> 图书馆新书入库：</h2>
+			<form method = "post" action = "ma_web5.php">
+				<table border = 0 width = 400>
+					<tr>
+						<td width = 200 align = "right"> 书名：</td>
+						<td>
+							<input type = "text" name = "name">
+						</td>
+					</tr>
+					<tr>
+						<td align = "right"> 作者：</td>
+						<td>
+							<input type = "text" name = "author" size = 20>
+						</td>
+					</tr>
+					<tr>
+						<td align = "right"> 出版日期：</td>
+						<td>
+							<input type = "text" name = "year" size = 6> 年
+							<input type = "text" name = "month" size = 3> 月
+						</td>
+					</tr>
+					<tr>
+						<td align = "right"> 出版社：</td>
+						<td>
+							<input type = "text" name = "pub" size = 20>
+						</td>
+					</tr>
+					<tr>
+						<td align = "right"> 入库数量：</td>
+						<td>
+							<input type = "text" name = "num" size = 20>
+						</td>
+					</tr>
+					<tr>
+						<td align = "right"> 备注：</td>
+						<td>
+							<textarea rows = 2 name = "memo" cols = 20> </textarea>
+						</td>
+					</tr>
+				</table>
+				<p>
+					<input type = "submit" name = "submit" value = "确定">
+					&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+					<input type = "reset" name = "reset" value = "重填">
+			</form>
+		</center>
+	</body>
+</html>
