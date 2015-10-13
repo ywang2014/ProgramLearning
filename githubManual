@@ -1,18 +1,24 @@
 # githubMannul
-## »ù´¡ÊÖ²á-ÉÏ´«Ô´´úÂë
-	1.git clone http:	ÏÂÔØrepo
+## åŸºç¡€æ‰‹å†Œ-ä¸Šä¼ æºä»£ç 
+	1.git clone http:	ä¸‹è½½repo
 
-	2.git status (²é¿´×´Ì¬£º3ÖÖ£º)
+	2.git status (æŸ¥çœ‹çŠ¶æ€ï¼š3ç§ï¼š)
 	
-	3.vim filename 	(ÆäËü·½Ê½ÐÞ¸ÄÒ²¿ÉÒÔ)
+	3.vim filename 	(å…¶å®ƒæ–¹å¼ä¿®æ”¹ä¹Ÿå¯ä»¥)
 
 	4.git add filename
 
 	5.git commit -m 'something...'
 	
-	6.git remote add origin git@github.com:username/repo.git
+	6.git push (å³å¯ç›´æŽ¥æäº¤)
+	
+#### å¯¹äºŽè‡ªå·±æ‰‹åŠ¨åˆ›å»ºrepoï¼Œåˆ™éœ€è¦å¦‚ä¸‹æäº¤æ–¹å¼ï¼š
+	
+	1.git remote add origin git@github.com:username/repo.git
 
-	7.git push -u origin master (git push)
+	2.git push -u origin master (git push)
+	
+#### some errors statusï¼š
 	
 	8.if wrong :
 		
@@ -26,29 +32,29 @@
 		
 	9.wrong: error: failed to push some refs to 'git@github.com:repo.git
 		
-		³öÏÖ´íÎóµÄÖ÷ÒªÔ­ÒòÊÇgithubÖÐµÄREADME.mdÎÄ¼þ²»ÔÚ±¾µØ´úÂëÄ¿Â¼ÖÐ
+		å‡ºçŽ°é”™è¯¯çš„ä¸»è¦åŽŸå› æ˜¯githubä¸­çš„README.mdæ–‡ä»¶ä¸åœ¨æœ¬åœ°ä»£ç ç›®å½•ä¸­
 		
-		±¾µØÏîÄ¿ÓëgithubÉÏÃæµÄÏîÄ¿²»Ò»ÖÂÒýÆðµÄ¡£
+		æœ¬åœ°é¡¹ç›®ä¸Žgithubä¸Šé¢çš„é¡¹ç›®ä¸ä¸€è‡´å¼•èµ·çš„ã€‚
 		
-		git pull --rebase origin master		(pull = fetch+merge) ´úÂëºÏ²¢
+		git pull --rebase origin master		(pull = fetch+merge) ä»£ç åˆå¹¶
 		
 		git push -u origin master
 
 
-¡¡¡¡2¡¢ÅäÖÃ±¾»úµÄgit
+ã€€ã€€2ã€é…ç½®æœ¬æœºçš„git
 
 	$ git config --global user.name "abcd"
 
 	$ git config --global user.email abcd@efgh.com
 
-¡¡¡¡3¡¢Éú³ÉÃÜÔ¿ ssh ¾ßÌå¼û°Ù¶ÈµÈ
+ã€€ã€€3ã€ç”Ÿæˆå¯†é’¥ ssh å…·ä½“è§ç™¾åº¦ç­‰
 
 
-¡¡¡¡5¡¢¼ìÑéÊÇ·ñÁ´½ÓÉÏÁËgithub
+ã€€ã€€5ã€æ£€éªŒæ˜¯å¦é“¾æŽ¥ä¸Šäº†github
 
 	$ ssh git@github.com
 	
-	//Õý³£Çé¿öÏÂ£¬»ØÏÔÈçÏÂ
+	//æ­£å¸¸æƒ…å†µä¸‹ï¼Œå›žæ˜¾å¦‚ä¸‹
 
 	PTY allocation request failed on channel 0
 
@@ -56,55 +62,55 @@
 
 	Connection to github.com closed.
 
-¡¡¡¡6¡¢Ê×´ÎÍÆËÍ
+ã€€ã€€6ã€é¦–æ¬¡æŽ¨é€
 
-	$ mkdir tmp      //´´½¨ÍÆËÍÄ¿Â¼
+	$ mkdir tmp      //åˆ›å»ºæŽ¨é€ç›®å½•
 
-	$ cd tmp         //½øÈëÍÆËÍÄ¿Â¼    
+	$ cd tmp         //è¿›å…¥æŽ¨é€ç›®å½•    
 
-	$ git init       //ÉèÖÃ¸ÃÄ¿Â¼ÎªÍÆËÍ
+	$ git init       //è®¾ç½®è¯¥ç›®å½•ä¸ºæŽ¨é€
 
-	$ touch README   //Éú³Éreadme
+	$ touch README   //ç”Ÿæˆreadme
 
-	$ git add README //¼ÓÈëÐÞ¸ÄÁÐ±í
+	$ git add README //åŠ å…¥ä¿®æ”¹åˆ—è¡¨
 
-	$ git commit -m 'first commit' //µÝ½»ÐÞ¸ÄÉùÃ÷
+	$ git commit -m 'first commit' //é€’äº¤ä¿®æ”¹å£°æ˜Ž
 
-	$ git remote add origin git@github.com:abcd/tmp.git //ÎªÔ¶³ÌGit¸üÃûÎªorigin
+	$ git remote add origin git@github.com:abcd/tmp.git //ä¸ºè¿œç¨‹Gitæ›´åä¸ºorigin
 
-	$ git push -u origin master //ÍÆËÍ´Ë´ÎÐÞ¸Ä
+	$ git push -u origin master //æŽ¨é€æ­¤æ¬¡ä¿®æ”¹
  
 
- ¡¡¡¡ÎÊÌâÒ»£º
-¼þ
-	 ERROR: Repository not found. // cloneµÄ²»´æÔÚgithubÉÏÃ»ÓÐrepoÇé¿ö,·ñÔòÐèÒª´´½¨Â·¾¶ÃûÒ»ÑùµÄ
+ ã€€ã€€é—®é¢˜ä¸€ï¼š
+ä»¶
+	 ERROR: Repository not found. // cloneçš„ä¸å­˜åœ¨githubä¸Šæ²¡æœ‰repoæƒ…å†µ,å¦åˆ™éœ€è¦åˆ›å»ºè·¯å¾„åä¸€æ ·çš„
 
-	É¾³ýÈýÐÐ£º
+	åˆ é™¤ä¸‰è¡Œï¼š
    	[remote "origin"]
 		url = 
 		fetch = 
 
-	ÎÊÌâ¶þ£º
+	é—®é¢˜äºŒï¼š
 
 	! [rejected] master -> master (non-fast-forward)
 	
 	error: failed to push some refs to ...
 
-¡¡¡¡	Õâ¸öÎÊÌâÊÇÒòÎª£¬githubÖÐÒÑ¾­ÓÐÁËÕâ¸ö´úÂë£¬²»ÔÊÐíÄã¸²¸ÇËü¡£
+ã€€ã€€	è¿™ä¸ªé—®é¢˜æ˜¯å› ä¸ºï¼Œgithubä¸­å·²ç»æœ‰äº†è¿™ä¸ªä»£ç ï¼Œä¸å…è®¸ä½ è¦†ç›–å®ƒã€‚
 
-	½¨Òé£º²»ÒªÖ±½ÓÔÚgithubÉÏÃæÐÞ¸Ä¶«Î÷£¬ÔÚ±¾»úÐÞ¸Ä£¬È»ºóÌí¼Ó£¬·ñÔò²»Ò»ÖÂ£¬ÐèÒªÍ¬²½£¬ÎÊÌâ¶à¡£¡£¡£
+	å»ºè®®ï¼šä¸è¦ç›´æŽ¥åœ¨githubä¸Šé¢ä¿®æ”¹ä¸œè¥¿ï¼Œåœ¨æœ¬æœºä¿®æ”¹ï¼Œç„¶åŽæ·»åŠ ï¼Œå¦åˆ™ä¸ä¸€è‡´ï¼Œéœ€è¦åŒæ­¥ï¼Œé—®é¢˜å¤šã€‚ã€‚ã€‚
 
-¡¡¡¡½â¾ö·½·¨£º
+ã€€ã€€è§£å†³æ–¹æ³•ï¼š
 
-¡¡¡¡1£©Ç¿ÖÆÍÆËÍ£¬Ò»°ã²»ÍÆ¼ö£¡¿Óµù¡£¡£¡£¡£
+ã€€ã€€1ï¼‰å¼ºåˆ¶æŽ¨é€ï¼Œä¸€èˆ¬ä¸æŽ¨èï¼å‘çˆ¹ã€‚ã€‚ã€‚ã€‚
 
 	$ git push -f
 
-¡¡¡¡2£©$ git pull = (git fetch + git merge)
+ã€€ã€€2ï¼‰$ git pull = (git fetch + git merge)
 
-¡¡¡¡È»ºó½«³öÏÖÆäËûÌáÊ¾£¬¾ßÌåÒâË¼ÊÇËµbranchÓëmergeÎ´Ö¸¶¨£¬git1·¨Ñ¡ÔñÒªÍÆËÍµÄ·ÖÖ§¡£
+ã€€ã€€ç„¶åŽå°†å‡ºçŽ°å…¶ä»–æç¤ºï¼Œå…·ä½“æ„æ€æ˜¯è¯´branchä¸ŽmergeæœªæŒ‡å®šï¼Œgit1æ³•é€‰æ‹©è¦æŽ¨é€çš„åˆ†æ”¯ã€‚
 	
-	ÃüÁîÐÐ£ºÐÞ¸Äbranch
+	å‘½ä»¤è¡Œï¼šä¿®æ”¹branch
 
 	$ git config branch.master.remote origin
 	
