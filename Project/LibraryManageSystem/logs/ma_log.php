@@ -1,11 +1,13 @@
 <?php
 // 负责登录处理的php脚本程序
 // ma_log.php
+$id = $_POST["id"];
+$password = $_POST["password"];
 
 include "common.php";
 
 // connection
-$link = mysql_connect($hostname, $username, $password) or die("数据库服务器连接失败！");
+$link = mysql_connect($hostname, $username, $hostpassword) or die("数据库服务器连接失败！");
 
 // 选择数据库library, 在函数前加"@"符号，将会抑制错误信息的显示
 // 使用 mysql_select_db 函数激活数据库表，后面的操作不需要专门添加表名
