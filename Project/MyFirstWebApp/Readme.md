@@ -42,8 +42,11 @@ My-First-webapp
 	
 准备再看n遍，能够略知一二才能算学习到一些东西吧！python基础知识还是很脆弱，运用技巧太僵硬！
 
+[廖老师源代码](https://github.com/ywang2014/ProgramLearning/tree/master/python/python-Michael/awesome-python3-webapp)
+
 
 **Start Time**
 2015-10-02
+
 **End Time**
 2015-10-14

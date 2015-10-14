@@ -41,16 +41,26 @@
 		git push -u origin master
 
 
-　　2、配置本机的git
+#### 配置本机的git
 
 	$ git config --global user.name "abcd"
 
 	$ git config --global user.email abcd@efgh.com
 
-　　3、生成密钥 ssh 具体见百度等
+#### 生成密钥 ssh 
 
+	1、本地创建ssh key；
+    $ ssh-keygen -t rsa -C "your_email@youremail.com"
+	
+	要求确认路径和输入密码，使用默认的一路回车就行。
+	
+	2、成功的话会在~/下生成.ssh文件夹，进去，打开id_rsa.pub，复制里面的key。
+	回到github，进入Account Settings，左边选择SSH Keys，Add SSH Key, title随便填，粘贴key。
+	
+	3、验证是否成功，在git bash下输入：
+    $ ssh -T git@github.com
 
-　　5、检验是否链接上了github
+　　4、检验是否链接上了github
 
 	$ ssh git@github.com
 	
@@ -62,7 +72,7 @@
 
 	Connection to github.com closed.
 
-　　6、首次推送
+#### 本地创建repo，首次推送
 
 	$ mkdir tmp      //创建推送目录
 
@@ -82,8 +92,8 @@
  
 
  　　问题一：
-件
-	 ERROR: Repository not found. // clone的不存在github上没有repo情况,否则需要创建路径名一样的
+
+	 ERROR: Repository not found. // clone的不存在，github上没有repo情况,否则需要创建路径名一样的
 
 	删除三行：
    	[remote "origin"]
@@ -115,3 +125,25 @@
 	$ git config branch.master.remote origin
 	
 	$ git config branch.master.merge ref/heads/master
+
+#### 解决git推送项目到github需要每次输入用户名和密码
+原因是使用了https方式 push
+
+	1、gitbash 进入到你的项目文件夹下
+	
+	$ git remote -v 
+	
+	可以看到形如一下的返回结果
+
+		origin https://github.com/yourname/demo.git (fetch)
+
+		origin https://github.com/yourname/demo.git (push)
+	
+	2、解决方法：把它换成ssh方式的
+
+		1. git remote rm origin
+
+		2. git remote add origin git@github.com:yourname/demo.git
+
+		3. git push origin 
+	
