@@ -1,0 +1,157 @@
+
+fun_ptr:     file format pe-i386
+
+
+Disassembly of section .text:
+
+00000000 <_main>:
+   0:	55                   	push   %ebp
+   1:	89 e5                	mov    %esp,%ebp
+   3:	83 e4 f0             	and    $0xfffffff0,%esp
+   6:	83 ec 20             	sub    $0x20,%esp
+   9:	e8 00 00 00 00       	call   e <_main+0xe>
+   e:	c7 44 24 04 00 00 00 	movl   $0x0,0x4(%esp)
+  15:	00 
+  16:	c7 04 24 00 00 00 00 	movl   $0x0,(%esp)
+  1d:	e8 00 00 00 00       	call   22 <_main+0x22>
+  22:	c7 44 24 04 00 00 00 	movl   $0x0,0x4(%esp)
+  29:	00 
+  2a:	89 04 24             	mov    %eax,(%esp)
+  2d:	e8 00 00 00 00       	call   32 <_main+0x32>
+  32:	e9 94 00 00 00       	jmp    cb <_main+0xcb>
+  37:	c7 44 24 04 28 00 00 	movl   $0x28,0x4(%esp)
+  3e:	00 
+  3f:	c7 04 24 00 00 00 00 	movl   $0x0,(%esp)
+  46:	e8 00 00 00 00       	call   4b <_main+0x4b>
+  4b:	c7 44 24 04 00 00 00 	movl   $0x0,0x4(%esp)
+  52:	00 
+  53:	89 04 24             	mov    %eax,(%esp)
+  56:	e8 00 00 00 00       	call   5b <_main+0x5b>
+  5b:	8b 44 24 1c          	mov    0x1c(%esp),%eax
+  5f:	c7 44 24 04 18 01 00 	movl   $0x118,0x4(%esp)
+  66:	00 
+  67:	89 04 24             	mov    %eax,(%esp)
+  6a:	e8 db 00 00 00       	call   14a <__Z8estimateiPFdiE>
+  6f:	c7 44 24 04 48 00 00 	movl   $0x48,0x4(%esp)
+  76:	00 
+  77:	c7 04 24 00 00 00 00 	movl   $0x0,(%esp)
+  7e:	e8 00 00 00 00       	call   83 <_main+0x83>
+  83:	c7 44 24 04 00 00 00 	movl   $0x0,0x4(%esp)
+  8a:	00 
+  8b:	89 04 24             	mov    %eax,(%esp)
+  8e:	e8 00 00 00 00       	call   93 <_main+0x93>
+  93:	8b 44 24 1c          	mov    0x1c(%esp),%eax
+  97:	c7 44 24 04 28 01 00 	movl   $0x128,0x4(%esp)
+  9e:	00 
+  9f:	89 04 24             	mov    %eax,(%esp)
+  a2:	e8 a3 00 00 00       	call   14a <__Z8estimateiPFdiE>
+  a7:	c7 44 24 04 00 00 00 	movl   $0x0,0x4(%esp)
+  ae:	00 
+  af:	c7 04 24 00 00 00 00 	movl   $0x0,(%esp)
+  b6:	e8 00 00 00 00       	call   bb <_main+0xbb>
+  bb:	c7 44 24 04 00 00 00 	movl   $0x0,0x4(%esp)
+  c2:	00 
+  c3:	89 04 24             	mov    %eax,(%esp)
+  c6:	e8 00 00 00 00       	call   cb <_main+0xcb>
+  cb:	8d 44 24 1c          	lea    0x1c(%esp),%eax
+  cf:	89 44 24 04          	mov    %eax,0x4(%esp)
+  d3:	c7 04 24 00 00 00 00 	movl   $0x0,(%esp)
+  da:	e8 00 00 00 00       	call   df <_main+0xdf>
+  df:	8b 10                	mov    (%eax),%edx
+  e1:	83 ea 0c             	sub    $0xc,%edx
+  e4:	8b 12                	mov    (%edx),%edx
+  e6:	01 d0                	add    %edx,%eax
+  e8:	89 04 24             	mov    %eax,(%esp)
+  eb:	e8 00 00 00 00       	call   f0 <_main+0xf0>
+  f0:	85 c0                	test   %eax,%eax
+  f2:	0f 95 c0             	setne  %al
+  f5:	84 c0                	test   %al,%al
+  f7:	0f 85 3a ff ff ff    	jne    37 <_main+0x37>
+  fd:	c7 44 24 04 66 00 00 	movl   $0x66,0x4(%esp)
+ 104:	00 
+ 105:	c7 04 24 00 00 00 00 	movl   $0x0,(%esp)
+ 10c:	e8 00 00 00 00       	call   111 <_main+0x111>
+ 111:	b8 00 00 00 00       	mov    $0x0,%eax
+ 116:	c9                   	leave  
+ 117:	c3                   	ret    
+
+00000118 <__Z5betsyi>:
+ 118:	55                   	push   %ebp
+ 119:	89 e5                	mov    %esp,%ebp
+ 11b:	db 45 08             	fildl  0x8(%ebp)
+ 11e:	dd 05 a0 00 00 00    	fldl   0xa0
+ 124:	de c9                	fmulp  %st,%st(1)
+ 126:	5d                   	pop    %ebp
+ 127:	c3                   	ret    
+
+00000128 <__Z3pami>:
+ 128:	55                   	push   %ebp
+ 129:	89 e5                	mov    %esp,%ebp
+ 12b:	db 45 08             	fildl  0x8(%ebp)
+ 12e:	dd 05 a8 00 00 00    	fldl   0xa8
+ 134:	de c9                	fmulp  %st,%st(1)
+ 136:	db 45 08             	fildl  0x8(%ebp)
+ 139:	dd 05 b0 00 00 00    	fldl   0xb0
+ 13f:	de c9                	fmulp  %st,%st(1)
+ 141:	db 45 08             	fildl  0x8(%ebp)
+ 144:	de c9                	fmulp  %st,%st(1)
+ 146:	de c1                	faddp  %st,%st(1)
+ 148:	5d                   	pop    %ebp
+ 149:	c3                   	ret    
+
+0000014a <__Z8estimateiPFdiE>:
+ 14a:	55                   	push   %ebp
+ 14b:	89 e5                	mov    %esp,%ebp
+ 14d:	83 ec 18             	sub    $0x18,%esp
+ 150:	8b 45 08             	mov    0x8(%ebp),%eax
+ 153:	89 44 24 04          	mov    %eax,0x4(%esp)
+ 157:	c7 04 24 00 00 00 00 	movl   $0x0,(%esp)
+ 15e:	e8 00 00 00 00       	call   163 <__Z8estimateiPFdiE+0x19>
+ 163:	c7 44 24 04 7e 00 00 	movl   $0x7e,0x4(%esp)
+ 16a:	00 
+ 16b:	89 04 24             	mov    %eax,(%esp)
+ 16e:	e8 00 00 00 00       	call   173 <__Z8estimateiPFdiE+0x29>
+ 173:	8b 45 08             	mov    0x8(%ebp),%eax
+ 176:	89 04 24             	mov    %eax,(%esp)
+ 179:	8b 45 0c             	mov    0xc(%ebp),%eax
+ 17c:	ff d0                	call   *%eax
+ 17e:	dd 5c 24 04          	fstpl  0x4(%esp)
+ 182:	c7 04 24 00 00 00 00 	movl   $0x0,(%esp)
+ 189:	e8 00 00 00 00       	call   18e <__Z8estimateiPFdiE+0x44>
+ 18e:	c7 44 24 04 90 00 00 	movl   $0x90,0x4(%esp)
+ 195:	00 
+ 196:	89 04 24             	mov    %eax,(%esp)
+ 199:	e8 00 00 00 00       	call   19e <__Z8estimateiPFdiE+0x54>
+ 19e:	c9                   	leave  
+ 19f:	c3                   	ret    
+
+000001a0 <__Z41__static_initialization_and_destruction_0ii>:
+ 1a0:	55                   	push   %ebp
+ 1a1:	89 e5                	mov    %esp,%ebp
+ 1a3:	83 ec 18             	sub    $0x18,%esp
+ 1a6:	83 7d 08 01          	cmpl   $0x1,0x8(%ebp)
+ 1aa:	75 31                	jne    1dd <__Z41__static_initialization_and_destruction_0ii+0x3d>
+ 1ac:	81 7d 0c ff ff 00 00 	cmpl   $0xffff,0xc(%ebp)
+ 1b3:	75 28                	jne    1dd <__Z41__static_initialization_and_destruction_0ii+0x3d>
+ 1b5:	c7 04 24 00 00 00 00 	movl   $0x0,(%esp)
+ 1bc:	e8 00 00 00 00       	call   1c1 <__Z41__static_initialization_and_destruction_0ii+0x21>
+ 1c1:	c7 44 24 08 00 00 00 	movl   $0x0,0x8(%esp)
+ 1c8:	00 
+ 1c9:	c7 44 24 04 00 00 00 	movl   $0x0,0x4(%esp)
+ 1d0:	00 
+ 1d1:	c7 04 24 00 00 00 00 	movl   $0x0,(%esp)
+ 1d8:	e8 00 00 00 00       	call   1dd <__Z41__static_initialization_and_destruction_0ii+0x3d>
+ 1dd:	c9                   	leave  
+ 1de:	c3                   	ret    
+
+000001df <__GLOBAL__sub_I_main>:
+ 1df:	55                   	push   %ebp
+ 1e0:	89 e5                	mov    %esp,%ebp
+ 1e2:	83 ec 18             	sub    $0x18,%esp
+ 1e5:	c7 44 24 04 ff ff 00 	movl   $0xffff,0x4(%esp)
+ 1ec:	00 
+ 1ed:	c7 04 24 01 00 00 00 	movl   $0x1,(%esp)
+ 1f4:	e8 a7 ff ff ff       	call   1a0 <__Z41__static_initialization_and_destruction_0ii>
+ 1f9:	c9                   	leave  
+ 1fa:	c3                   	ret    
+ 1fb:	90                   	nop
