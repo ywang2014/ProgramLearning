@@ -9,7 +9,8 @@ from datetime import datetime
 from aiohttp import web
 
 def index(request):
-	return web.Response(body = b'<center> <h1> Hello boys and girls! </h1>')
+	# return web.Response(body = b'<center> <h1> Hello boys and girls! </h1>') # 需要参数，否则有些浏览器识别为 text
+	return web.Response(body = b'<center> <h1> Hello boys and girls! </h1>', content_type = "text/html")
 	
 @asyncio.coroutine
 def init(loop): 
@@ -32,7 +33,7 @@ def test():
 	from aiohttp import web
 	
 	def index(request):
-		return web.Response(body = b'<center> <h1> Hello boys and girls! </h1>')
+		return web.Response(body = b'<center> <h1> Hello boys and girls! </h1>', content_type = "text/html")
 	
 	@asyncio.coroutine
 	def init(loop): 
