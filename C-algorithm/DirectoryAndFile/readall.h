@@ -1,8 +1,13 @@
 /*
-* ÃüÁîĞĞÖ´ĞĞ£ºdir c:\*.* /s/b > allfile.txt
-    ½«cÅÌËùÓĞÎÄ¼şÊä³öµ½ÁË allfile.txtÖĞ£¡
+* å‘½ä»¤è¡Œæ‰§è¡Œï¼šdir c:\*.* /s/b > allfile.txt
+    å°†cç›˜æ‰€æœ‰æ–‡ä»¶è¾“å‡ºåˆ°äº† allfile.txtä¸­ï¼
 
-    cÓïÑÔµ÷ÓÃcmd Îª system£¨¡°cmdÃüÁî¡±£©
+    cè¯­è¨€è°ƒç”¨cmd ä¸º systemï¼ˆâ€œcmdå‘½ä»¤â€ï¼‰
+
+    *****************************************************************
+    cygwinçš„dosçª—å£ä¸‹ï¼Œæ ¹æœ¬ä¸èƒ½è¯†åˆ«systemå‘½ä»¤å‡½æ•°ï¼Œå¸è½½ä¹‹åå°±å¯ä»¥äº†ã€‚
+    ä¸è¦æŠŠcygwin/binè·¯å¾„æ”¾è¿›ç¯å¢ƒå˜é‡pathä¸­å³å¯ã€‚
+    *****************************************************************
 */
 
 #include <stdio.h>
@@ -15,16 +20,16 @@ void readall()
     char *fbuffer;
     int i, len;
 
-    system("dir c:\\*.* /s/b > filelist.txt");          // È«²¿ÎÄ¼ş
-    system("dir c:\\*.txt /b > filelist_curr.txt"); // µ±Ç°Ä¿Â¼ÏÂµÄtxtÎÄ¼ş
+    system("dir d:\\Download\\*.* /s/b > filelist.txt");          // å…¨éƒ¨æ–‡ä»¶
+    system("dir E:\\Users\\ZKY\\*.txt /b > filelist_curr.txt"); // å½“å‰ç›®å½•ä¸‹çš„txtæ–‡ä»¶
 
     Sleep(100);
     fp = fopen("filelist.txt", "r");
 
-    fseek(fp, 0, SEEK_END); // ½«ÎÄ¼şÖ¸ÕëÒÆ¶¯µ½ÎÄ¼ş½áÎ²
-    len = ftell(fp);    // »ñÈ¡ÎÄ¼ş³¤¶È
+    fseek(fp, 0, SEEK_END); // å°†æ–‡ä»¶æŒ‡é’ˆç§»åŠ¨åˆ°æ–‡ä»¶ç»“å°¾
+    len = ftell(fp);    // è·å–æ–‡ä»¶é•¿åº¦
     fbuffer = (char*)malloc(sizeof(char) * len);
-    rewind(fp); // ¸´Î»ÎÄ¼şÖ¸Õë
+    rewind(fp); // å¤ä½æ–‡ä»¶æŒ‡é’ˆ
 
     fread(fbuffer, 1, len, fp); // while() fgets() fputs()
 

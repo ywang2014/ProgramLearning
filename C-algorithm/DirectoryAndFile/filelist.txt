@@ -1,0 +1,160 @@
+d:\Download\week1b Logic and conditionals
+d:\Download\week2 Interactive application in python
+d:\Download\www.baidu.com.htm
+d:\Download\剑指offer 名企面试官精讲典型编程题.pdf
+d:\Download\史记-吕世浩
+d:\Download\week1b Logic and conditionals\4 - 1 - Logic and comparisons (10_05).mp4
+d:\Download\week1b Logic and conditionals\4 - 1 - Logic and comparisons (10_05).srt
+d:\Download\week1b Logic and conditionals\4 - 2 - Conditionals (10_39).mp4
+d:\Download\week1b Logic and conditionals\4 - 2 - Conditionals (10_39).srt
+d:\Download\week1b Logic and conditionals\4 - 3 - Programming tips - 1 (16.03).mp4
+d:\Download\week1b Logic and conditionals\4 - 3 - Programming tips - 1 (16.03).srt
+d:\Download\week1b Logic and conditionals\4 - 4 - Rock-paper-scissors-lizard-Spock (15_55).mp4
+d:\Download\week1b Logic and conditionals\4 - 4 - Rock-paper-scissors-lizard-Spock (15_55).srt
+d:\Download\week1b Logic and conditionals\rpsls.pdf
+d:\Download\week2 Interactive application in python\5 - 1 - Event-driven programming (13_13).mp4
+d:\Download\week2 Interactive application in python\5 - 1 - Event-driven programming (13_13).srt
+d:\Download\week2 Interactive application in python\5 - 2 - Local vs. global variables (11_23).mp4
+d:\Download\week2 Interactive application in python\5 - 2 - Local vs. global variables (11_23).srt
+d:\Download\week2 Interactive application in python\5 - 3 - SimpleGUI (11_27).mp4
+d:\Download\week2 Interactive application in python\5 - 3 - SimpleGUI (11_27).srt
+d:\Download\week2 Interactive application in python\6 - 1 - Buttons (10_48).mp4
+d:\Download\week2 Interactive application in python\6 - 1 - Buttons (10_48).srt
+d:\Download\week2 Interactive application in python\6 - 2 - Input fields (9_34).mp4
+d:\Download\week2 Interactive application in python\6 - 2 - Input fields (9_34).srt
+d:\Download\week2 Interactive application in python\6 - 3 - Visualizing events (5_35).mp4
+d:\Download\week2 Interactive application in python\6 - 3 - Visualizing events (5_35).srt
+d:\Download\week2 Interactive application in python\6 - 4 - Programming tips - 2 (13_32).mp4
+d:\Download\week2 Interactive application in python\6 - 4 - Programming tips - 2 (13_32).srt
+d:\Download\week2 Interactive application in python\6 - 5 - Guess the number! (6_56).mp4
+d:\Download\week2 Interactive application in python\6 - 5 - Guess the number! (6_56).srt
+d:\Download\week2 Interactive application in python\buttons.pdf
+d:\Download\史记-吕世浩\assignment
+d:\Download\史记-吕世浩\先修知识
+d:\Download\史记-吕世浩\第1讲 导论与太史公自序(一) 什么是责任
+d:\Download\史记-吕世浩\第2讲 太史公自序(二) 俟后世圣人君子
+d:\Download\史记-吕世浩\第3讲 报任少卿书(上) 谁为为之？孰令听之？
+d:\Download\史记-吕世浩\第4讲 报任少卿书(下) 太史公牛马走司马迁
+d:\Download\史记-吕世浩\第5讲 五帝本纪
+d:\Download\史记-吕世浩\第6讲 吴太伯世家
+d:\Download\史记-吕世浩\第7讲
+d:\Download\史记-吕世浩\assignment\share.txt
+d:\Download\史记-吕世浩\assignment\写给韩信的一封信.docx
+d:\Download\史记-吕世浩\assignment\写给韩信的一封信.pdf
+d:\Download\史记-吕世浩\先修知识\8 - 1 - 先修知識 1（開宗明義）.mp4
+d:\Download\史记-吕世浩\先修知识\8 - 1 - 先修知識 1（開宗明義）.srt
+d:\Download\史记-吕世浩\先修知识\8 - 2 - 先修知識 2（你活在一個什麼樣的時代？上）.mp4
+d:\Download\史记-吕世浩\先修知识\8 - 3 - 先修知識 3（你活在一個什麼樣的時代？下）.mp4
+d:\Download\史记-吕世浩\先修知识\8 - 3 - 先修知識 3（你活在一個什麼樣的時代？下）.srt
+d:\Download\史记-吕世浩\先修知识\8 - 4 - 先修知識 4（讀歷史有什麼用？）.mp4
+d:\Download\史记-吕世浩\先修知识\8 - 4 - 先修知識 4（讀歷史有什麼用？）.srt
+d:\Download\史记-吕世浩\先修知识\8 - 5 - 先修知識 5（如何讀歷史才有用？）.mp4
+d:\Download\史记-吕世浩\先修知识\8 - 5 - 先修知識 5（如何讀歷史才有用？）.srt
+d:\Download\史记-吕世浩\先修知识\8 - 6 - 先修知識 6（經典閱讀示例一）.mp4
+d:\Download\史记-吕世浩\先修知识\8 - 6 - 先修知識 6（經典閱讀示例一）.srt
+d:\Download\史记-吕世浩\先修知识\8 - 7 - 先修知識 7（經典閱讀示例二）.srt
+d:\Download\史记-吕世浩\先修知识\8 - 8 - 先修知識 8（經典閱讀示例三）.mp4
+d:\Download\史记-吕世浩\先修知识\8 - 8 - 先修知識 8（經典閱讀示例三）.srt
+d:\Download\史记-吕世浩\先修知识\8 - 9 - 先修知識 9（經典閱讀示例四）.mp4
+d:\Download\史记-吕世浩\先修知识\8 - 9 - 先修知識 9（經典閱讀示例四）.srt
+d:\Download\史记-吕世浩\第1讲 导论与太史公自序(一) 什么是责任\1 - 1 - 1-1 開宗明義：從史記學史記.mp4
+d:\Download\史记-吕世浩\第1讲 导论与太史公自序(一) 什么是责任\1 - 1 - 1-1 開宗明義：從史記學史記.srt
+d:\Download\史记-吕世浩\第1讲 导论与太史公自序(一) 什么是责任\1 - 2 - 1-2 為什麼要讀史記？.mp4
+d:\Download\史记-吕世浩\第1讲 导论与太史公自序(一) 什么是责任\1 - 2 - 1-2 為什麼要讀史記？.srt
+d:\Download\史记-吕世浩\第1讲 导论与太史公自序(一) 什么是责任\1 - 3 - 1-3 學史記從何開始？.mp4
+d:\Download\史记-吕世浩\第1讲 导论与太史公自序(一) 什么是责任\1 - 3 - 1-3 學史記從何開始？.srt
+d:\Download\史记-吕世浩\第1讲 导论与太史公自序(一) 什么是责任\1 - 4 - 1-4 如何培養孩子？.mp4
+d:\Download\史记-吕世浩\第1讲 导论与太史公自序(一) 什么是责任\1 - 4 - 1-4 如何培養孩子？.srt
+d:\Download\史记-吕世浩\第1讲 导论与太史公自序(一) 什么是责任\1 - 5 - 1-5 漢武帝的封禪.mp4
+d:\Download\史记-吕世浩\第1讲 导论与太史公自序(一) 什么是责任\1 - 5 - 1-5 漢武帝的封禪.srt
+d:\Download\史记-吕世浩\第1讲 导论与太史公自序(一) 什么是责任\1 - 6 - 1-6 什麼是責任？.mp4
+d:\Download\史记-吕世浩\第1讲 导论与太史公自序(一) 什么是责任\1 - 6 - 1-6 什麼是責任？.srt
+d:\Download\史记-吕世浩\第1讲 导论与太史公自序(一) 什么是责任\1 - 7 - 1-7 中國史學的危機.mp4
+d:\Download\史记-吕世浩\第1讲 导论与太史公自序(一) 什么是责任\1 - 7 - 1-7 中國史學的危機.srt
+d:\Download\史记-吕世浩\第1讲 导论与太史公自序(一) 什么是责任\1 - 8 - 1-8 他該如何抉擇？.mp4
+d:\Download\史记-吕世浩\第1讲 导论与太史公自序(一) 什么是责任\1 - 8 - 1-8 他該如何抉擇？.srt
+d:\Download\史记-吕世浩\第1讲 导论与太史公自序(一) 什么是责任\1 - 9 - 1-9 小子何敢讓焉！.mp4
+d:\Download\史记-吕世浩\第1讲 导论与太史公自序(一) 什么是责任\1 - 9 - 1-9 小子何敢讓焉！.srt
+d:\Download\史记-吕世浩\第2讲 太史公自序(二) 俟后世圣人君子\2 - 1 - 2-1 是余之罪也夫！.mp4
+d:\Download\史记-吕世浩\第2讲 太史公自序(二) 俟后世圣人君子\2 - 1 - 2-1 是余之罪也夫！.srt
+d:\Download\史记-吕世浩\第2讲 太史公自序(二) 俟后世圣人君子\2 - 2 - 2-2 欽念哉！欽念哉！.mp4
+d:\Download\史记-吕世浩\第2讲 太史公自序(二) 俟后世圣人君子\2 - 2 - 2-2 欽念哉！欽念哉！.srt
+d:\Download\史记-吕世浩\第2讲 太史公自序(二) 俟后世圣人君子\2 - 3 - 2-3 成一家之言.mp4
+d:\Download\史记-吕世浩\第2讲 太史公自序(二) 俟后世圣人君子\2 - 3 - 2-3 成一家之言.srt
+d:\Download\史记-吕世浩\第2讲 太史公自序(二) 俟后世圣人君子\2 - 4 - 2-4 余述歷黃帝以來至太初而訖，百三十篇.mp4
+d:\Download\史记-吕世浩\第2讲 太史公自序(二) 俟后世圣人君子\2 - 4 - 2-4 余述歷黃帝以來至太初而訖，百三十篇.srt
+d:\Download\史记-吕世浩\第2讲 太史公自序(二) 俟后世圣人君子\2 - 5 - 2-5 非僅一代良史，明為百王大法.mp4
+d:\Download\史记-吕世浩\第2讲 太史公自序(二) 俟后世圣人君子\2 - 5 - 2-5 非僅一代良史，明為百王大法.srt
+d:\Download\史记-吕世浩\第2讲 太史公自序(二) 俟后世圣人君子\2 - 6 - 2-6 俟後世聖人君子.mp4
+d:\Download\史记-吕世浩\第2讲 太史公自序(二) 俟后世圣人君子\2 - 6 - 2-6 俟後世聖人君子.srt
+d:\Download\史记-吕世浩\第3讲 报任少卿书(上) 谁为为之？孰令听之？\3 - 1 - 3-1 這封信的開端：一場父子之間的悲劇.mp4
+d:\Download\史记-吕世浩\第3讲 报任少卿书(上) 谁为为之？孰令听之？\3 - 1 - 3-1 這封信的開端：一場父子之間的悲劇.srt
+d:\Download\史记-吕世浩\第3讲 报任少卿书(上) 谁为为之？孰令听之？\3 - 2 - 3-2 任少卿是誰？.mp4
+d:\Download\史记-吕世浩\第3讲 报任少卿书(上) 谁为为之？孰令听之？\3 - 2 - 3-2 任少卿是誰？.srt
+d:\Download\史记-吕世浩\第3讲 报任少卿书(上) 谁为为之？孰令听之？\3 - 3 - 3-3 獨抑鬱而無誰語.mp4
+d:\Download\史记-吕世浩\第3讲 报任少卿书(上) 谁为为之？孰令听之？\3 - 3 - 3-3 獨抑鬱而無誰語.srt
+d:\Download\史记-吕世浩\第3讲 报任少卿书(上) 谁为为之？孰令听之？\3 - 4 - 3-4 則長逝者魂魄私恨無窮.mp4
+d:\Download\史记-吕世浩\第3讲 报任少卿书(上) 谁为为之？孰令听之？\3 - 4 - 3-4 則長逝者魂魄私恨無窮.srt
+d:\Download\史记-吕世浩\第3讲 报任少卿书(上) 谁为为之？孰令听之？\3 - 5 - 3-5 尚何言哉！尚何言哉！.mp4
+d:\Download\史记-吕世浩\第3讲 报任少卿书(上) 谁为为之？孰令听之？\3 - 5 - 3-5 尚何言哉！尚何言哉！.srt
+d:\Download\史记-吕世浩\第4讲 报任少卿书(下) 太史公牛马走司马迁\4 - 1 - 4-1 李陵之戰的真相.mp4
+d:\Download\史记-吕世浩\第4讲 报任少卿书(下) 太史公牛马走司马迁\4 - 1 - 4-1 李陵之戰的真相.srt
+d:\Download\史记-吕世浩\第4讲 报任少卿书(下) 太史公牛马走司马迁\4 - 2 - 4-2 明主不深曉？(1).srt
+d:\Download\史记-吕世浩\第4讲 报任少卿书(下) 太史公牛马走司马迁\4 - 2 - 4-2 明主不深曉？.mp4
+d:\Download\史记-吕世浩\第4讲 报任少卿书(下) 太史公牛马走司马迁\4 - 2 - 4-2 明主不深曉？.srt
+d:\Download\史记-吕世浩\第4讲 报任少卿书(下) 太史公牛马走司马迁\4 - 3 - 4-3 此正少卿所親見.mp4
+d:\Download\史记-吕世浩\第4讲 报任少卿书(下) 太史公牛马走司马迁\4 - 3 - 4-3 此正少卿所親見.srt
+d:\Download\史记-吕世浩\第4讲 报任少卿书(下) 太史公牛马走司马迁\4 - 4 - 4-4 死有重於泰山，有輕於鴻毛.mp4
+d:\Download\史记-吕世浩\第4讲 报任少卿书(下) 太史公牛马走司马迁\4 - 4 - 4-4 死有重於泰山，有輕於鴻毛.srt
+d:\Download\史记-吕世浩\第4讲 报任少卿书(下) 太史公牛马走司马迁\4 - 5 - 4-5 恨私心有所不盡.mp4
+d:\Download\史记-吕世浩\第4讲 报任少卿书(下) 太史公牛马走司马迁\4 - 5 - 4-5 恨私心有所不盡.srt
+d:\Download\史记-吕世浩\第4讲 报任少卿书(下) 太史公牛马走司马迁\4 - 6 - 4-6 究天人之際，通古今之變，成一家之言.mp4
+d:\Download\史记-吕世浩\第4讲 报任少卿书(下) 太史公牛马走司马迁\4 - 6 - 4-6 究天人之際，通古今之變，成一家之言.srt
+d:\Download\史记-吕世浩\第4讲 报任少卿书(下) 太史公牛马走司马迁\4 - 7 - 4-7 豈有悔哉！.mp4
+d:\Download\史记-吕世浩\第4讲 报任少卿书(下) 太史公牛马走司马迁\4 - 7 - 4-7 豈有悔哉！.srt
+d:\Download\史记-吕世浩\第4讲 报任少卿书(下) 太史公牛马走司马迁\4 - 8 - 4-8 《太史公》牛馬走司馬遷.mp4
+d:\Download\史记-吕世浩\第4讲 报任少卿书(下) 太史公牛马走司马迁\4 - 8 - 4-8 《太史公》牛馬走司馬遷.srt
+d:\Download\史记-吕世浩\第5讲 五帝本纪\5 - 1 - 5-1 黃帝是中華民族的始祖？.mp4
+d:\Download\史记-吕世浩\第5讲 五帝本纪\5 - 1 - 5-1 黃帝是中華民族的始祖？.srt
+d:\Download\史记-吕世浩\第5讲 五帝本纪\5 - 2 - 5-2 一個由人類建立的偉大文明.mp4
+d:\Download\史记-吕世浩\第5讲 五帝本纪\5 - 2 - 5-2 一個由人類建立的偉大文明.srt
+d:\Download\史记-吕世浩\第5讲 五帝本纪\5 - 3 - 5-3 他真的想讓嗎？.mp4
+d:\Download\史记-吕世浩\第5讲 五帝本纪\5 - 3 - 5-3 他真的想讓嗎？.srt
+d:\Download\史记-吕世浩\第5讲 五帝本纪\5 - 4 - 5-4 如何試驗一個繼承人？.mp4
+d:\Download\史记-吕世浩\第5讲 五帝本纪\5 - 4 - 5-4 如何試驗一個繼承人？.srt
+d:\Download\史记-吕世浩\第5讲 五帝本纪\5 - 5 - 5-5 什麼是真正的孝？.mp4
+d:\Download\史记-吕世浩\第5讲 五帝本纪\5 - 5 - 5-5 什麼是真正的孝？.srt
+d:\Download\史记-吕世浩\第5讲 五帝本纪\5 - 6 - 5-6 太史公最美好的政治理想.mp4
+d:\Download\史记-吕世浩\第5讲 五帝本纪\5 - 6 - 5-6 太史公最美好的政治理想.srt
+d:\Download\史记-吕世浩\第5讲 五帝本纪\5 - 7 - 5-7 中國歷史為什麼從黃帝開始？.mp4
+d:\Download\史记-吕世浩\第5讲 五帝本纪\5 - 7 - 5-7 中國歷史為什麼從黃帝開始？.srt
+d:\Download\史记-吕世浩\第6讲 吴太伯世家\6 - 1 - 6-1 不孝之孝.mp4
+d:\Download\史记-吕世浩\第6讲 吴太伯世家\6 - 1 - 6-1 不孝之孝.srt
+d:\Download\史记-吕世浩\第6讲 吴太伯世家\6 - 2 - 6-2 這是個好辦法嗎？.mp4
+d:\Download\史记-吕世浩\第6讲 吴太伯世家\6 - 2 - 6-2 這是個好辦法嗎？.srt
+d:\Download\史记-吕世浩\第6讲 吴太伯世家\6 - 3 - 6-3 季札是何許人物？.mp4
+d:\Download\史记-吕世浩\第6讲 吴太伯世家\6 - 3 - 6-3 季札是何許人物？.srt
+d:\Download\史记-吕世浩\第6讲 吴太伯世家\6 - 4 - 6-4 女爭桑則王爭國.mp4
+d:\Download\史记-吕世浩\第6讲 吴太伯世家\6 - 4 - 6-4 女爭桑則王爭國.srt
+d:\Download\史记-吕世浩\第6讲 吴太伯世家\6 - 5 - 6-5 伍子胥之策.mp4
+d:\Download\史记-吕世浩\第6讲 吴太伯世家\6 - 5 - 6-5 伍子胥之策.srt
+d:\Download\史记-吕世浩\第6讲 吴太伯世家\6 - 6 - 6-6 公子光之謀.mp4
+d:\Download\史记-吕世浩\第6讲 吴太伯世家\6 - 6 - 6-6 公子光之謀.srt
+d:\Download\史记-吕世浩\第6讲 吴太伯世家\6 - 7 - 6-7 這場大亂的根源.mp4
+d:\Download\史记-吕世浩\第6讲 吴太伯世家\6 - 7 - 6-7 這場大亂的根源.srt
+d:\Download\史记-吕世浩\第6讲 吴太伯世家\6 - 8 - 6-8 為什麼做一樣的事，結果完全不同？.mp4
+d:\Download\史记-吕世浩\第6讲 吴太伯世家\6 - 8 - 6-8 為什麼做一樣的事，結果完全不同？.srt
+d:\Download\史记-吕世浩\第6讲 吴太伯世家\6 - 9 - 6-9 道德真的不重要嗎？.mp4
+d:\Download\史记-吕世浩\第6讲 吴太伯世家\6 - 9 - 6-9 道德真的不重要嗎？.srt
+d:\Download\史记-吕世浩\第7讲\7 - 1 - 7-1 難道伯夷之前就沒人值得寫嗎？.mp4
+d:\Download\史记-吕世浩\第7讲\7 - 1 - 7-1 難道伯夷之前就沒人值得寫嗎？.srt
+d:\Download\史记-吕世浩\第7讲\7 - 2 - 7-2 伯夷是否有怨？.mp4
+d:\Download\史记-吕世浩\第7讲\7 - 2 - 7-2 伯夷是否有怨？.srt
+d:\Download\史记-吕世浩\第7讲\7 - 3 - 7-3 伯夷不怨，太史公也不怨.mp4
+d:\Download\史记-吕世浩\第7讲\7 - 3 - 7-3 伯夷不怨，太史公也不怨.srt
+d:\Download\史记-吕世浩\第7讲\7 - 4 - 7-4 你這一生，到底要追求什麼？.mp4
+d:\Download\史记-吕世浩\第7讲\7 - 4 - 7-4 你這一生，到底要追求什麼？.srt
+d:\Download\史记-吕世浩\第7讲\7 - 5 - 7-5 君子疾沒世而名不稱焉.mp4
+d:\Download\史记-吕世浩\第7讲\7 - 5 - 7-5 君子疾沒世而名不稱焉.srt
+d:\Download\史记-吕世浩\第7讲\7 - 6 - 7-6 歷史學家的責任.mp4
+d:\Download\史记-吕世浩\第7讲\7 - 6 - 7-6 歷史學家的責任.srt

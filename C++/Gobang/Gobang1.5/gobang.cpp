@@ -9,14 +9,14 @@ void Gobang::gameInitial()
     man.init(MAN);
     computer.init(COMPUTER);
     cBoard.init();
-    timer = 500000;  // å€’è®¡æ—¶æ–¹å¼
+    timer = 500000;  // µ¹¼ÆÊ±·½Ê½
 }
 
 /*
-è£åˆ¤ï¼š
-    å¦‚æœå‡ºç°è¿å­æ•°å¤§äºç­‰äº5ï¼Œåˆ™æ¸¸æˆç»“æŸï¼Œè¿”å›ç›¸åº”çš„æ£‹å­é¢œè‰²ï¼Œç”¨äºåˆ¤æ–­å“ªä¸€æ–¹èƒœåˆ©
-    æ ¹æ® referee()å‡½æ•°çš„è¿”å›å€¼ï¼Œç¡®å®šshow()å‡½æ•°è¾“å‡ºçŠ¶æ€
-    ç¦æ‰‹æ£€æŸ¥??????????
+²ÃÅĞ£º
+    Èç¹û³öÏÖÁ¬×ÓÊı´óÓÚµÈÓÚ5£¬ÔòÓÎÏ·½áÊø£¬·µ»ØÏàÓ¦µÄÆå×ÓÑÕÉ«£¬ÓÃÓÚÅĞ¶ÏÄÄÒ»·½Ê¤Àû
+    ¸ù¾İ referee()º¯ÊıµÄ·µ»ØÖµ£¬È·¶¨show()º¯ÊıÊä³ö×´Ì¬
+    ½ûÊÖ¼ì²é??????????
 */
 int Gobang::gameReferee()
 {
@@ -24,7 +24,7 @@ int Gobang::gameReferee()
     {
         for (int j = 0; j < cBoard.getBoardSize(); j++)
         {
-            // åˆ©ç”¨ && ç¬¦å·çš„é¡ºåºç‚¹ç‰¹æ€§ï¼
+            // ÀûÓÃ && ·ûºÅµÄË³ĞòµãÌØĞÔ£¡
             if (cBoard.pBoard[i][j].getColor() != 0 && cBoard.pBoard[i][j].getMaxLianzishu() >= 5)
             {
                 return cBoard.pBoard[i][j].getColor();

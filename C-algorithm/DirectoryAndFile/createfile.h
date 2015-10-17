@@ -17,9 +17,9 @@ void createfile()
 
     printf("Please input the directory name: ");
     scanf("%s", dirName);
-    sprintf(path, "D:\\%s.c", dirName); // create a file path
+    sprintf(path, "%s.c", dirName); // create a file path
     fp = fopen(path, "wb");     // 此文件不存在时，自动创建！
-    fwrite("#include <stdio.h> \n", 1, 20, fp); // 长度必须为 20， 21就有多余字符！
+    fwrite("#include <stdio.h> \n", 1, 20, fp); // 长度必须为 20， 21就有多余字符！NUL字符
     fwrite("I am a test file!\n", 1, 30, fp);
 
     fclose(fp);

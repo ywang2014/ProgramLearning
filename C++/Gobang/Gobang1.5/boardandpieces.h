@@ -1,15 +1,15 @@
 /*******************************************************
-    äº”å­æ£‹å®žçŽ°çš„è¾…åŠ©ç±»
+    Îå×ÓÆåÊµÏÖµÄ¸¨ÖúÀà
 
-        ç¬¬ä¸€æ¬¡æ¡†æž¶æ”¹å»ºï¼š2015-10-15 ã€Šä»£ç å¤§å…¨ã€‹
-        æ‰€æœ‰å¯¹è±¡éƒ½åˆ›å»ºä¸€ä¸ªç±»ï¼Œå®Œå–„é¢å‘å¯¹è±¡
-        åŠ å¼ºæ•°æ®çš„å°è£…ï¼Œéšè—ä¿¡æ¯
+        µÚÒ»´Î¿ò¼Ü¸Ä½¨£º2015-10-15 ¡¶´úÂë´óÈ«¡·
+        ËùÓÐ¶ÔÏó¶¼´´½¨Ò»¸öÀà£¬ÍêÉÆÃæÏò¶ÔÏó
+        ¼ÓÇ¿Êý¾ÝµÄ·â×°£¬Òþ²ØÐÅÏ¢
 
-        æ£‹å­å•ç‹¬åˆ›å»ºä¸€ä¸ªç±»
-        æ£‹ç›˜åˆ›å»ºä¸€ä¸ªç±»
-        çŽ©å®¶åˆ›å»ºä¸€ä¸ªç±»
+        Æå×Óµ¥¶À´´½¨Ò»¸öÀà
+        ÆåÅÌ´´½¨Ò»¸öÀà
+        Íæ¼Ò´´½¨Ò»¸öÀà
 
-        å¦‚ä½•å®žçŽ°ä¸‰ä¸ªç±»çš„é€šä¿¡ï¼Ÿï¼Ÿï¼Ÿï¼Ÿï¼Ÿ
+        ÈçºÎÊµÏÖÈý¸öÀàµÄÍ¨ÐÅ£¿£¿£¿£¿£¿
 
 ********************************************************/
 
@@ -23,13 +23,13 @@ enum eColor{BLANK, BLACK, WHITE};
 class ChessPieces
 {
 private:
-    //static int amount;  // æ€»çš„æ£‹å­æ•°
-    //static int usedAmout;   // å·²ç»ä½¿ç”¨æ£‹å­æ•°
+    //static int amount;  // ×ÜµÄÆå×ÓÊý
+    //static int usedAmout;   // ÒÑ¾­Ê¹ÓÃÆå×ÓÊý
     eColor color;
     //int shape;
-    //int psize;      // æ£‹å­å¤§å°
+    //int psize;      // Æå×Ó´óÐ¡
     const int NUMBERS = 4;
-    int* lianzishu;           // è¿žå­æ•°ï¼š0ã€45ã€90ã€135åº¦æ–¹å‘
+    int* lianzishu;           // Á¬×ÓÊý£º0¡¢45¡¢90¡¢135¶È·½Ïò
 
 public:
     ChessPieces()
@@ -57,7 +57,7 @@ public:
         this->color = (eColor)color;
     }
 
-    eColor getColor(void)   // ä½¿ç”¨çš„æ—¶å€™ï¼Œint()å¼ºåˆ¶ç±»åž‹è½¬æ¢å³å¯ï¼
+    eColor getColor(void)   // Ê¹ÓÃµÄÊ±ºò£¬int()Ç¿ÖÆÀàÐÍ×ª»»¼´¿É£¡
     {
         return color;
     }
@@ -90,12 +90,12 @@ public:
 
 class ChessBoard
 {
-    // æ£‹ç›˜æ˜¯æœ‰ä¸€ä¸ªä¸€ä¸ªçš„ç‚¹ç»„æˆçš„ï¼Œå¦‚æ­¤æ‰æœ‰æ£‹ç›˜çŸ©é˜µï¼,è¿™ç§æ€è·¯ä¸å¥½ï¼Œå†—ä½™å¤ªå¤šï¼Œæ£‹ç›˜å·®ä¸å¤šé€€åŒ–æˆäº†æ£‹å­ï¼Œä¸€ä¸ªä¸€ä¸ªçš„
-    // æ£‹ç›˜å°±æ˜¯æ£‹å­çŸ©é˜µï¼Œæ˜¯ä¸€ä¸ªçŸ©é˜µï¼Œæ˜¾ç¤ºä¸ºæ£‹ç›˜ï¼Œå…ƒç´ æ˜¯æ£‹å­ï¼Œå…·æœ‰æ˜¾ç¤ºæ£‹å­çš„åŠŸèƒ½
+    // ÆåÅÌÊÇÓÐÒ»¸öÒ»¸öµÄµã×é³ÉµÄ£¬Èç´Ë²ÅÓÐÆåÅÌ¾ØÕó£¡,ÕâÖÖË¼Â·²»ºÃ£¬ÈßÓàÌ«¶à£¬ÆåÅÌ²î²»¶àÍË»¯³ÉÁËÆå×Ó£¬Ò»¸öÒ»¸öµÄ
+    // ÆåÅÌ¾ÍÊÇÆå×Ó¾ØÕó£¬ÊÇÒ»¸ö¾ØÕó£¬ÏÔÊ¾ÎªÆåÅÌ£¬ÔªËØÊÇÆå×Ó£¬¾ßÓÐÏÔÊ¾Æå×ÓµÄ¹¦ÄÜ
 
 public:
     const int BOARDSIZE = 14;
-    ChessPieces **pBoard;       // æ£‹ç›˜
+    ChessPieces **pBoard;       // ÆåÅÌ
 
     ChessBoard()
     {
@@ -138,7 +138,7 @@ public:
 
     void showBoard()
     {
-        // // ç‰¹æ®Šå­—ç¬¦ï¼šâ”¼ â”½ â”¾â”¿â•€â•â•‚â•ƒâ•„â•…â•†â•‡â•ˆâ•‰â•Šâ•‹  ã€‡â—‹â—
+        // // ÌØÊâ×Ö·û£º©à ©á ©â©ã©ä©å©æ©ç©è©é©ê©ë©ì©í©î©ï  ©–¡ð¡ñ
         // system("cls");
         using namespace std;
 
@@ -148,15 +148,15 @@ public:
             {
                 if (pBoard[i][j].getColor() == BLANK)
                 {
-                    cout << "â”½";
+                    cout << "©á";
                 }
                 else if (pBoard[i][j].getColor() == BLACK)
                 {
-                    cout << "â—";
+                    cout << "¡ñ";
                 }
                 else
                 {
-                    cout << "â—‹";
+                    cout << "¡ð";
                 }
             }
             cout << endl;
@@ -169,7 +169,7 @@ enum status{COMPUTER, MAN};
 class Player
 {
 private:
-    status identity;   // çŽ©å®¶èº«ä»½
+    status identity;   // Íæ¼ÒÉí·Ý
 
 public :
     void init(int identity)
@@ -177,8 +177,8 @@ public :
         this->identity = (status)identity;
     }
 
-    // ç±»å˜é‡å‚æ•°ï¼Œä½¿ç”¨å¼•ç”¨ï¼
-    // å¦‚æ­¤å°±å¯ä»¥å®žçŽ°çŽ©å®¶åœ¨æ£‹ç›˜ä¸Šæ“ä½œäº†ï¼
+    // Àà±äÁ¿²ÎÊý£¬Ê¹ÓÃÒýÓÃ£¡
+    // Èç´Ë¾Í¿ÉÒÔÊµÏÖÍæ¼ÒÔÚÆåÅÌÉÏ²Ù×÷ÁË£¡
     void play(ChessBoard& cb, int color)
     {
         //TODO

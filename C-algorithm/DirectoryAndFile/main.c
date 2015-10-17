@@ -12,7 +12,7 @@ int main()
 
     createfile();
 
-    //readtxt();
+    readtxt();
 
     readall();
 
