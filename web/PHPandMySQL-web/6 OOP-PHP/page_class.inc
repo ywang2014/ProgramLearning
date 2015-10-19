@@ -37,7 +37,7 @@ class Page
 	public function Display()
 	{
 		echo "<html>\n\t<head>\n";
-		echo "\t\t<meta charset = "utf-8">\n"
+		echo "\t\t<meta charset = \"utf-8\">\n";
 		
 		$this->DisplayTitle();
 		$this->DisplayKeywords();
@@ -46,7 +46,7 @@ class Page
 		echo "\t</head>\n\t<body>\n";
 		
 		$this->DisplayHeader();
-		$this->DisplayMenu($this->$buttons);
+		$this->DisplayMenu($this->buttons);
 		
 		echo $this->content;
 		
@@ -68,7 +68,8 @@ class Page
 	
 	public function DisplayStyles()
 	{
-	?>	// end php 
+	// end php 
+	?>	
 		<style type = "text/css">
 			h1{color:white; font-size:24pt; text-align:center; font-family:arial,sans-serif}
 			
@@ -76,7 +77,7 @@ class Page
 			
 			td{background:black}
 			
-			p{color:black; font-size:12pt; text-align:justify; font-family:arial,sans-serif; font-weight:bold}
+			p{color:gray; font-size:12pt; font-family:arial,sans-serif; font-weight:bold}
 			
 			a:link, a:visited, a:active{color:gray}
 		</style>
@@ -105,7 +106,7 @@ class Page
 	public function DisplayMenu($buttons)
 	{
 		echo "<table width = \"100%\" bgcolor = \"white\" cellpadding = \"4\" cellspacing = \"4\">\n";
-		echo "<\ttr>\n";
+		echo "<tr>\n";
 		
 		// calculate button size
 		$width = 100/count($buttons);
@@ -114,13 +115,13 @@ class Page
 		{
 			$this->DisplayButton($width, $name, $url, !$this->IsURLCurrentPage($url));
 		}
-		echo "<\t/tr>\n";
+		echo "</tr>\n";
 		echo "</table>\n";
 	}
 	
 	public function IsURLCurrentPage($url)
 	{
-		return strpos($_SERVER["PHP_SELF"], $url)
+		return strpos($_SERVER["PHP_SELF"], $url);
 	}
 	
 	public function DisplayButton($width, $name, $url, $active = true)
@@ -147,7 +148,7 @@ class Page
 	?>
 		<table width = "100%" bgcolor = "black" cellpadding = "12" border = "0">
 			<tr>
-				<td>
+				<td align = "center">
 					<p class = "foot">&copy: TLA Consulting Pty Ltd. </p>
 					<p class = "foot">Please see our <a href = "legal.html">legal information page </a> </p>
 				</td>
