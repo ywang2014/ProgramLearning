@@ -167,7 +167,74 @@ elseif ($action == 'act_register')	// 注册会员的处理
 		
 		if (empty($_POST['agreement']))
 		{
+			show_message($_LANG['passport_js']['agreement']);
+		}
+		if (strlen($username) < 3)
+		{
+			show_message($_LANG['passport_js']['username_shorter']);
+		}
+		
+		if (strlen($password) < 6)
+		{
+			show_message($_LANG['passport_js']['password_shorter']);
+		}
+		
+		if (strpos($password, ' ') > 0)
+		{
+			show_message($_LANG['passwd_balnk']);
+		}
+		
+		// 验证码检查
+		if ((intval($_CFG['captcha']) & CAPTCHA_REGISTER) && gd_version() > 0)
+		{
+			if (empty($_POST['captcha']))
+			{
+				show_message($_LANG['invalid_captcha'], $_LANG['sign_up'], 'user.php?act=register', 'error');
+			}
 			
+			// 检查验证码
+			include_once("includes/cls_captcha.php");
+			
+			$validator = new captcha();
+			if (!$calidator->check_word($_POST['captcha']))
+			{
+				show_message($_LANG['invalid_captcha'], $_LANG['sign_up'], 'user.php?act=register', 'error');
+			}
+		}
+		
+		if (register($username, $password, $email, $other) !== false)
+		{
+			// 把新用户注册数据插入数据库
+			$sql = 'SELECT id FROM '.$ecs->table('reg_fields').' WHERE type = 0 AND display = 1 ORDER BY dis_order, id';	// 读出所有自定义扩展字段的id
+			$fields_arr = $db->getAll($sql);
+			
+			$extend_field_str = '';	// 生成扩展字段的内容字符串
+			foreach ($fields_arr AS $val)
+			{
+				$extend_field_index = 'extend_field'.$val['id'];
+				if (!empty($_POST[$extend_field_index]))
+				{
+					$temp_field_content = strlen($_POST[$extend_field_index]) > 100 ? mb_substr($_POST[$extend_field_index], 0, 99) : $_POST[$extend_field_index];
+					$extend_field_str .= " ('".$_SESSION['user_id']."', '".$val['id']."', '".compile_str($temp_field_content)."'),";
+				}
+			}
+			$extend_field_str = substr($extend_field_str, 0, -1);
+			
+			if ($extend_field_str)	// 插入注册扩展数据
+			{
+				$sql = 'INSERT INTO '.$ecs->table('reg_extend_info').'(`user_id`, `reg_field_id`, `content`) VALUES'.$extend_field_str;
+				$db->query($sql);
+			}
+			
+			// 写入密码提示问题和答案
+			if (! empty($passwd_answer) $$ !empty($sql_question))
+			{
+				$sql = 'UPDATE '.$ecs->table('users')." SET `passwd_question` = '$sel_question', `passwd_answer` = '$passwd_answer' WHERE `user_id` = '".$_SESSION['user_id']."'";
+				$db->query($sql);
+			}
+			
+			// 判断是否需要自动发送注册邮件
+			if ()
 		}
 	}
 }
@@ -179,73 +246,6 @@ elseif ($action == 'act_register')	// 注册会员的处理
 /***********************************************************************
 <?php 
 ..........................
-        if(empty($_POST['agreement']))
-        {
-            show_message($_LANG['passport_js']['agreement']);
-        }
-        if (strlen($username) < 3)
-        {
-            show_message($_LANG['passport_js']['username_shorter']);
-        }
-
-        if (strlen($password) < 6)
-        {
-            show_message($_LANG['passport_js']['password_shorter']);
-        }
-
-        if (strpos($password, ' ') > 0)
-        {
-            show_message($_LANG['passwd_balnk']);
-        }
-
-        /* 验证码检查 */
-        if ((intval($_CFG['captcha']) & CAPTCHA_REGISTER) && gd_version() > 0)
-        {
-            if (empty($_POST['captcha']))
-            {
-                show_message($_LANG['invalid_captcha'], $_LANG['sign_up'], 'user.php?act=register', 'error');
-            }
-
-            /* 检查验证码 */
-            include_once('includes/cls_captcha.php');
-
-            $validator = new captcha();
-            if (!$validator->check_word($_POST['captcha']))
-            {
-                show_message($_LANG['invalid_captcha'], $_LANG['sign_up'], 'user.php?act=register', 'error');
-            }
-        }
-
-        if (register($username, $password, $email, $other) !== false)
-        {
-            /*把新注册用户的扩展信息插入数据库*/
-            $sql = 'SELECT id FROM ' . $ecs->table('reg_fields') . ' WHERE type = 0 AND display = 1 ORDER BY dis_order, id';   //读出所有自定义扩展字段的id
-            $fields_arr = $db->getAll($sql);
-
-            $extend_field_str = '';    //生成扩展字段的内容字符串
-            foreach ($fields_arr AS $val)
-            {
-                $extend_field_index = 'extend_field' . $val['id'];
-                if(!empty($_POST[$extend_field_index]))
-                {
-                    $temp_field_content = strlen($_POST[$extend_field_index]) > 100 ? mb_substr($_POST[$extend_field_index], 0, 99) : $_POST[$extend_field_index];
-                    $extend_field_str .= " ('" . $_SESSION['user_id'] . "', '" . $val['id'] . "', '" . compile_str($temp_field_content) . "'),";
-                }
-            }
-            $extend_field_str = substr($extend_field_str, 0, -1);
-
-            if ($extend_field_str)      //插入注册扩展数据
-            {
-                $sql = 'INSERT INTO '. $ecs->table('reg_extend_info') . ' (`user_id`, `reg_field_id`, `content`) VALUES' . $extend_field_str;
-                $db->query($sql);
-            }
-
-            /* 写入密码提示问题和答案 */
-            if (!empty($passwd_answer) && !empty($sel_question))
-            {
-                $sql = 'UPDATE ' . $ecs->table('users') . " SET `passwd_question`='$sel_question', `passwd_answer`='$passwd_answer'  WHERE `user_id`='" . $_SESSION['user_id'] . "'";
-                $db->query($sql);
-            }
             /* 判断是否需要自动发送注册邮件 */
             if ($GLOBALS['_CFG']['member_email_validate'] && $GLOBALS['_CFG']['send_verify_email'])
             {

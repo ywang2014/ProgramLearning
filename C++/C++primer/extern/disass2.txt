@@ -1,0 +1,257 @@
+
+file2.o:     file format pe-i386
+
+
+Disassembly of section .text:
+
+00000000 <__Z13remote_globalv>:
+   0:	55                   	push   %ebp
+   1:	89 e5                	mov    %esp,%ebp
+   3:	53                   	push   %ebx
+   4:	83 ec 14             	sub    $0x14,%esp
+   7:	c7 44 24 04 00 00 00 	movl   $0x0,0x4(%esp)
+   e:	00 
+   f:	c7 04 24 00 00 00 00 	movl   $0x0,(%esp)
+  16:	e8 00 00 00 00       	call   1b <__Z13remote_globalv+0x1b>
+  1b:	c7 44 24 04 3c 00 00 	movl   $0x3c,0x4(%esp)
+  22:	00 
+  23:	c7 04 24 00 00 00 00 	movl   $0x0,(%esp)
+  2a:	e8 00 00 00 00       	call   2f <__Z13remote_globalv+0x2f>
+  2f:	8b 1d 00 00 00 00    	mov    0x0,%ebx
+  35:	c7 44 24 04 72 00 00 	movl   $0x72,0x4(%esp)
+  3c:	00 
+  3d:	c7 04 24 00 00 00 00 	movl   $0x0,(%esp)
+  44:	e8 00 00 00 00       	call   49 <__Z13remote_globalv+0x49>
+  49:	89 1c 24             	mov    %ebx,(%esp)
+  4c:	89 c1                	mov    %eax,%ecx
+  4e:	e8 00 00 00 00       	call   53 <__Z13remote_globalv+0x53>
+  53:	83 ec 04             	sub    $0x4,%esp
+  56:	c7 44 24 04 79 00 00 	movl   $0x79,0x4(%esp)
+  5d:	00 
+  5e:	89 04 24             	mov    %eax,(%esp)
+  61:	e8 00 00 00 00       	call   66 <__Z13remote_globalv+0x66>
+  66:	c7 04 24 00 00 00 00 	movl   $0x0,(%esp)
+  6d:	89 c1                	mov    %eax,%ecx
+  6f:	e8 00 00 00 00       	call   74 <__Z13remote_globalv+0x74>
+  74:	83 ec 04             	sub    $0x4,%esp
+  77:	c7 04 24 00 00 00 00 	movl   $0x0,(%esp)
+  7e:	89 c1                	mov    %eax,%ecx
+  80:	e8 00 00 00 00       	call   85 <__Z13remote_globalv+0x85>
+  85:	83 ec 04             	sub    $0x4,%esp
+  88:	8b 1d 00 00 00 00    	mov    0x0,%ebx
+  8e:	c7 44 24 04 7d 00 00 	movl   $0x7d,0x4(%esp)
+  95:	00 
+  96:	c7 04 24 00 00 00 00 	movl   $0x0,(%esp)
+  9d:	e8 00 00 00 00       	call   a2 <__Z13remote_globalv+0xa2>
+  a2:	89 1c 24             	mov    %ebx,(%esp)
+  a5:	89 c1                	mov    %eax,%ecx
+  a7:	e8 00 00 00 00       	call   ac <__Z13remote_globalv+0xac>
+  ac:	83 ec 04             	sub    $0x4,%esp
+  af:	c7 44 24 04 79 00 00 	movl   $0x79,0x4(%esp)
+  b6:	00 
+  b7:	89 04 24             	mov    %eax,(%esp)
+  ba:	e8 00 00 00 00       	call   bf <__Z13remote_globalv+0xbf>
+  bf:	c7 04 24 00 00 00 00 	movl   $0x0,(%esp)
+  c6:	89 c1                	mov    %eax,%ecx
+  c8:	e8 00 00 00 00       	call   cd <__Z13remote_globalv+0xcd>
+  cd:	83 ec 04             	sub    $0x4,%esp
+  d0:	c7 04 24 00 00 00 00 	movl   $0x0,(%esp)
+  d7:	89 c1                	mov    %eax,%ecx
+  d9:	e8 00 00 00 00       	call   de <__Z13remote_globalv+0xde>
+  de:	83 ec 04             	sub    $0x4,%esp
+  e1:	8b 1d 04 00 00 00    	mov    0x4,%ebx
+  e7:	c7 44 24 04 85 00 00 	movl   $0x85,0x4(%esp)
+  ee:	00 
+  ef:	c7 04 24 00 00 00 00 	movl   $0x0,(%esp)
+  f6:	e8 00 00 00 00       	call   fb <__Z13remote_globalv+0xfb>
+  fb:	89 1c 24             	mov    %ebx,(%esp)
+  fe:	89 c1                	mov    %eax,%ecx
+ 100:	e8 00 00 00 00       	call   105 <__Z13remote_globalv+0x105>
+ 105:	83 ec 04             	sub    $0x4,%esp
+ 108:	c7 44 24 04 79 00 00 	movl   $0x79,0x4(%esp)
+ 10f:	00 
+ 110:	89 04 24             	mov    %eax,(%esp)
+ 113:	e8 00 00 00 00       	call   118 <__Z13remote_globalv+0x118>
+ 118:	c7 04 24 04 00 00 00 	movl   $0x4,(%esp)
+ 11f:	89 c1                	mov    %eax,%ecx
+ 121:	e8 00 00 00 00       	call   126 <__Z13remote_globalv+0x126>
+ 126:	83 ec 04             	sub    $0x4,%esp
+ 129:	c7 04 24 00 00 00 00 	movl   $0x0,(%esp)
+ 130:	89 c1                	mov    %eax,%ecx
+ 132:	e8 00 00 00 00       	call   137 <__Z13remote_globalv+0x137>
+ 137:	83 ec 04             	sub    $0x4,%esp
+ 13a:	8b 5d fc             	mov    -0x4(%ebp),%ebx
+ 13d:	c9                   	leave  
+ 13e:	c3                   	ret    
+
+0000013f <__Z12remote_localv>:
+ 13f:	55                   	push   %ebp
+ 140:	89 e5                	mov    %esp,%ebp
+ 142:	57                   	push   %edi
+ 143:	56                   	push   %esi
+ 144:	53                   	push   %ebx
+ 145:	83 ec 7c             	sub    $0x7c,%esp
+ 148:	c7 45 bc 00 00 00 00 	movl   $0x0,-0x44(%ebp)
+ 14f:	c7 45 c0 00 00 00 00 	movl   $0x0,-0x40(%ebp)
+ 156:	8d 45 c4             	lea    -0x3c(%ebp),%eax
+ 159:	8d 55 e8             	lea    -0x18(%ebp),%edx
+ 15c:	89 10                	mov    %edx,(%eax)
+ 15e:	ba 21 03 00 00       	mov    $0x321,%edx
+ 163:	89 50 04             	mov    %edx,0x4(%eax)
+ 166:	89 60 08             	mov    %esp,0x8(%eax)
+ 169:	8d 45 a4             	lea    -0x5c(%ebp),%eax
+ 16c:	89 04 24             	mov    %eax,(%esp)
+ 16f:	e8 00 00 00 00       	call   174 <__Z12remote_localv+0x35>
+ 174:	c7 45 e4 d0 07 00 00 	movl   $0x7d0,-0x1c(%ebp)
+ 17b:	c7 44 24 04 00 00 00 	movl   $0x0,0x4(%esp)
+ 182:	00 
+ 183:	c7 04 24 00 00 00 00 	movl   $0x0,(%esp)
+ 18a:	c7 45 a8 01 00 00 00 	movl   $0x1,-0x58(%ebp)
+ 191:	e8 00 00 00 00       	call   196 <__Z12remote_localv+0x57>
+ 196:	c7 44 24 04 90 00 00 	movl   $0x90,0x4(%esp)
+ 19d:	00 
+ 19e:	c7 04 24 00 00 00 00 	movl   $0x0,(%esp)
+ 1a5:	e8 00 00 00 00       	call   1aa <__Z12remote_localv+0x6b>
+ 1aa:	a1 00 00 00 00       	mov    0x0,%eax
+ 1af:	89 45 a0             	mov    %eax,-0x60(%ebp)
+ 1b2:	c7 44 24 04 c5 00 00 	movl   $0xc5,0x4(%esp)
+ 1b9:	00 
+ 1ba:	c7 04 24 00 00 00 00 	movl   $0x0,(%esp)
+ 1c1:	e8 00 00 00 00       	call   1c6 <__Z12remote_localv+0x87>
+ 1c6:	8b 55 a0             	mov    -0x60(%ebp),%edx
+ 1c9:	89 14 24             	mov    %edx,(%esp)
+ 1cc:	89 c1                	mov    %eax,%ecx
+ 1ce:	e8 00 00 00 00       	call   1d3 <__Z12remote_localv+0x94>
+ 1d3:	83 ec 04             	sub    $0x4,%esp
+ 1d6:	c7 44 24 04 79 00 00 	movl   $0x79,0x4(%esp)
+ 1dd:	00 
+ 1de:	89 04 24             	mov    %eax,(%esp)
+ 1e1:	e8 00 00 00 00       	call   1e6 <__Z12remote_localv+0xa7>
+ 1e6:	c7 04 24 00 00 00 00 	movl   $0x0,(%esp)
+ 1ed:	89 c1                	mov    %eax,%ecx
+ 1ef:	e8 00 00 00 00       	call   1f4 <__Z12remote_localv+0xb5>
+ 1f4:	83 ec 04             	sub    $0x4,%esp
+ 1f7:	c7 04 24 00 00 00 00 	movl   $0x0,(%esp)
+ 1fe:	89 c1                	mov    %eax,%ecx
+ 200:	e8 00 00 00 00       	call   205 <__Z12remote_localv+0xc6>
+ 205:	83 ec 04             	sub    $0x4,%esp
+ 208:	a1 00 00 00 00       	mov    0x0,%eax
+ 20d:	89 45 9c             	mov    %eax,-0x64(%ebp)
+ 210:	c7 44 24 04 d3 00 00 	movl   $0xd3,0x4(%esp)
+ 217:	00 
+ 218:	c7 04 24 00 00 00 00 	movl   $0x0,(%esp)
+ 21f:	e8 00 00 00 00       	call   224 <__Z12remote_localv+0xe5>
+ 224:	8b 55 9c             	mov    -0x64(%ebp),%edx
+ 227:	89 14 24             	mov    %edx,(%esp)
+ 22a:	89 c1                	mov    %eax,%ecx
+ 22c:	e8 00 00 00 00       	call   231 <__Z12remote_localv+0xf2>
+ 231:	83 ec 04             	sub    $0x4,%esp
+ 234:	c7 44 24 04 79 00 00 	movl   $0x79,0x4(%esp)
+ 23b:	00 
+ 23c:	89 04 24             	mov    %eax,(%esp)
+ 23f:	e8 00 00 00 00       	call   244 <__Z12remote_localv+0x105>
+ 244:	c7 04 24 00 00 00 00 	movl   $0x0,(%esp)
+ 24b:	89 c1                	mov    %eax,%ecx
+ 24d:	e8 00 00 00 00       	call   252 <__Z12remote_localv+0x113>
+ 252:	83 ec 04             	sub    $0x4,%esp
+ 255:	c7 04 24 00 00 00 00 	movl   $0x0,(%esp)
+ 25c:	89 c1                	mov    %eax,%ecx
+ 25e:	e8 00 00 00 00       	call   263 <__Z12remote_localv+0x124>
+ 263:	83 ec 04             	sub    $0x4,%esp
+ 266:	8b 45 e4             	mov    -0x1c(%ebp),%eax
+ 269:	89 45 98             	mov    %eax,-0x68(%ebp)
+ 26c:	c7 44 24 04 e2 00 00 	movl   $0xe2,0x4(%esp)
+ 273:	00 
+ 274:	c7 04 24 00 00 00 00 	movl   $0x0,(%esp)
+ 27b:	e8 00 00 00 00       	call   280 <__Z12remote_localv+0x141>
+ 280:	8b 55 98             	mov    -0x68(%ebp),%edx
+ 283:	89 14 24             	mov    %edx,(%esp)
+ 286:	89 c1                	mov    %eax,%ecx
+ 288:	e8 00 00 00 00       	call   28d <__Z12remote_localv+0x14e>
+ 28d:	83 ec 04             	sub    $0x4,%esp
+ 290:	c7 44 24 04 79 00 00 	movl   $0x79,0x4(%esp)
+ 297:	00 
+ 298:	89 04 24             	mov    %eax,(%esp)
+ 29b:	e8 00 00 00 00       	call   2a0 <__Z12remote_localv+0x161>
+ 2a0:	8d 55 e4             	lea    -0x1c(%ebp),%edx
+ 2a3:	89 14 24             	mov    %edx,(%esp)
+ 2a6:	89 c1                	mov    %eax,%ecx
+ 2a8:	e8 00 00 00 00       	call   2ad <__Z12remote_localv+0x16e>
+ 2ad:	83 ec 04             	sub    $0x4,%esp
+ 2b0:	c7 04 24 00 00 00 00 	movl   $0x0,(%esp)
+ 2b7:	89 c1                	mov    %eax,%ecx
+ 2b9:	e8 00 00 00 00       	call   2be <__Z12remote_localv+0x17f>
+ 2be:	83 ec 04             	sub    $0x4,%esp
+ 2c1:	a1 00 00 00 00       	mov    0x0,%eax
+ 2c6:	89 45 94             	mov    %eax,-0x6c(%ebp)
+ 2c9:	c7 44 24 04 ef 00 00 	movl   $0xef,0x4(%esp)
+ 2d0:	00 
+ 2d1:	c7 04 24 00 00 00 00 	movl   $0x0,(%esp)
+ 2d8:	e8 00 00 00 00       	call   2dd <__Z12remote_localv+0x19e>
+ 2dd:	8b 55 94             	mov    -0x6c(%ebp),%edx
+ 2e0:	89 14 24             	mov    %edx,(%esp)
+ 2e3:	89 c1                	mov    %eax,%ecx
+ 2e5:	e8 00 00 00 00       	call   2ea <__Z12remote_localv+0x1ab>
+ 2ea:	83 ec 04             	sub    $0x4,%esp
+ 2ed:	c7 44 24 04 79 00 00 	movl   $0x79,0x4(%esp)
+ 2f4:	00 
+ 2f5:	89 04 24             	mov    %eax,(%esp)
+ 2f8:	e8 00 00 00 00       	call   2fd <__Z12remote_localv+0x1be>
+ 2fd:	c7 04 24 00 00 00 00 	movl   $0x0,(%esp)
+ 304:	89 c1                	mov    %eax,%ecx
+ 306:	e8 00 00 00 00       	call   30b <__Z12remote_localv+0x1cc>
+ 30b:	83 ec 04             	sub    $0x4,%esp
+ 30e:	c7 04 24 00 00 00 00 	movl   $0x0,(%esp)
+ 315:	89 c1                	mov    %eax,%ecx
+ 317:	e8 00 00 00 00       	call   31c <__Z12remote_localv+0x1dd>
+ 31c:	83 ec 04             	sub    $0x4,%esp
+ 31f:	eb 15                	jmp    336 <__Z12remote_localv+0x1f7>
+ 321:	8d 6d 18             	lea    0x18(%ebp),%ebp
+ 324:	8b 45 ac             	mov    -0x54(%ebp),%eax
+ 327:	89 04 24             	mov    %eax,(%esp)
+ 32a:	c7 45 a8 ff ff ff ff 	movl   $0xffffffff,-0x58(%ebp)
+ 331:	e8 00 00 00 00       	call   336 <__Z12remote_localv+0x1f7>
+ 336:	8d 45 a4             	lea    -0x5c(%ebp),%eax
+ 339:	89 04 24             	mov    %eax,(%esp)
+ 33c:	e8 00 00 00 00       	call   341 <__Z12remote_localv+0x202>
+ 341:	8d 65 f4             	lea    -0xc(%ebp),%esp
+ 344:	5b                   	pop    %ebx
+ 345:	5e                   	pop    %esi
+ 346:	5f                   	pop    %edi
+ 347:	5d                   	pop    %ebp
+ 348:	c3                   	ret    
+
+00000349 <___tcf_0>:
+ 349:	55                   	push   %ebp
+ 34a:	89 e5                	mov    %esp,%ebp
+ 34c:	83 ec 08             	sub    $0x8,%esp
+ 34f:	b9 00 00 00 00       	mov    $0x0,%ecx
+ 354:	e8 00 00 00 00       	call   359 <___tcf_0+0x10>
+ 359:	c9                   	leave  
+ 35a:	c3                   	ret    
+
+0000035b <__Z41__static_initialization_and_destruction_0ii>:
+ 35b:	55                   	push   %ebp
+ 35c:	89 e5                	mov    %esp,%ebp
+ 35e:	83 ec 18             	sub    $0x18,%esp
+ 361:	83 7d 08 01          	cmpl   $0x1,0x8(%ebp)
+ 365:	75 1f                	jne    386 <__Z41__static_initialization_and_destruction_0ii+0x2b>
+ 367:	81 7d 0c ff ff 00 00 	cmpl   $0xffff,0xc(%ebp)
+ 36e:	75 16                	jne    386 <__Z41__static_initialization_and_destruction_0ii+0x2b>
+ 370:	b9 00 00 00 00       	mov    $0x0,%ecx
+ 375:	e8 00 00 00 00       	call   37a <__Z41__static_initialization_and_destruction_0ii+0x1f>
+ 37a:	c7 04 24 49 03 00 00 	movl   $0x349,(%esp)
+ 381:	e8 00 00 00 00       	call   386 <__Z41__static_initialization_and_destruction_0ii+0x2b>
+ 386:	c9                   	leave  
+ 387:	c3                   	ret    
+
+00000388 <__GLOBAL__sub_I_harry>:
+ 388:	55                   	push   %ebp
+ 389:	89 e5                	mov    %esp,%ebp
+ 38b:	83 ec 18             	sub    $0x18,%esp
+ 38e:	c7 44 24 04 ff ff 00 	movl   $0xffff,0x4(%esp)
+ 395:	00 
+ 396:	c7 04 24 01 00 00 00 	movl   $0x1,(%esp)
+ 39d:	e8 b9 ff ff ff       	call   35b <__Z41__static_initialization_and_destruction_0ii>
+ 3a2:	c9                   	leave  
+ 3a3:	c3                   	ret    

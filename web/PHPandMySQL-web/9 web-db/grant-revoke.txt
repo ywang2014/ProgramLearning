@@ -1,0 +1,71 @@
+// GRANT命令创建用户，并赋予权限
+格式：
+
+GRANT privileges [columns]				// privileges 相关权限，逗号分隔一组权限；[columns]指定对列的权限，可选，逗号分隔
+ON item									// item 数据库名，表名：*.* 全部数据库，全部表，dbname.tablename 特定数据库特定表
+TO username [IDENTIFIED BY 'password']	// 用户名和密码
+[REQUIRE ssl_options]					// 指定用户是否必须通过加密套接字链接
+[WITH [GRANT OPTIN  limit_options]]		// WITH GRANT OPTIN 指定允许用户向别人授予自己的权限
+	
+	/*
+	* WITH MAX_QUERIES_PER_HOUR n 限制用户每小时执行的最大查询数
+	* WITH MAX_UPDATES_PER_HOUR n 限制用户每小时执行的最大更新数
+	* WITH MAX_CONNECTIONS_PER_HOUR n 限制用户每小时执行的最大链接数
+	*
+	*/
+	
+	/**
+	* 基本用户权限：
+	*	SELECT INSERT UPDATE DELETE INDEX ALERT CREATE DROP
+	* 管理员权限：
+	*	CREATE TEMPORARY TABLES  TILE  LOCK TABLES  PROCESS  RELOAD  REPLICATION CLIENT  REPLICATION SLAVE  SHOW DATABASES  SHUTDOWN  SUPER
+	* 特殊权限：
+	*	ALL  USAGE
+	*/
+
+Example
+	// 创建管理员  mysql> 命令行下输入
+	GRANT all
+	ON *
+	TO fred IDENTIFIED BY 'password'
+	WITH GRANT OPTION;
+	
+	// 没有任何权限的用户
+	GRANT usage
+	ON books.*
+	TO sally IDENTIFIED BY 'password'
+	
+	// 增加用户部分权限
+	GRANT select, insert, update, delete, index, alter
+	ON books.*
+	TO sally;
+	
+
+
+
+// REVOKE 收回用户权限
+格式：
+REVOKE privileges [(columns)]
+ON item
+FROM username
+
+	/* 如果给出了 with grank option 子句，可以如下方式撤销
+	* REVOKE ALL PRIVILEGES, GRANT 
+	* FROM username
+	*/
+	
+	// 直接删除用户
+	REVOKE all privileges, grant
+	FROM fred;
+	
+	
+	// 撤销sally部分权限
+	REVOKE alter, index
+	ON books.*
+	TO sally;
+	
+	// 删除sally
+	REVOKE all
+	ON books.*
+	FROM sally;
+	
