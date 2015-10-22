@@ -1,5 +1,5 @@
-# Mini-project development process 
-## Quiz3
+# Mini-project 3
+## Stop Watch
 #### 项目名称
 秒表游戏
 #### 项目说明
