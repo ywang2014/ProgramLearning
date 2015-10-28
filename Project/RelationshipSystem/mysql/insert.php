@@ -6,16 +6,20 @@
 </html>
 
 <?php
-$name = $_POST["name"];
-$sex = $_POST["sex"];
-$email = $_POST["email"];
-$school = $_POST["school"];
-$birthday = $_POST["birthday"];
-$qq = $_POST["QQ"];
-$tel = $_POST["tel"];
-$city = $_POST["city"];
-$job = $_POST["job"];
-$hobby = $_POST["hobby"];
+require("../include/init.php");
+
+$name = trim($_POST["name"]);
+$gender = trim($_POST["sex"]);
+$email = trim($_POST["email"]);
+$school = trim($_POST["school"]);
+$birthday = trim($_POST["birthday"]);
+$qq = trim($_POST["QQ"]);
+$tel = trim($_POST["tel"]);
+$city = trim($_POST["city"]);
+$job = trim($_POST["job"]);
+$hobby = trim($_POST["hobby"]);
+$introduce = "my classmates, maybe we are good friends!";
+$rtime = date("Y/m/d");
 
 if ($name == "")
 {
@@ -60,14 +64,33 @@ else
 			echo "<a href = \"javascript:history.back()\"> 返回 </a>";
 			exit();
 		}
-		
-		include "mysql/connection.php";
+		/*
+$name = "aa";
+$gender = "aa";
+$email = "aa";
+$school = "aa";
+$birthday = 123;
+$qq = 123;
+$tel = 123;
+$city = "aa";
+$job = "aa";
+$hobby = "aa";
+$introduce = "aa";
+$rtime = date("Y:m:d");
+*/
 
-		$insert = "INSERT INTO friends(name, sex, email, school, birthday, qq, tel, city, job, hobby)";
-		$insert .= "values('$name', '$sex', '$email', '$school', '$birthday', '$qq', '$tel', $city, $job, $hobby)";
-		mysql_query($insert) or die("<p align = center> 录入时发生错误");
-		
-		header("Location: ../login/personalHomePage.html");
+		$insert = "INSERT INTO classmates(name, gender, email, school, birthday, qq, tel, city, job, hobby)";
+		$insert .= "values('$name', '$gender', '$email', '$school', $birthday, $qq, $tel, '$city', '$job', '$hobby', '$introduce', '$rtime')";
+		if (!mysql_query($insert))
+		{
+			echo "<script> alert('注册失败，请稍后再试'); history.go(-1); </script>";
+		}
+		else
+		{
+			$cid = mysql_insert_id($conn);
+	
+			echo "<script language=javascript> alert('发布成功');window.location.href = '../person_page.php?tid=".$tid."'; </script>";
+		}
 		
 		mysql_close();
 	}

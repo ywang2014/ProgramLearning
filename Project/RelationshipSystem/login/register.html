@@ -14,11 +14,12 @@
 		<a style="text-decoration:blink" href = "../index.html"> 首页 </a>
 		<center>
 			<form action = "../mysql/insert.php" method = "post">
+			<div>
 				<table border = 0 cellpadding = 4>
 					<tr>
 						<td> 姓名：</td>
 						<td>
-							<input type = "text" width = 15 name = "name"> <br>
+							<input type = "text" width = 15 name = "name"> &nbsp;*
 						</td>
 					</tr>
 					<tr>
@@ -32,20 +33,21 @@
 					<tr>
 						<td> Email：</td>
 						<td>
-							<input type = "text" width = 15 name = "email">
+							<input type = "text" width = 15 name = "email"> &nbsp;*
 						</td>
 					</tr>
 					<tr>
 						<td> 学校：</td>
 						<!-- 小学、初中、高中、大学etc -->
 						<td>
-							<input type = "text" width = 15 name = "school">
+							<input type = "text" width = 15 name = "school"> &nbsp;*
 						</td>
 					</tr>
 					<tr>
 						<td> 生日：</td>
 						<td>
 							<input type = "text" width = 15 name = "birthday" class = "gray" value = "20151005" onmousemove = "this.className = 'pink'" onmouseout = "this.className = 'gray'">
+							&nbsp;*
 						</td>
 					</tr>
 					<tr>
@@ -57,7 +59,7 @@
 					<tr>
 						<td> 手机号：</td>
 						<td>
-							<input type = "text" width = 15 name = "tel">
+							<input type = "text" width = 15 name = "tel"> &nbsp;*
 						</td>
 					</tr>
 					<tr>
@@ -85,12 +87,15 @@
 						<td> <h3> 兴趣爱好 <h3> </td>
 					</tr>
 				</table>
-				<textarea rows = 6 cols = 35>简单说明你的兴趣爱好!
+				<textarea name = "hobby" rows = 6 cols = 38>简单说明你的兴趣爱好!
 体育类：
 文艺类：
 文学类：
 其他：
 				</textarea>
+			</div>
+			
+			<div>
 				<table border = 0 cellpadding = 10>
 					
 					<tr>
@@ -101,6 +106,7 @@
 						</td>
 					</tr>
 				</table>
+			</div>
 			</form>
 		</center>				
 	</body>

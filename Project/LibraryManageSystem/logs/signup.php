@@ -8,8 +8,8 @@
 <body>
 
 <?php
-// 负责登录处理的php脚本程序
-// login.php
+// 负责注册处理的php脚本程序
+// signup.php
 
 $name = trim($_POST["name"]);
 $sex = trim($_POST["sex"]);
@@ -62,7 +62,7 @@ if ($email != "")
 	}
 }
 
-include "common.php";
+include "../include/common.php";
 
 // connection
 $link = mysql_connect($hostname, $username, $hostpassword) or die("数据库服务器连接失败！");
@@ -77,7 +77,7 @@ $insert .= "values('$name', '$sex', '$email', '$addr', '$tel', '$idnum', '$passw
 mysql_query($insert) or die("<p align = center> 录入时发生错误");
 
 $query = "SELECT id FROM reader WHERE name = '$name' and email = '$email'";
-$result = @mysql_query($query) or die("<p align = center> 录入时发生错误");
+$result = @mysql_query($query) or die("<p align = center> 录入没有成功");
 
 $num = mysql_num_rows($result);
 if ($num != 0)
@@ -87,12 +87,12 @@ if ($num != 0)
 	echo "<h1> <p align = center> 用户注册成功 </h1>";
 	echo "<p align = center> 您的借书证号是 ".$row["id"]."<br>";
 	echo "这是能够唯一标识您的借书证的号码，请您务必牢记！！</p>";
-	echo "<p align = right> <a href = \"../users/personal.html\"> 用户空间 </a>";
+	echo "<p align = right> <a href = \"login.html\"> 用户空间 </a>";
 }
 else
 {
 	// 注册失败
-	echo "<center> 对不起，注册不成功！<br>";
+	echo "<center> 对不起，注册失败！<br>";
 	echo "<p align = right> <a href = \"javascript:history.back()\"> 返回 </a>";
 }
 

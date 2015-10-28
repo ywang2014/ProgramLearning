@@ -14,7 +14,7 @@ $_CFG = array();	// 空数组
 $_CFG['host'] = 'localhost';
 $_CFG['user'] = 'root';
 $_CFG['password'] = 'password';
-$_CFG['dbname'] = 'dbname';
+$_CFG['dbname'] = 'project';
 $_CFG['charset'] = 'utf-8';
 
 define('DEBUG', true);	// 定义开发环境，true

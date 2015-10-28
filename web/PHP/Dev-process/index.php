@@ -4,9 +4,9 @@
 * php解释器，见到<?php ?> 才当做php解释！
 */
 
-require(./include/init.php);
+require("../include/init.php");
 
-$sql = 'select * from project order by pubtime desc';	// 逆序排列，新发项目的显示在前面
+$sql = 'select * from projects order by pubtime desc';	// 逆序排列，新发项目的显示在前面
 
 $list = getAll($sql, $conn);
 //print_r($list); exit;
@@ -69,7 +69,7 @@ $list = getAll($sql, $conn);
 						</div>
 					</div>
 					<div>
-						<form name = "f1" id = "tb_header_search_form" class = "f" action = "/f">
+						<form name = "f1" id = "tb_header_search_form" class = "f" action = "project_process.php" method = "post">
 							<input autocomplete = "off" size = "42", tabindex = "1" id = "wd1" name = "kw" class = "s_ip_i">
 						</form>
 					</div>
@@ -99,6 +99,8 @@ $list = getAll($sql, $conn);
 				*/
 				foreach ($list as $v){
 			?>	
+			
+			<div>
 				<table >
 					<tr>
 						<td> 
@@ -110,6 +112,7 @@ $list = getAll($sql, $conn);
 						</td>
 					</tr>
 				</table>
+			</div>
 				
 			<?php } ?>
 			<!------------ end ---------->

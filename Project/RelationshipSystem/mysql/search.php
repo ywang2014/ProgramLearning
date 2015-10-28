@@ -1,3 +1,41 @@
+<?php
+require("../include/init.php");
+
+$topic = $_POST['search_topic'];
+$keyword = trim($_POST['search_keyword']);
+
+if ($keyword == "")
+{
+	echo "<p align = center> 对不起，搜索内容不能为空，请填写搜索关键字！";
+	echo "<br> <a href = \"javascript:history.back()\"> 返回 </a>";
+	exit();
+}
+
+switch ($topic)
+{
+	case "name":
+		$sql = "SELECT * from ".$_CFG['table1']." where name = ".$keyword;
+		break;
+	case "school":
+		$sql = "SELECT * from ".$_CFG['table1']." where school = ".$keyword;
+		break;
+	case "birthday":
+		$sql = "SELECT * from ".$_CFG['table1']." where birthday = ".$keyword;
+		break;
+	case "city":
+		$sql = "SELECT * from ".$_CFG['table1']." where city = ".$keyword;
+		break;
+	case "hobby":
+		$sql = "SELECT * from ".$_CFG['table1']." where hobby like ".$keyword;
+		break;
+	default:
+		break;
+}
+
+$rows = getALL($sql, $conn);
+
+?>
+
 <html>
 	<head>
 		<meta charset = "utf-8">
@@ -8,33 +46,47 @@
 		<center>
 			<h1 style = "color: red"> Search Result </h1>
 			<hr>
-			<?php
-			include "connection.php"
-			
-			$search_topic = $_POST['search_topic'];
-			$search_keyword = $_POST['search_keyword']
-			
-			$query = "SELECT * FROM friends WHERE ".$search_topic." = ".$search_keyword;
-			
-			$result = mysql_query($query);
-			if ($result == 0)
-			{
-				echo "Sorry, 数据库服务器查询是失败！";
-				exit();
-			}
-			$num = mysql_num_rows($result);
-			if ($num != 0)
+			<?php 
+			if ($rows == 0)
 			{
 				echo "<p align = center> 对不起，这里没有任何相关记录！！</p>";
-				echo "<a href = \"../index.html\"> 请重新输入关键字！</a>";
-
+				echo "<a href = \"../index.php\"> 请重新输入关键字！</a>";
 			}
 			else
 			{
-				// 输出相关记录
+				echo "共有".mysql_num_rows($row)."记录！";
 			}
-
-			mysql_close();
-			?>		
-	</body>
-</html>
+			
+			foreach ($rows as $v)
+			{
+			?>
+				<div>
+					<div>
+						<table align = center>
+							<tr >
+								<td> 姓名：</td>
+								<td> <?php echo $v["name"]; ?> <td>
+							</tr>
+							<tr >
+								<td> 生日：</td>
+								<td> <?php echo $v["birthday"]; ?> <td>
+							</tr>
+							<tr >
+								<td> 电话：</td>
+								<td> <?php echo $v["tel"]; ?> <td>
+							</tr>
+							<tr >
+								<td> 城市：</td>
+								<td> <?php echo $v["city"]; ?> <td>
+							</tr>
+							<tr >
+								<td> 爱好：</td>
+								<td> <?php echo $v["hobby"]; ?> <td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			<?php } 
+			require("../include/footer.php");
+			?>
+			

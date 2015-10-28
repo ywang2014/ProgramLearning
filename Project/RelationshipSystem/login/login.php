@@ -6,12 +6,10 @@
 </html>
 
 <?php
-$name = $_POST["name"];
-$password = $_POST["password"];
 
-include "mysql/connection.php";
+require('../include/init.php');
 
-$query = "SELECT * FROM friends WHERE name = $name and birthday = '$password'";
+$query = "SELECT * FROM classmates WHERE name = $name and birthday = '$password'";
 $result = mysql_query($query);
 if ($result == 0)
 {

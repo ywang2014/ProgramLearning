@@ -9,7 +9,7 @@
 $name = trim($_POST["name"]);
 $password = trim($_POST["password"]);
 
-include "common.php";
+include "../include/common.php";
 
 // connection
 $link = mysql_connect($hostname, $username, $hostpassword) or die("数据库服务器连接失败！");
@@ -18,7 +18,7 @@ $link = mysql_connect($hostname, $username, $hostpassword) or die("数据库服�
 // 使用 mysql_select_db 函数激活数据库表，后面的操作不需要专门添加表名
 @mysql_select_db($dbname, $link) or die("数据库连接失败！");
 
-$passwordmd5 = substr(md5($password.$name), 0, 20);	// b966d804a77580aedc06e42c0c058646, 数据库表只存储了前20位！
+$passwordmd5 = md5($password.$name);
 
 $query = "SELECT * FROM reader WHERE name = '$name' and password = '$passwordmd5'";
 $result = mysql_query($query);
@@ -32,7 +32,9 @@ $num = mysql_num_rows($result);
 if ($num != 0)
 {
 	// 账号存在，且密码验证正确，跳转到用户个人主页
-	header("Location: ../users/personal.html");
+	$row = mysql_fetch_array($result);
+	$rid = $row['id'];
+	header("Location: ../users/personal.php?rid=".$rid);
 }
 else
 {

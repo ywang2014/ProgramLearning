@@ -4,11 +4,11 @@
 	直接在命令行启动 MySQL
 	mysql -u root -p ******
 	
-create database library;
+create database library character set utf-8;
 use libray;
 create table manage(id int(10) auto_increment not null,
 					name varchar(20),
-					password char(20),
+					password char(50),
 					primary key(id), unique id(id)
 					);
 	修改属性：alter table modify id int(11) primary key auto_increment;	(如果没有设置主键或自动增加，都可以通过此方法修改属性)

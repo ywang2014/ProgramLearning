@@ -4,14 +4,14 @@
 */
 require('./include/init.php');
 
-$tid = $_GET['tid'] + 0;	// 通过id查询
+$pid = $_GET['tid'] + 0;	// 通过id查询
 if ($tid <= 0)
 {
 	// id 不可能小于等于0，比如非法
 	exit('id 非法');
 }
 
-$sql = 'select * from tablename where tid='.$tid;
+$sql = "select * from projects where pid= '$pid'";
 
 $project = getRow($sql, $conn);
 if (empty($project))
@@ -20,6 +20,10 @@ if (empty($project))
 }
 
 // print_r($project);
+
+$sql = "select * from reply where pid = '$pid'";
+// 回复可能有多行记录
+$replyss = getAll($sql, $conn);
 
 ?>
 
@@ -54,8 +58,37 @@ if (empty($project))
 					</tr>
 				</td>
 			</tr>
+			
+			<?php foreach($replys as $v)
+			{ ?>
+			<!-- ************** 回复开始 ***************** -->
+			<tr>
+				<td style="height:200px;width:200px;">
+					<a href = "#"> <?php echo $v['username']; ?> </a>
+				</td> 
+				<td style="height:200px;width:200px;">
+					<textarea style="width:100%;height:100%;"> <?php echo $v['content']; ?> </textarea>
+				</td>
+			</tr>
+			<?php } ?>
+			<!-- ************** 回复结束 ***************** -->
 		</table>
+		
+			<div>
+				<form action = "replyaction.php" method = "post">
+					<p>
+						<input type = "hidden" name = "pid" value = "<?php echo $_GET['pid']; ?>">
+					</p>
+					<p>
+						&nbsp;用户名：<input type = "text" name = "username">
+					</p>
+					<p>
+						&nbsp;<textarea name = "content"> </textarea>
+					</p>
+					<p>
+						&nbsp;<input type = "submit" value = "回复">
+					</p>
+				</form>
+			</div>
 	</body>
 </html>
-
-// 添加表单，可以用于评论和回复等！

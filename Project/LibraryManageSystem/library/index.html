@@ -27,9 +27,72 @@
 		</style>
 	</head>
 	<body class = "body">
+		<div>
+			<div style = "height:60px;">
+				<table align = "center" border = 0>
+					<tr>
+						<td align = "center" style = "width:200px;">
+							<a href = "../index.html"> <font size = 6> Homepage </font> </a>
+						</td>
+						<td style = "width:800px;">
+							<table>
+								<tr>
+									<td width = "30%"> 
+										<a href = ""> <font size = 6>  </font> </a>
+									</td>
+									<td width = "30%"> 
+										<a href = ""> <font size = 6>  </font> </a>
+									</td>
+									<td width = "40%"> 
+										<a href = ""> <font size = 6>  </font> </a>
+									</td>
+								</tr>
+							</table>
+						</td>
+						<td width = style = "width:600px;">
+							<table>
+								<tr align = "center">
+									<td width = 100> 
+										<a href = ""> <font size = 6>  </font> </a>
+									</td>
+									<td width = 100> 
+										<a href = "signup.html"> <font size = 6> Login </font> </a>
+									</td>
+									<td width = 100> 
+										<a href = ""> <font size = 6> Signup </font> </a>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
 		<h1 align = "center"> 欢迎来到图书馆主页 </h1> <hr>
-		<div align = "right"> <a href = "../logs/login.html"> LogIn </a> </div>
-			
+		
+		<center>
+			<form action = "../book/search.php" method = "post">
+				<table border = 0>
+					<tr>
+						<td>
+							<select name = "search_topic" style = "height:40px">
+								<option value = "name" selected = "selected"> 书名 </option>
+								<option value = "author"> 作者 </option>
+								<option value = "pubtime"> 出版日期 </option>
+								<option value = "content"> 内容 </option>
+							</select>
+						</td>
+						<td>
+							<input type = "text" style = "width:300px; height:40px" name = "search_keyword" value = "请输入关键字">
+						</td>
+						<td>
+							<input type = "submit" style = "width:80px; height:40px" value = "信息搜索">
+						</td>
+					</tr>
+				</table>
+			</form>
+		</center>
+		
 		<div style = "position:top; height: 80%;">
 			<div style = "float: left; width: 10%; height: 100%; background-color:#cca4e3;">
 				<div>
@@ -97,7 +160,7 @@
 		<div style = "position:bottom; height: 20%; background-color:#a1afc9;">
 			<center>
 				<br>
-				<p> 权力声明：</p>
+				<p> <font size = 4>&copy; </font>权力声明：</p>
 				<p> All rights reserved! </p>
 			</center>
 		</div>

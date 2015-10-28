@@ -1,0 +1,6 @@
+Program and reading 
+Program time: 3 hours 45minutes.
+Reading time: 2 hours 30minutes.
+Program + reading = 6 hours 15minutes.
+2 * temp = 12 hours 30minutes.
+****************** Test ending *******************
