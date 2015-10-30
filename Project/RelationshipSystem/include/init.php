@@ -33,6 +33,8 @@ if (!get_magic_quotes_gpc())
 // 连接数据库
 $conn = mysql_connect($_CFG['host'], $_CFG['user'], $_CFG['password']) or die("服务器连接错误！");
 
+mysql_query("SET NAMES 'UTF8'");
+
 @mysql_select_db($_CFG['dbname'], $conn) or die("数据库连接失败！");
 
 ?>

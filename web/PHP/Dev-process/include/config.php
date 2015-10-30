@@ -13,7 +13,7 @@ $_CFG = array();	// 空数组
 
 $_CFG['host'] = 'localhost';
 $_CFG['user'] = 'root';
-$_CFG['password'] = 'password';
+$_CFG['password'] = 'wang';
 $_CFG['dbname'] = 'project';
 $_CFG['charset'] = 'utf-8';
 

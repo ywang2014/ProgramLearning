@@ -14,24 +14,25 @@ if ($keyword == "")
 switch ($topic)
 {
 	case "name":
-		$sql = "SELECT * from ".$_CFG['table1']." where name = ".$keyword;
+		$sql = "SELECT * from ".$_CFG['table1']." where name = '$keyword'";
 		break;
 	case "school":
-		$sql = "SELECT * from ".$_CFG['table1']." where school = ".$keyword;
+		$sql = "SELECT * from ".$_CFG['table1']." where school = '$keyword'";
 		break;
 	case "birthday":
-		$sql = "SELECT * from ".$_CFG['table1']." where birthday = ".$keyword;
+		$sql = "SELECT * from ".$_CFG['table1']." where birthday = '$keyword'";
 		break;
 	case "city":
-		$sql = "SELECT * from ".$_CFG['table1']." where city = ".$keyword;
+		$sql = "SELECT * from ".$_CFG['table1']." where city = '$keyword'";
 		break;
 	case "hobby":
-		$sql = "SELECT * from ".$_CFG['table1']." where hobby like ".$keyword;
+		$sql = "SELECT * from ".$_CFG['table1']." where hobby like '%$keyword%'";
 		break;
 	default:
 		break;
 }
 
+//@mysql_select_db($_CFG['dbname'], $conn) or die("数据库设置错误！");
 $rows = getALL($sql, $conn);
 
 ?>
@@ -51,10 +52,11 @@ $rows = getALL($sql, $conn);
 			{
 				echo "<p align = center> 对不起，这里没有任何相关记录！！</p>";
 				echo "<a href = \"../index.php\"> 请重新输入关键字！</a>";
+				exit;
 			}
 			else
 			{
-				echo "共有".mysql_num_rows($row)."记录！";
+				echo "共有 ".count($rows)." 记录！";
 			}
 			
 			foreach ($rows as $v)
@@ -63,6 +65,7 @@ $rows = getALL($sql, $conn);
 				<div>
 					<div>
 						<table align = center>
+							<br>
 							<tr >
 								<td> 姓名：</td>
 								<td> <?php echo $v["name"]; ?> <td>

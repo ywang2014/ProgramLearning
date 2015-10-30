@@ -1,15 +1,34 @@
-#include "gobang.h"
+
 #include <iostream>
 #include <cstdlib>
+#include <ctime>
+#include "gobang.h"
+#include "globalcontent.h"
 
 using namespace std;
 
+Gobang::Gobang()
+{
+    Gobang(0);
+}
+
+Gobang::Gobang(int flag)
+{
+    man = Player(MAN);
+    timer = time(0);
+
+    if (flag != 0)
+    {
+        // 人人对战游戏
+        computer = Player(MAN);
+    }
+}
+
+
 void Gobang::gameInitial()
 {
-    man.init(MAN);
-    computer.init(COMPUTER);
     cBoard.init();
-    timer = 500000;  // 倒计时方式
+    timer = time(0);
 }
 
 /*
@@ -35,14 +54,29 @@ int Gobang::gameReferee()
     return 0;
 }
 
+void showGameFinale(int flag)
+{
+    if (flag == 1)
+    {
+        cout << "Congratulations, BLACK win the game!" << endl;
+    }
+    else if (flag == 2)
+    {
+        cout << "Congratulations, WHITE win the game!" << endl;
+    }
+    else
+    {
+        cout << "Congratulations, the game end in a draw!" << endl;
+    }
+}
 
 void Gobang::gamePlay()
 {
-    computer.play(cBoard, 1);
-    man.play(cBoard, 2);
+    computer.play(cBoard, BLACK);
+    man.play(cBoard, WHITE);
 }
 
-void Gobang::show()
+void Gobang::gameShow()
 {
     system("cls");
     cout << "\n\n\n";
@@ -59,5 +93,4 @@ void Gobang::chessGameManage()
     gameInitial();
     gameMenu();
     gameShow();
-
 }

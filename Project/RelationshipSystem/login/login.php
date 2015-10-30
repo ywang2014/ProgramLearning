@@ -8,19 +8,17 @@
 <?php
 
 require('../include/init.php');
+$name = $_POST['name'];
+$password = $_POST['password'];
 
-$query = "SELECT * FROM classmates WHERE name = $name and birthday = '$password'";
-$result = mysql_query($query);
-if ($result == 0)
-{
-	echo "Sorry, 数据库服务器查询是失败！";
-	exit();
-}
+$query = "SELECT * FROM classmates WHERE name = '$name' and birthday = '$password'";
+$result = getRow($query, $conn);
+//print_r($result);
+//exit;
 
-$num = mysql_num_rows($result);
-if ($num != 0)
+if ($result != 0)
 {
-	header("Location: personalHomePage.html");
+	header("Location: personalHomePage.php?cid=".$result['cid']);
 }
 else
 {

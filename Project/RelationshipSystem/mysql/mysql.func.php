@@ -15,7 +15,7 @@ function getAll($sql, $conn)
 	// 沿着$conn通道，发送$sql查询
 	// while 循环，取出每一行
 	// 装到二维数组，返回
-	
+	//@mysql_select_db($_CFG['dbname'], $conn) or die("数据库选择失败！");
 	$result = mysql_query($sql, $conn);
 	if (!$result)
 	{
@@ -38,6 +38,7 @@ function getAll($sql, $conn)
 */
 function getRow($sql, $conn)
 {
+	//@mysql_select_db($_CFG['dbname'], $conn) or die("数据库选择失败！");
 	$result = mysql_query($sql, $conn);
 	if (!$result)
 	{
@@ -49,6 +50,7 @@ function getRow($sql, $conn)
 
 function getOne($sql, $conn)
 {
+	//@mysql_select_db($_CFG['dbname'], $conn) or die("数据库选择失败！");
 	$result = mysql_query($sql, $conn);
 	if (!$result)
 	{

@@ -4,9 +4,11 @@
 * php解释器，见到<?php ?> 才当做php解释！
 */
 
-require("../include/init.php");
+require("include/init.php");
 
 $sql = 'select * from projects order by pubtime desc';	// 逆序排列，新发项目的显示在前面
+
+@mysql_select_db($_CFG['dbname'], $conn) or die ("数据库连接失败！");
 
 $list = getAll($sql, $conn);
 //print_r($list); exit;
@@ -29,6 +31,24 @@ $list = getAll($sql, $conn);
 				padding:0;
 				border:0;
 			}
+			
+			a:link{text-decoration:none; color: blue; font-size: 20px;}
+			a:hover{text-decoration:none; color: #ef7a82}
+			
+			textarea{
+				height:100px;
+				width:310px;
+				}
+				
+			input{
+				height:30px;
+				width:200px;
+				}
+				
+			p{
+				font-size:20px;
+			}
+				
 		</style>
 		
 		<link rel = "shortcut-icon" href = "#">
@@ -46,12 +66,10 @@ $list = getAll($sql, $conn);
 				<div id = "head" class = "search search_theme_2 clearfix">
 					<div class = "s_nav">
 						<a href = "#" class = "s_logo" title = "首页"> </a>
-						<div class = "s_tab_hdtag">
+						<div class = "s_tab_hdtag" style = "text-align:center;">
 							<a href = "#" param = "word"> 新闻 </a>
 							&#12288;
 							<a href = "#" param = "wd"> 网页 </a>
-							&#12288;
-							<b> 欧麟 </b>
 							&#12288;
 							<a href = "#" param = "word"> 知道 </a>
 							&#12288;
@@ -66,56 +84,80 @@ $list = getAll($sql, $conn);
 							<a href = "#" param = "word"> 百科 </a>
 							&#12288;
 							<a href = "#" param = "word"> 文库 </a>
+							&#12288;
+							<a href = "#"> 欧麟 </a>
 						</div>
-					</div>
-					<div>
-						<form name = "f1" id = "tb_header_search_form" class = "f" action = "project_process.php" method = "post">
-							<input autocomplete = "off" size = "42", tabindex = "1" id = "wd1" name = "kw" class = "s_ip_i">
-						</form>
+						<hr>
 					</div>
 				</div>
-			</div>
-			<div id = "editor" class = "frs_rich_editor">
-				<form name = "project" action = "project.php" method = "post">
-					<div class = "editor_title_txt"> 发布项目 </div>
-					<p>
-						用户名：<input type = "text" name = "username" class = "editor_title_field" value = "">
-					</p>
-					<p>
-						标题：<input type = "text" name = "title" class = "editor_title_field" value = "">
-					</p>
-					<p>
-						<textarea name = "content"> </textarea>
-					</p>
-					<input type = "submit" class = "subbtn_bg" value = "提交">
-				</form>
-			</div>
-			
-			<!---------- project start ------------>
-			<?php
-				/* 分离技术
-				*  php 遇到 <?php 开始，遇到 ?> 停止解析
-				*  更加高级的方法，使用 smarty模板
-				*/
-				foreach ($list as $v){
-			?>	
-			
-			<div>
-				<table >
-					<tr>
-						<td> 
-							<a href = "project_page.php?tid=<?php echo $v['tid']; ?>" title = "<?php echo $v['title']; ?>"> <?php echo $v['title']; ?> </a>
-						</td>
-						<td>
-							<p> <?php echo $v['pubtime']; ?> </p>
-							<p> <?php echo $v['content']; ?> </p>
-						</td>
-					</tr>
-				</table>
-			</div>
 				
-			<?php } ?>
-			<!------------ end ---------->
+				<div style = "position:bottom; height:80%" >
+					<div style = "float: left; width:10%">
+						<h1> 成功案例 </h1>
+						<div>
+						</div>
+					</div>
+					<div style = "float: left; width:80%">
+						<h1 align = "center"> 项目案例 </h1>
+						<div>
+							<!---------- project start ------------>
+							<?php
+								/* 分离技术
+								*  php 遇到 <?php 开始，遇到 ?> 停止解析
+								*  更加高级的方法，使用 smarty模板
+								*/
+								foreach ($list as $v){
+							?>	
+			
+							<div>
+								<table >
+									<tr>
+										<td> 
+											<a href = "project_page.php?pid=<?php echo $v['pid']; ?>" title = "<?php echo $v['title']; ?>"> <?php echo $v['title']; ?> </a>
+										</td>
+										<td>
+											<p> <?php echo $v['pubtime']; ?> </p>
+										</td>
+									</tr>
+								</table>
+							</div>
+				
+							<?php } ?>
+							<!------------ end ---------->
+						</div>
+						<!-- ******************* 发布项目 *********************** -->
+				<div style = "text-align:center; position:bottom; height: 20%;">
+					<hr>
+					<form name = "project" action = "project_process.php" method = "post">
+						<div class = "editor_title_txt" > 
+							<h1> 发布项目 </h1> 
+							<p class = "p">
+								用户名称：
+								<input type = "text" name = "username" class = "input" value = "">
+							</p>
+							<p class = "p">
+								项目标题：
+								<input type = "text" name = "title" class = "input" value = "">
+							</p>
+							<p>
+								<textarea class = "textarea" name = "content"> </textarea>
+							</p>
+							<input type = "submit" class = "subbtn_bg" value = "提交">
+						</div>
+					</form>
+				</div>
+				<!-- ******************* 发布项目 end *********************** -->
+					</div>
+					<div style = "float: left; width:10%">
+						<h1> 友情链接 </h1>
+						<div>
+						</div>
+					</div>
+				</div>
+				
+				
+				
+			</div>
 		</div>
 	</body>
 </html>

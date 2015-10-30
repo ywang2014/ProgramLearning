@@ -6,14 +6,15 @@
 *	比如：判断魔术引号有没有打开、判断当前是运行环境还是产品上线环境，设置相应的错误报告
 */
 
-define('ROOT', 'E:/Users/ZKY/project/ProgramLearning/web/PHP/Dev-process/');	// 定义绝对路径：根目录
+define('ROOT', 'D:/Soft/PHP/PHPnow-1.5.6/htdocs/127.0.0.100/Dev-process/');	// 定义绝对路径：根目录
 
-require(ROOT.'include/config.php');
-require(ROOT.'include/mysql.func.php');
+require(ROOT."include/config.php");
+require(ROOT."include/mysql.func.php");
 
 // 检测当前是否是开发环境
-if (define('DEBUG'))	// 检测debug
+if (DEBUG)	// 检测debug
 {
+	//echo "debug";
 	error_reporting(E_ALL);	// 安全级别最高
 }
 else

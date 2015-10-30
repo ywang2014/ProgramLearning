@@ -1,7 +1,9 @@
+<meta charset = "utf-8">
+
 <?php
 // 接受用户提交的项目表单
 
-require(./include/init.php);
+require("./include/init.php");
 
 //print_r($_POST);	// 直接打印看看接受的数据
 /*
@@ -12,6 +14,7 @@ require(./include/init.php);
 $username = $_POST['username'];
 $title = $_POST['title'];
 $content = $_POST['content'];
+$time = date("Y-m-d");
 // 第一步接受数据
 
 // 第二步，检测数据
@@ -23,21 +26,21 @@ if (trim($username) == '')
 }
 if (trim($title) == '')
 {
-	echo "用户名不能为空";
+	echo "项目名称不能为空";
 	// 返回上一步
 	
 }
 if (trim($content) == '')
 {
-	echo "用户名不能为空";
+	echo "项目内容不能为空";
 	// 返回上一步
 	
 }
 
 // 第三步，拼接sql子句--自动拼接
-$sql = "insert into tablename (username, title, content, pubtime) value ('".$username."','"
+$sql = "insert into projects (username, title, content, pubtime) values ('".$username."','"
 		.$title."','".$content."',".$time.")";
-// echo $sql;
+//echo $sql;
 
 /*
 * 一个有用的函数
@@ -45,10 +48,11 @@ $sql = "insert into tablename (username, title, content, pubtime) value ('".$use
 * 返回表中auto_increment列刚刚产生的最大值
 * 插入后，需要立即使用该函数，否则可能得到奇怪的结果
 */
-
+mysql_select_db($_CFG['dbname'], $conn) or die("数据库连接失败！");
+//mysql_query("set names gb2312");
 
 // 第四步，执行sql
-if (!mysql_query($sql, $conn))
+if (!mysql_query($sql))
 {
 	echo "发布失败";
 	// TODO
@@ -62,18 +66,16 @@ else
 	*	也可以使用header()
 	*/
 	
-	$tid = mysql_insert_id($conn)
+	$pid = mysql_insert_id($conn);
+	//echo $pid;
 	
-	$script = <<<EOT
-	<script type = "text/javascript">
-		alert('发布成功');
-		window.location.href = 'project_page.php?tid=$tid';
-	</script>
-EOT;
-	echo $script;	// 打印出来，否则没有显示！
+	
+	echo "<script type = \"text/javascript\">".
+		"alert('发布成功');".
+		"window.location.href = 'index.php';".
+		"</script>";
+	
 }
-
-
 
 
 ?>

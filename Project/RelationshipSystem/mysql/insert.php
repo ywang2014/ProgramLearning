@@ -64,23 +64,10 @@ else
 			echo "<a href = \"javascript:history.back()\"> 返回 </a>";
 			exit();
 		}
-		/*
-$name = "aa";
-$gender = "aa";
-$email = "aa";
-$school = "aa";
-$birthday = 123;
-$qq = 123;
-$tel = 123;
-$city = "aa";
-$job = "aa";
-$hobby = "aa";
-$introduce = "aa";
-$rtime = date("Y:m:d");
-*/
-
-		$insert = "INSERT INTO classmates(name, gender, email, school, birthday, qq, tel, city, job, hobby)";
-		$insert .= "values('$name', '$gender', '$email', '$school', $birthday, $qq, $tel, '$city', '$job', '$hobby', '$introduce', '$rtime')";
+		
+		$insert = "INSERT INTO classmates(name, gender, email, school, birthday, qq, tel, city, job, hobby, introduce, rtime)";
+		$insert .= "values('$name', '$gender', '$email', '$school', $birthday, $qq, $tel, '$city', '$job', '$hobby', '$introduce', $rtime)";
+		@mysql_select_db($_CFG['dbname'], $conn);
 		if (!mysql_query($insert))
 		{
 			echo "<script> alert('注册失败，请稍后再试'); history.go(-1); </script>";
@@ -89,7 +76,7 @@ $rtime = date("Y:m:d");
 		{
 			$cid = mysql_insert_id($conn);
 	
-			echo "<script language=javascript> alert('发布成功');window.location.href = '../person_page.php?tid=".$tid."'; </script>";
+			echo "<script language=javascript> alert('发布成功');window.location.href = 'person_page.php?cid=".$cid."'; </script>";
 		}
 		
 		mysql_close();

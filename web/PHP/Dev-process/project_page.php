@@ -4,14 +4,17 @@
 */
 require('./include/init.php');
 
-$pid = $_GET['tid'] + 0;	// 通过id查询
-if ($tid <= 0)
+$pid = $_GET['pid'] + 0;	// 通过id查询
+if ($pid < 0)
 {
 	// id 不可能小于等于0，比如非法
 	exit('id 非法');
 }
 
-$sql = "select * from projects where pid= '$pid'";
+$sql = "select * from projects where pid = '$pid'";
+
+// 此句必须要，否则插入、查找等都会失败！
+mysql_select_db($_CFG['dbname'], $conn) or die("数据库连接失败！");
 
 $project = getRow($sql, $conn);
 if (empty($project))
@@ -21,9 +24,10 @@ if (empty($project))
 
 // print_r($project);
 
-$sql = "select * from reply where pid = '$pid'";
-// 回复可能有多行记录
-$replyss = getAll($sql, $conn);
+$sql = "select * from reply where pid = '$pid' order by replytime";
+
+mysql_select_db($_CFG['dbname'], $conn) or die("数据库连接失败！");
+$replys = getAll($sql, $conn);	// 回复可能有多行记录
 
 ?>
 
@@ -34,28 +38,21 @@ $replyss = getAll($sql, $conn);
 	</head>
 	
 	<body>
+		<center>
 		<div>
 			<h1> <?php echo $project['title']; ?></h1>
 		</div>
-		<table>
+		
+		<table border = 1>
 			<tr>
 				<td>
-					<p> <?php echo $project['username']; ?></p>
+					<p> <a href = "#"> <?php echo $project['username']; ?></p>
 				</td>
 				<td>
-					<tr>
-						<td>
-							<p> <?php echo $project['title']; ?></p>
-						</td>
-						<td>
-							<p> <?php echo $project['pubtime']; ?></p>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<p> <?php echo $project['content']; ?></p>
-						</td>
-					</tr>
+					<p> <?php echo $project['title']; ?>
+						 <?php echo $project['pubtime']; ?>
+					</p>
+					<p> <?php echo $project['content']; ?></p>
 				</td>
 			</tr>
 			
@@ -65,6 +62,7 @@ $replyss = getAll($sql, $conn);
 			<tr>
 				<td style="height:200px;width:200px;">
 					<a href = "#"> <?php echo $v['username']; ?> </a>
+					<p> 回复时间：<?php echo date("Y-m-d", $v['replytime']); ?> </p>
 				</td> 
 				<td style="height:200px;width:200px;">
 					<textarea style="width:100%;height:100%;"> <?php echo $v['content']; ?> </textarea>

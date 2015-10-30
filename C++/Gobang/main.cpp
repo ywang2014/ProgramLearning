@@ -27,10 +27,8 @@ using namespace std;
 
 int main()
 {
-    system("chcp 936");
-    std::cout << "我始终\n";
     Gobang gob;
-    gob.show();
+    gob.gameShow();
 
     return 0;
 }

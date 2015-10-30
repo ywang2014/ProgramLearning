@@ -6,7 +6,7 @@
 */
 
 drop database if exists friends;
-create database friends character set utf8;
+create database friends character set utf-8;
 
 use friends;
 

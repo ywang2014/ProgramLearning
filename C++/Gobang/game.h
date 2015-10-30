@@ -18,6 +18,9 @@
 
 class Game
 {
+private:
+    //Player* player; // 游戏有玩家，但是不知道多少玩家，所以使用数组。
+
 public:
     // Game();
     // ~Game();
