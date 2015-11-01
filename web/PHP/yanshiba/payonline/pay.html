@@ -1,0 +1,66 @@
+<!--
+	在线支付：请看第三方支付平台的支付接口！
+	加密防篡改 
+	
+	填写表单、post过去，接收post回来的信息即可！
+	关键就是加密！知道如何加密，防止恶意伪造、攻击等！！！
+-->
+
+<html>
+	<head>
+		<meta charset = "utf-8">
+		<title> pay online </title>
+	</head>
+
+	<body>
+		<div>
+			<strong> 感谢您的购物，您的订单已提交，请记住你的的订单号：
+				<font style = "color:red"> <?php echo $order_sn; ?> </font>
+			</strong>
+			<table width = "100%" cellspacing = "0" cellpadding = "15" border = "0" bgcolor = "#fff" 
+			align = "center" style = "border:1px solid #ddd; margin:20px auto;">
+				<tbody>
+					<tr>
+						<td bgcolor = "#ffffff" align = "center">
+							您选择的配送方式：<strong> 实体店取货 </strong>，你选择的支付方式：<strong> 网上支付 </strong>。
+							您的订单总金额：<strong> <?php echo $total; ?> 元 </strong>
+						</td>
+					</tr>
+					<tr>
+						<td bgcolor = "#FFFFFF" align = "center">
+							通过支付宝进行支付，或者使用银行卡的网上银行在线支付。
+						</td>
+					</tr>
+					<tr>
+						<td bgcolor = "#FFFFFF" align = "center">
+							<div style = "text-align: center">
+								<form action = "http://pay3.chinabank.com.cn/PayGate" method = "post">
+								
+									<!-- 此编号即为你在第三方支付平台的注册商户编号，也就是收钱的账号 (所有属性应该隐藏！text方便调试)-->
+									商户编号<input type = "text" name = "v_mid" value = "12345678">
+									<br>
+									订单编号<input type = "text" name = "v_oid" value = "<?php echo $order_sn; ?>">
+									<br>
+									订单总金额<input type = "text" name = "v_amount" value = "<?php echo $total; ?>">
+									<br>
+									币种<input type = "text" name = "v_moneytype" value = "CNY">
+									<br>
+									回调地址<input type = "text" name = "v_url" value = "<?php echo $v_url; ?>">
+									<br>
+									<input type = "hidden" name = "v_md5info" value = "<?php echo $v_md5info; ?>">
+									<input type = "button" value = "立即在线支付"> 
+								</form>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<p style = "text-align:center; margin-bottom:20px;">
+				您可以<a href = "index.php"> 返回首页 </a>
+				或者去<a href = "user.php"> 用户中心 </a>
+			</p>
+			
+		</div>
+
+	</body>
+</html>

@@ -1,0 +1,53 @@
+<!--
+文件上传：
+	表单项
+	$_FILES变量
+
+----->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiu = "Content-Type" content="text/html" charset="utf-8">
+		<title> File </title>
+		<script type = "text/javascript">
+		
+		</script>
+		
+		<style type = "text/css">
+		
+		</style>
+	</head>
+	
+	<body>
+		<h1> 文件上传案例 </h1>
+		<!--  必须使用post方法，enctype = "mulitipart/form-data" 文件传输协议，告诉服务器这是文件，不是普通字符串   -->
+		<form action = "file_process.php" method = "post" enctype = "multipart/form-data">
+			<div>
+				<table>
+					<tr>
+						<td>
+							用户名：
+						</td>
+						<td>
+							<input type = "text" name = "username">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							头像：
+						</td>
+						<td>
+							<!-- 不允许有默认值的，安全性考虑，否则自动读取你硬盘的某个文件，那还得了！-->
+							<input type = "file" name = "pic" value = "test.txt"> <br>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input type = "submit" value = "提交">
+						</td>
+					</tr>
+				</table>
+			</div>
+		</form>
+	</body>
+</html>
