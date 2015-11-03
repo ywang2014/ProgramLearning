@@ -1,0 +1,37 @@
+<!-- 
+	使用大括号 {}形式
+	
+	可以直接使用 <?php echo ;?>
+	更好：原生php输出，不需要解析大括号标签
+	
+	smarty可以不使用，但是模板肯定会用到！
+
+ -->
+
+
+<!DOCTYPE html PUBLIC "-//WAC//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns = "http://www.w3.org/1999/xhtml" lang = "zh-CN">
+	<head>
+	
+		<title> {$title} </title>
+		
+		<meta http-equiv = "Content-Type" content = "text/html" charset = "utf-8">
+		<meta name = "description" content = "">
+		<meta name = "keywords" content = "">
+		
+		<script type = "text/javascript">
+		
+		</script>
+		
+		<style type = "text/css">
+		
+		</style>
+	</head>
+	
+	<body>
+	
+		<p> {$content} </p>
+		
+	</body>
+</html>
