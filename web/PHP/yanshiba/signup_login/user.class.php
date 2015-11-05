@@ -97,8 +97,111 @@ class Model
 						$this->error[] = $v[2];
 						return false;
 					}
+					break;
+				case 0:
+					if (isset($arr[$v[0]]))
+					{
+						if (!$this->check($arr[$v[0]], $v[3], $v[4]))
+						{
+							$this->error[] = $v[2];
+							return false;
+						}
+					}
+					break;
+				case 2:
+					if (isset($arr[$v[0]]) && !empty($arr[$v[0]]))
+					{
+						if (!$this->check($arr[$v[0]], $v[3], $v[4]))
+						{
+							$this->error[] = $v[2];
+							return false;
+						}
+					}
+					break;
 			}
 		}
+		return true;
+	}
+	
+	public function getErr()
+	{
+		return $this->error;
+	}
+	
+	protected function check($value, $rule = '', $parm = '')
+	{
+		switch ($rule)
+		{
+			case 'require':
+				return !empty($value);
+				
+			case 'number':
+				return is_numeric($value);
+				
+			case 'in':
+				$tmp = explode(',', $parm);
+				return in_array($value, $tmp);
+				
+			case 'between':
+				list($min, $max) = explode(',', $parm);
+				return $value >= $min && $value <= $max;
+				
+			case 'length':
+				list($min, $max) = explode(',', $parm);
+				return strlen($value) >= $min && strlen($value) <= $max;
+				
+			case 'email':
+				// 正则表达式 或 系统函数
+				return filter_var($value, FILTER_VALIDATE_EMAIL) !== false;
+				
+			default:
+				return false;
+		}
+	}
+	
+	/* model中定义最基本的增、删、改、查 */
+	
+	public function add($data)
+	{
+		return $this->db->autoExecute($this->table, $data);
+	}
+	
+	public function deletes($id)
+	{
+		$sql = 'delete from '.$this->table.' where '.$this->pk.'='.$id;
+		if ($this->db->query($sql))
+		{
+			return $this->db->affected_rows();
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	
+	public function update($data, $id)
+	{
+		$rs = $this->db->autoExecute($this->table, $data, 'update', ' where '.$this->pk.'='.$id);
+		if ($rs)
+		{
+			return $this->db->affected_rows();
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	public function select()
+	{
+		$sql = 'select * from '.$this->table;
+		return $this->db->getAll($sql);
+	}
+	
+	public function find($id)
+	{
+		$sql = 'select * from '.$this->table.' where '.$this->pk.'='.$id;
 	}
 }
 
@@ -113,7 +216,41 @@ class UserModel extends Model
 	
 	protected $fields = array('user_id', 'username', 'email', 'password', 'regtime', 'lastlogin');
 	
+	protected $_valid = array(
+							array('username', 1, '用户名不能为空', 'require'),
+							array('username', 0, '用户名必须在4-16字符内', 'length', '4,16'),
+							array('email', 1, 'email不能为空', 'require'),
+							array('email', 1, 'email非法', 'email'),
+							array('password', 1, 'password不能为空', 'require')
+							);
+							
+	protected $_auto = array(
+							array('regtime', 'function', 'time')
+							);
 	
+	// 加密密码
+	protected function MD5password($password)
+	{
+		return md5($password);
+	}
+	
+	// 用户注册
+	public function reg($data)
+	{
+		if ($data['password'])
+		{
+			$data['password'] = $this->MD5password($data['password']);
+		}
+		
+		return $this->add($data);
+	}
+	
+	// 根据用户名查询用户信息
+	public function checkUser($username)
+	{
+		$sql = 'select count(*) from '.$this->table." where username='$username'";
+		return $this->db->getOne($sql);
+	}
 }
 
 ?>
