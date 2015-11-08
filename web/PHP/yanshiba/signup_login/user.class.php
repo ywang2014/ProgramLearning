@@ -246,10 +246,35 @@ class UserModel extends Model
 	}
 	
 	// 根据用户名查询用户信息
-	public function checkUser($username)
+	public function checkUser($username, $password = '')
 	{
-		$sql = 'select count(*) from '.$this->table." where username='$username'";
-		return $this->db->getOne($sql);
+		if ($password == '')
+		{
+			$sql = 'select count(*) from '.$this->table." where username='$username'";
+			return $this->db->getOne($sql);
+		}
+		else
+		{
+			$sql = 'select user_id, username, email, from '.$this->table. " where username='$username'";
+			
+			$row = $this->db->getRow($sql);
+			
+			if (empty($row))
+			{
+				echo '用户名不存在';
+				return false;
+			}
+			
+			if ($row['password'] != $this->MD5password($password))
+			{
+				echo "密码错误";
+				return false;
+			}
+			
+			unset($row['password']);
+			return $row;
+		}
+		
 	}
 }
 
