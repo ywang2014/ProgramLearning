@@ -22,6 +22,14 @@ $smarty = new Smarty();
 $smarty->template_dir = './template123';
 $smarty->compile_dir = './compile123';
 
+/*
+// 配置smarty左右定界符
+$smarty->left_delimiter = '{<';
+$smarty->right_delimiter = '>}';
+*/
+// {literal}标签告诉smarty直接输出，不解析
+
+
 $title = 'Resume';
 // array 数据库取数据结果一般都是数组
 $user = array('name'=>'Alice', 'tel'=>'13100000000', 'email'=>'123@126.com');
