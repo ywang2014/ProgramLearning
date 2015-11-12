@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv = "Content-Type" content = "text/html; charset = utf-8" />
+		<title> 巢状循环测试 </title>
+	</head>
+	
+	<body>
+		<div>
+			<table cellpadding = 10>
+				<tr>
+					<td> 
+						<{foreach key = key1 item = item1 from = $arr1}>
+						<{$key1}> : <{$item1}>
+						<{/foreach}>
+					</td>
+				</tr>
+			</table>
+			<p> <a href = "test.html"> 测试 </a> </p>
+		</div>
+		<div>
+			<table width = "200" border = 0 align = "center" cellpadding = 10>
+				<{section name = sec2 loop = $forum}>
+				<tr>
+					<td colspan = 2>
+						<{$forum[sec2].category_name}>
+					</td>
+				</tr>
+				<{section name = sec3 loop = $forum[sec2].topic}>
+				<tr>
+					<td width = "25"></td>
+					<td width = "164">
+						<{$forum[sec2].topic[sec3].topic_name}>
+					</td>
+				</tr>
+				<{/section}>
+				<{/section}>
+			</table>
+		</div>
+	</body>
+</html>

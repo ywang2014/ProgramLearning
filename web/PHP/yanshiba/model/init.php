@@ -25,5 +25,8 @@ define('ROOT', str_replace('\\', '/', dirname(dirname(__FILE__))).'/');
 
 include(ROOT.'include/db.class.php');
 include(ROOT.'include/config.class.php');
+include(ROOT.'include/log.class.php');
+include(ROOT.'include/function.base.php');
+
 
 ?>

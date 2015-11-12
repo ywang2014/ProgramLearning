@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv = "Content-Type" content = "text/html; charset = utf-8">
+		<title> Javascript </title>
+		<script>
+			var str = "hello world!";
+			alert(str);
+			console.log(str.length);
+			console.log(str.substr(2, 4));
+			var str2 = str.split(' ');
+			var str3 = str2.join('/');
+			console.log(str2);
+			console.log(str3);
+			
+			console.log(str.indexOf('e') ? 'find' : 'not find');
+			
+			var f = null;
+			//var g = undefine; // 直接报错！
+			console.log(f)
+			console.log('f is null');
+			// console.log(g) 
+			
+			var h = {name: 'list', age:25};	// 列表
+			console.log(h.name);
+			
+			var arr = ['a', 3, 'hello'];	// 数组，元素任意类型，数组键必须是：0,1,2,3...
+			console.log(arr);
+			
+			var a = false;
+			var b = 6;
+			console.log(a || b);	// 6 返回值为真的那个结果
+			
+			var c = true;
+			console.log(a || c); // true
+			console.log(a || b || c); // 6 第一次判断为真时的结果
+			
+			var arr2 = ['赵', 'qian', '里'];
+			for (var i = 0; i < arr.length; i++)
+			{
+				//alert(i);
+			}
+			
+			var obj = {name:'list', age:20, area:'bj'};
+			for (var k in obj)
+			{
+				console.log(k + '-' + obj[k]);
+			}
+			
+			window.alert('你好！');
+			window.confirm('确认关闭浏览器吗？');
+			
+			console.log(window.navigator.cookieEnabled);
+			console.log(window.location);
+			console.log(window.history);
+			console.log(window.document);
+			//window.location.href = "http://www.baidu.com";	// 通过修改地址栏地址，直接跳转
+		</script>
+		
+		<script>
+			function f1()
+			{
+				var str = 'china';
+				alert(str);
+				
+				function f2()
+				{
+					var str = "american";
+					str = "japan";	// 赋值会污染全局，小心
+					alert(str);
+				}
+				
+				f2();
+			}
+			
+			f1();
+		</script>
+		<style>
+			div{width:300px; height:200px;}
+			#test1{background:red}
+			#test2{background:blue}
+		</style>
+		<script>
+			function ch()
+			{
+				var div = document.getElementById('test1');
+				div.id = 'test2';
+			}
+		</script>
+		
+	</head>
+	<body>
+		<!--- 地址栏加入：?id=3 然后调试---->
+		<input type = "button" value = "前进" onclick = "javascript:window.history.forward()">
+		<input type = "button" value = "后退" onclick = "javascript:window.history.back()">
+		<h1> 特效 </h1>
+		<div id = "test1" onclick = "ch();"> </div>
+	</body>
+</html>
