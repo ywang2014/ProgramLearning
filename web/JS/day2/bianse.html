@@ -1,0 +1,37 @@
+<!DOCTYPE html />
+<html>
+	<head>
+		<meta http-equiv = "Content-Type" content = "text/html; charset = utf-8" />
+		<title> Js learning </title>
+		
+		<style>
+			div
+			{
+				width:200px;
+				height:200px;
+			}
+			
+			#test
+			{
+				background: #f00;
+			}
+			#test2
+			{
+				background: #0ff;
+			}
+			
+		</style>
+		<script>
+			
+			function ch()
+			{
+				var div = document.getElementById('test');
+				div.id = "test2";
+			}
+		</script>
+	</head>
+	<body>
+		<h1> 特效之变色处理 </h1>
+		<div id = "test" onclick="ch();">  </div>
+	</body>
+</html>

@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.27, created on 2015-11-12 13:06:17
+<?php /* Smarty version 3.1.27, created on 2015-11-13 04:38:26
          compiled from "D:\Soft\PHP\PHPnow-1.5.6\htdocs\127.0.0.100\www\mytest\template123\test_form.html" */ ?>
 <?php
-/*%%SmartyHeaderCode:810656448ec97b8841_18675998%%*/
+/*%%SmartyHeaderCode:4536564569421480e0_10622945%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,11 +9,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '8122e27e98c10187e57d500ad3568a2b97f328fb' => 
     array (
       0 => 'D:\\Soft\\PHP\\PHPnow-1.5.6\\htdocs\\127.0.0.100\\www\\mytest\\template123\\test_form.html',
-      1 => 1447333575,
+      1 => 1447388199,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '810656448ec97b8841_18675998',
+  'nocache_hash' => '4536564569421480e0_10622945',
   'variables' => 
   array (
     'arr1' => 0,
@@ -23,13 +23,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_56448ec9805545_61412997',
+  'unifunc' => 'content_56456942263d98_06079122',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_56448ec9805545_61412997')) {
-function content_56448ec9805545_61412997 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_56456942263d98_06079122')) {
+function content_56456942263d98_06079122 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '810656448ec97b8841_18675998';
+$_smarty_tpl->properties['nocache_hash'] = '4536564569421480e0_10622945';
 ?>
 <!DOCTYPE html>
 <html>
@@ -64,8 +64,13 @@ $_smarty_tpl->tpl_vars['item1'] = $foreach_item1_Sav;
 ?>
 					</td>
 				</tr>
-			</table>
-			<p> <a href = "test.html"> 测试 </a> </p>
+			</table>  
+			<p> <!-- <a href = "<?php echo '<?php ';?>echo $path; <?php echo '?>';?>template123/test.html"> 测试 </a> -->
+				<a href = "/127.0.0.100/www/mytest/template123/test.html"> 测试 </a>
+			</p>
+			<!--- <p> <a href = "test.html"> 测试 </a> </p> 
+				/127.0.0.100/www/mytest/test.html was not found on this server.
+			-->
 		</div>
 		<div>
 			<table width = "200" border = 0 align = "center" cellpadding = 10>

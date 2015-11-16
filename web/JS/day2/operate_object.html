@@ -1,0 +1,105 @@
+<!DOCTYPE html />
+<html>
+	<head>
+		<meta http-equiv = "Content-Type" content = "text/html; charset = utf-8" />
+		<title> Js learning </title>
+		
+		<style>
+			
+			.test1
+			{
+				background: #f00;
+			}
+			.test2
+			{
+				background: #0ff;
+			}
+			
+			div
+			{
+				width:300px;
+				height:300px;
+				border:1px; solid black;
+			}
+			
+		</style>
+		<script>
+		/*
+			标签属性：table.width
+			css属性 div.className
+			style属性 div.style.width
+			
+			字符串变整形：parseInt()
+			
+			有横线的都首字母大写即可
+		*/
+			function ch()
+			{
+				var div = document.getElementsByTagName('div')[0];
+				alert(div.className);
+				if (div.className.indexOf('test1') >= 0)
+				{
+					div.className = 'test2';
+				}
+				else
+				{
+					div.className = 'test1';
+				}
+				
+				alert(div.style.width + 5 + 'px');
+				div.style.width = parseInt(div.style.width) + 5 + 'px';
+				div.style.height = parseInt(div.style.height) + 5 + 'px';
+				alert(div.style.borderBottom);
+				div.style.borderBottomWidth = parseInt(div.style.borderBottomWidth) + 5 + 'px';
+			}
+			
+			function guiStyle(obj, attr)
+			{
+				// 获取当前对象的属性 
+				// style如果为null，不能取属性！
+				return obj.currentStyle ? obj.currentStyle[attr] : getComputedStyle(obj, null)[attr];
+			}
+			
+			function ch1()
+			{
+				var div = document.getElementsByTagName('div')[1];
+				if (div.className.indexOf('test1') >= 0)
+				{
+					div.className = 'test2';
+				}
+				else
+				{
+					div.className = 'test1';
+				}
+				
+				alert(getStyle(div, 'width'));	// 只读属性
+				
+				div.style.width = parseInt(getStyle(div, 'width')) + 5 + 'px';
+				div.style.height = parseInt(getStyle(div, 'height')) + 5 + 'px';
+				alert(div.style.borderBottom);
+				div.style.borderBottomWidth = parseInt(div.style.borderBottomWidth) + 5 + 'px';
+			}
+			
+			
+		</script>
+		
+		
+	</head>
+	<body>
+		<h1> 找对象 </h1>
+		<div class = "test1" style = "width:200px; height:200px; border-bottom:1px; solid black;" onclick = "ch();"> 
+			<p> a </p>
+			<p> b </p>
+			<p> c </p>
+		</div>
+		<div class = "test1" onclick = "ch1()">
+		
+		</div>
+		<p class = "test2"> boy </p>
+		<input type = "text" name = "username" id = "" value = "用户名" />
+	</body>
+		<script>
+			
+		</script>
+</html>
+

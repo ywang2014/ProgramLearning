@@ -1,0 +1,42 @@
+<!DOCTYPE html />
+<html>
+	<head>
+		<meta http-equiv = "Content-Type" content = "text/html; charset = utf-8" />
+		<title> Js learning </title>
+		
+		<script>
+		/*
+			标签属性：table.width
+			css属性 div.className
+			style属性 div.style.width
+			
+			字符串变整形：parseInt()
+			
+			有横线的都首字母大写即可
+		*/
+			function del()
+			{
+				var lis = document.getElementsByTagName('li');
+				var lastli = lis[lis.length - 1];
+				lastli.parentNode.removeChild(lastli);
+			}
+			
+		</script>
+		
+		
+	</head>
+	<body>
+		<h1> 删除 </h1>
+		<input type = "button" value = "删除最后一个对象" onclick = "del();"/>
+		<ul>
+			<li> a </li>
+			<li> b </li>
+			<li> c </li>
+		</ul>
+		
+	</body>
+		<script>
+			
+		</script>
+</html>
+

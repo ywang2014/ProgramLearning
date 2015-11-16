@@ -11,7 +11,7 @@ if (!defined('ACCESS'))
 require_once('../Smarty3/libs/Smarty.class.php');
 
 define('ROOT', 'D:/Soft/PHP/PHPnow-1.5.6/htdocs/127.0.0.100/www/mytest/');
-
+//echo dirname(ROOT);
 require_once(dirname(ROOT)."/includes/functions.php");
 require_once(dirname(ROOT)."/includes/config.inc.php");
 
@@ -22,6 +22,7 @@ $smarty->compile_dir = ROOT."compile123//";
 
 $smarty->left_delimiter = '<{';
 $smarty->right_delimiter = '}>';
+
 
 
 ?>

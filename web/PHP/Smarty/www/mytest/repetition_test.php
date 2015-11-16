@@ -8,6 +8,9 @@ define('ACCESS', true);
 header("Content-Type: text/html; charset=utf-8;");
 
 require_once('main.php');
+include(ROOT."testpath.php");
+$path = "/127.0.0.100/www/mytest/";
+include(ROOT."template123/test_form.html");
 
 $arr1 = array(1=>"苹果", 2=>"菠萝", 3=>"西红柿", 3=>"水蜜桃");
 $smarty->assign('arr1', $arr1);
