@@ -1,0 +1,7 @@
+;.htaccess 文件可以设置许多Apache配置，包括是否激活身份验证
+ErrorDocument 401 /chapter 17/rejection.html
+AuthUserFile /home/bodk/.htpass
+AuthGroupFile /dev/null
+AuthName 'Realm-Name'
+AuthType Basic
+require valid-user
