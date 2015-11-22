@@ -1,17 +1,34 @@
-<?php
+<?php 
 /* 主页
 * php 可以与 html 混合
 * php解释器，见到<?php ?> 才当做php解释！
 */
 
+header('content-type: text/html; charset=utf-8');
 require("include/init.php");
-
-$sql = 'select * from projects order by pubtime desc';	// 逆序排列，新发项目的显示在前面
 
 @mysql_select_db($_CFG['dbname'], $conn) or die ("数据库连接失败！");
 
+$page = isset($_GET['page']) ? intval($_GET['page']) : 1;
+$pageNum = 5;
+
+$sql = "select * from projects";
+$total = mysql_num_rows(mysql_query($sql));
+$pages = ceil($total/$pageNum);
+
+/* 安全检查 */
+if ($page > $pages)
+{
+	$page = $pages;	// 最大为pages，最后一页
+}
+else if ($page < 1)
+{
+	$page = 1;	// 最小为1，首页
+}
+
+$offset = ($page - 1)*$pageNum;
+$sql = "select * from projects order by pubtime desc limit $offset, $pageNum";	// 逆序排列，新发项目的显示在前面
 $list = getAll($sql, $conn);
-//print_r($list); exit;
 
 ?>
 
@@ -124,6 +141,27 @@ $list = getAll($sql, $conn);
 				
 							<?php } ?>
 							<!------------ end ---------->
+							<div>
+								<?php
+									for($i = 1; $i <= $pages; $i++)
+									{
+										if ($i == 1)
+										{
+											$show = ($i != $page) ? "<a href='index.php?page=".$i."'>首页</a>" : "<b>首页</b>";
+										}
+										else if ($i == $pages)
+										{
+											$show = ($i != $page) ? "<a href='index.php?page=".$i."'>尾页</a>" : "<b>尾页</b>";
+										}
+										else
+										{
+											$show = ($i != $page) ? "[ <a href='index.php?page=".$i."'>$i</a> ]" : "[ <b>$i</b> ]";
+										}
+										
+										echo $show." ";
+									}
+									?>
+							</div>
 						</div>
 						<!-- ******************* 发布项目 *********************** -->
 				<div style = "text-align:center; position:bottom; height: 20%;">
@@ -140,8 +178,20 @@ $list = getAll($sql, $conn);
 								<input type = "text" name = "title" class = "input" value = "">
 							</p>
 							<p>
-								<textarea class = "textarea" name = "content"> </textarea>
+								<?php
+									include_once "./ckeditor_ckfinder/ckeditor/ckeditor.php";            //引用关键文件
+									include_once "./ckeditor_ckfinder/ckfinder/ckfinder.php";            //引用关键文件
+									$initialValue = '';    			                    //编辑区域显示的默认值
+									$CKEditor = new CKEditor();                            //实例化
+									$CKEditor->basePath = './ckeditor_ckfinder/ckeditor/';                //设定ckeditor的目录
+									$CKEditor->config['width'] = 800;                    //宽度 
+									$CKEditor->config['height'] = 200;                    //高度 
+									$config['skin'] = 'office2003';                                        //kama,office2003,v2
+									CKFinder::SetupCKEditor($CKEditor, './ckeditor_ckfinder/ckfinder/');//定义ckfinder的目录
+									$CKEditor->editor("content", $initialValue, $config);    //建立editor1窗口,editor1的名字,$initialValue默认值,$config设置皮肤
+								?>
 							</p>
+							
 							<input type = "submit" class = "subbtn_bg" value = "提交">
 						</div>
 					</form>

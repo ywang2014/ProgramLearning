@@ -1,0 +1,1 @@
+/ckeditor ckfinder/ckfinder/core/connector/php/connector.php

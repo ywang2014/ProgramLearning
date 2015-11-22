@@ -1,7 +1,6 @@
-<meta charset = "utf-8">
-
 <?php
 // 接受用户提交的项目表单
+header('content-type: text/html; charset=utf-8');
 
 require("./include/init.php");
 
@@ -14,7 +13,7 @@ require("./include/init.php");
 $username = $_POST['username'];
 $title = $_POST['title'];
 $content = $_POST['content'];
-$time = date("Y-m-d");
+$time = date("Y-m-d", time()+8*3600);
 // 第一步接受数据
 
 // 第二步，检测数据
@@ -50,6 +49,7 @@ $sql = "insert into projects (username, title, content, pubtime) values ('".$use
 */
 mysql_select_db($_CFG['dbname'], $conn) or die("数据库连接失败！");
 //mysql_query("set names gb2312");
+mysql_query("SET names utf8");
 
 // 第四步，执行sql
 if (!mysql_query($sql))
