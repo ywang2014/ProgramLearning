@@ -43,7 +43,8 @@ if (!$conn)
 	exit('数据库连接错误');
 }
 
-$sql = 'use'.$_CFG['dbname'];
-mysql_query($sql, $conn);
+mysql_select_db($_CFG['dbname'], $conn) or die("数据库连接失败！");
+//mysql_query("set names gb2312");
+mysql_query("SET names utf8");
 
 ?>
