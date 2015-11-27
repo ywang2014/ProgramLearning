@@ -52,31 +52,6 @@ function isImageByExt($filename)
 	return false;
 }
 
-function getErrorMsg($error)
-{
-	switch ($error)
-	{ 
-		case 0:
-			return false;
-		case 1:
-			$msg = '对不起，文件太大，系统无法上传！';
-			break;
-		case 2:
-			$msg = '对不起，文件太大，html无法上传！';
-			break;
-		case 3:
-			$msg = '对不起，文件有问题！';
-			break;
-		case 4:
-			$msg = '文件不能为空，请选择文件！';
-			break;
-		default: 
-			$msg = '错误！！！！！！！';
-			break;
-	} 
-	return $msg;
-}
-
 function download($file, $filename)
 {
 	if (! file_exists($file))

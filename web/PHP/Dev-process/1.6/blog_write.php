@@ -1,3 +1,7 @@
+<?php 
+header('content-type: text/html; charset=utf-8');
+?>
+
 <!DOCTYPE html >
 <html >
 	<head>
@@ -6,7 +10,6 @@
 		<meta name="keywords" content="博客系统, 文件系统, 数据库管理, 搜索功能" />
 		<meta name="description" content="文件上传、下载， 博客发布， 博客评论" />
 		<link rel="stylesheet" type="text/css" href="./static/template/css/css.css">
-		
 		<style>
 			p{
 				font-size:16px;
@@ -15,6 +18,7 @@
 				height:30px;
 			}
 		</style>
+		
 	</head>
 
 	<body>
@@ -66,7 +70,7 @@
 				<li><a href="http://news.163.com/" target="_blank"> 网易新闻 </a></li>
 				<li><a href="http://news.sina.com.cn/" target="_blank"> 新浪新闻 </a></li>
 				<li><a href="http://news.qq.com/" target="_blank"> 腾讯新闻 </a></li>
-				<li><a href="http://www.china.org.cn/chinese/" target="_blank"> 中国新闻 </a></li>
+				<li><a href="http://www.china.org.cn/chinese/" target="_blank"> 中国网新 </a></li>
 			</ul>
 			<ul id="dropmenu3" class="dropMenu">
 				<li><a href="http://scholar.glgoo.org/" target="_blank"> Google学 </a></li>
@@ -91,7 +95,6 @@
 				<li><a href="http://y.qq.com/" target="_blank"> QQ音乐 </a></li>
 			</ul>
 			<ul id="dropmenu7" class="dropMenu">
-				<li><a href="photo_album.php" target="_blank"> 个人相册 </a></li>
 				<li><a href="" target="_blank"> 个人中心 </a></li>
 				<li><a href="" target="_blank"> 用户管理 </a></li>
 				<li><a href="" target="_blank"> 账号设置 </a></li>
@@ -100,68 +103,48 @@
 
 		<!--//nav-->
 		
-		<!--body-->
-		<div>
-			<div style = "position:bottom; height:80%">
-				<div style = "float: left; width:70%">
-					<h1> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;文件列表 </h1>
-					<table width = "80%" style = "border: 1px solid #ddd; margin: 10px auto;">
-						<tr>
-							<td>
-								<?php foreach ($rows as $v)
-								{ ?>
-								<p style = "font-size:18px;">	
-									<a href = "file_page.php?fid=<?php echo $v['fid']; ?>"> <?php echo $v['filename']; ?> </a>
-									&nbsp; <?php echo $v['username']; ?>
-									&nbsp; <?php echo date('Y-m-d H:i:s', $v['uptime']); ?>
-									&nbsp;&nbsp;&nbsp; <strong> <a href = "file_download.php?fid=<?php echo $v['fid']; ?>"> 下载 </a> </strong> 
-									&nbsp; <strong> <a href = "file_read.php?fid=<?php echo $v['fid']; ?>"> 阅读 </a> </strong>
-								</p>
-								<?php } ?>
-							</td>
-						</tr>
-					</table>
-					<form action = "file_search.php" method = "post">
-						<div style = "padding-left:100px; padding-top:20px;">
-							<input type = "text" style = "width:400px; height:35px; " name = "search" placeholder = "search"> 
-							&nbsp; &nbsp; <input type = "submit" style = "width:80px; height:40px; font-size:18px;" value = "搜索">
-						</div>
-					</form>
-				</div>
-				
-				<div style = "float: left; width:30%">
-					<a href = "filesys.php"> <h1> 文件上传 </h1> </a>
-					<div>
-						<form action = "file_act.php" method = "post" enctype="multipart/form-data"> 
-							<input type = "text" name = "username" value = "用户名" style = "width:250px;"> <br>
-							<p> <input type = "file" name = "upload" value = "浏览"> </p>
-							<input type = "submit" value = "上传" style = "width:100px;">
-						</form>
-					</div>
-					<div style = "padding-top:10px;">
-						<p style = "width:90%; height: 30px; padding-top:10px; background-color:#eee; border:1px solid #eee; border-radius:6px;"> 
-							<strong style = "font-size:18px;"> 最新上传文件列表 </strong> 
+		<div >
+			<h1 align = "center"> 写博客 </h1> 
+			<form action = "blog_act.php" method = "post">
+				<table width = "90%" style = "border:0px solid #ddd; margin:10px auto;">
+					<tr> <td style = "padding-letf:20px; ">
+					<div class = "editor_title_txt" > 
+						<!--
+						<p >
+							用户名称：
+							<input type = "text" name = "username" style = "width:300px;" value = "">
 						</p>
-						<?php 
-							foreach ($files as $v)
-							{ ?>	
-						<p> 
-							<a href = "file_page.php?fid=<?php echo $v['fid']; ?>"> <?php echo $v['filename']; ?> </a>
+						-->
+						<p >
+							标题：
+							<input type = "text" name = "title" style = "width:800px;" value = "">
 						</p>
-						<?php } ?>
-						<p> <strong> <a href = "filesys.php"> 更多文件 </a> </strong> </p>
+						<p >
+							用户名：
+							<input type = "text" name = "username" style = "width:350px;" value = "">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;类型：
+							<input type = "text" name = "types" style = "width:346px;" value = "">
+						</p>
+						<p>
+							<?php
+								include_once "./ckeditor_ckfinder/ckeditor/ckeditor.php";            //引用关键文件
+								include_once "./ckeditor_ckfinder/ckfinder/ckfinder.php";            //引用关键文件
+								$initialValue = '';    			                    //编辑区域显示的默认值
+								$CKEditor = new CKEditor();                            //实例化
+								$CKEditor->basePath = './ckeditor_ckfinder/ckeditor/';                //设定ckeditor的目录
+								$CKEditor->config['width'] = 1200;                    //宽度 
+								$CKEditor->config['height'] = 350;                    //高度 
+								$config['skin'] = 'office2003';                                        //kama,office2003,v2
+								CKFinder::SetupCKEditor($CKEditor, './ckeditor_ckfinder/ckfinder/');//定义ckfinder的目录
+								$CKEditor->editor("content", $initialValue, $config);    //建立editor1窗口,editor1的名字,$initialValue默认值,$config设置皮肤
+							?>
+						</p>
+						
+						<input type = "submit" style = "width:100px;" value = "提交">
 					</div>
-				</div>
-			</div>
-		<!--//body-->
-		
-			<!--fonter-->
-			<div id = "footer">
-				<p align = "center">
-					权力所有 &copy; ywang! 请遵循本网站的《<a href = "">服务条款</a>》
-				</p>
-			</div>
-			<!--//fonter-->
+					</tr></td>
+				</table>
+			</form>
 		</div>
 	</body>
 </html>

@@ -40,16 +40,16 @@ $sql = "insert into files (username, filename, filepath, uptime)".
 		"values ('$username', '$filename', '$filepath', '$uptime')";
 if (!mysql_query($sql, $conn))
 {
-	echo "上传失败";
+	echo "发布失败";
 	exit;
 }
 else
 {
 	
-	$fid = mysql_insert_id($conn);
+	$pid = mysql_insert_id($conn);
 	
 	echo "<script type = \"text/javascript\">".
-		"alert('上传成功');".
+		"alert('发布成功');".
 		"window.location.href = 'filesys.php';".
 		"</script>";
 }

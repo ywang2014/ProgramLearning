@@ -1,3 +1,37 @@
+<?php 
+/* 主页
+* php 可以与 html 混合
+* php解释器，见到<?php ?> 才当做php解释！
+*/
+
+header('content-type: text/html; charset=utf-8');
+require("include/init.php");
+
+@mysql_select_db($_CFG['dbname'], $conn) or die ("数据库连接失败！");
+
+$page = isset($_GET['page']) ? intval($_GET['page']) : 1;
+$pageNum = 10;
+
+$sql = "select * from blogs";
+$total = mysql_num_rows(mysql_query($sql));
+$pages = ceil($total/$pageNum);
+
+/* 安全检查 */
+if ($page > $pages)
+{
+	$page = $pages;	// 最大为pages，最后一页
+}
+else if ($page < 1)
+{
+	$page = 1;	// 最小为1，首页
+}
+
+$offset = ($page - 1)*$pageNum;
+$sql = "select * from blogs order by ptime desc limit $offset, $pageNum";	// 逆序排列，新发项目的显示在前面
+$list = getAll($sql, $conn);
+
+?>
+
 <!DOCTYPE html >
 <html >
 	<head>
@@ -6,18 +40,26 @@
 		<meta name="keywords" content="博客系统, 文件系统, 数据库管理, 搜索功能" />
 		<meta name="description" content="文件上传、下载， 博客发布， 博客评论" />
 		<link rel="stylesheet" type="text/css" href="./static/template/css/css.css">
-		
 		<style>
+			header, footer, section, article, aside, nav, figure{
+				display:block;
+				margin:0;
+				padding:0;
+				border:0;
+			}
+			
+			a {text-decoration:none; color: blue; font-size: 20px;}
+			a:hover {text-decoration:none; color: #ef7a82}
+			
 			p{
-				font-size:16px;
+				font-size:20px;
 			}
-			input{
-				height:30px;
-			}
+			
 		</style>
+		
 	</head>
 
-	<body>
+	<body style = "background-image:url('./static/template/images/blog.jpg'); filter:alpha(opacity:30);opacity:1;">
 		<div id="navMenu" style = "overflow:hidden;">
 			<ul>
 			<li class="onelink">
@@ -66,7 +108,7 @@
 				<li><a href="http://news.163.com/" target="_blank"> 网易新闻 </a></li>
 				<li><a href="http://news.sina.com.cn/" target="_blank"> 新浪新闻 </a></li>
 				<li><a href="http://news.qq.com/" target="_blank"> 腾讯新闻 </a></li>
-				<li><a href="http://www.china.org.cn/chinese/" target="_blank"> 中国新闻 </a></li>
+				<li><a href="http://www.china.org.cn/chinese/" target="_blank"> 中国网新 </a></li>
 			</ul>
 			<ul id="dropmenu3" class="dropMenu">
 				<li><a href="http://scholar.glgoo.org/" target="_blank"> Google学 </a></li>
@@ -91,7 +133,6 @@
 				<li><a href="http://y.qq.com/" target="_blank"> QQ音乐 </a></li>
 			</ul>
 			<ul id="dropmenu7" class="dropMenu">
-				<li><a href="photo_album.php" target="_blank"> 个人相册 </a></li>
 				<li><a href="" target="_blank"> 个人中心 </a></li>
 				<li><a href="" target="_blank"> 用户管理 </a></li>
 				<li><a href="" target="_blank"> 账号设置 </a></li>
@@ -99,69 +140,80 @@
 		<script type="text/javascript">cssdropdown.startchrome("navMenu")</script> 
 
 		<!--//nav-->
-		
-		<!--body-->
-		<div>
-			<div style = "position:bottom; height:80%">
-				<div style = "float: left; width:70%">
-					<h1> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;文件列表 </h1>
-					<table width = "80%" style = "border: 1px solid #ddd; margin: 10px auto;">
-						<tr>
-							<td>
-								<?php foreach ($rows as $v)
-								{ ?>
-								<p style = "font-size:18px;">	
-									<a href = "file_page.php?fid=<?php echo $v['fid']; ?>"> <?php echo $v['filename']; ?> </a>
-									&nbsp; <?php echo $v['username']; ?>
-									&nbsp; <?php echo date('Y-m-d H:i:s', $v['uptime']); ?>
-									&nbsp;&nbsp;&nbsp; <strong> <a href = "file_download.php?fid=<?php echo $v['fid']; ?>"> 下载 </a> </strong> 
-									&nbsp; <strong> <a href = "file_read.php?fid=<?php echo $v['fid']; ?>"> 阅读 </a> </strong>
-								</p>
-								<?php } ?>
-							</td>
-						</tr>
-					</table>
-					<form action = "file_search.php" method = "post">
-						<div style = "padding-left:100px; padding-top:20px;">
-							<input type = "text" style = "width:400px; height:35px; " name = "search" placeholder = "search"> 
-							&nbsp; &nbsp; <input type = "submit" style = "width:80px; height:40px; font-size:18px;" value = "搜索">
+
+		<div id = "bg" >
+					<script>
+						var div = document.getElementById('bg');
+						var div1 = document.getElementById('navMenu');
+						div.height = window.screen.height - div1.style.height;
+						div.width = document.body.clientWidth;
+						// alert(div.height);
+					</script>
+					
+					<div style = "float: left; width:10%">
+						<h1> 专家博主 </h1>
+						<div>
 						</div>
-					</form>
+					</div>
+					<div style = "float: left; width:80%">
+						<h1 align = "center"> 博客列表 </h1>
+						<div>
+							<!---------- blog start ------------>
+							<?php
+								foreach ($list as $v){
+							?>	
+			
+							<div >
+								<table >
+									<tr>
+										<td> 
+											<a href = "blog_page.php?bid=<?php echo $v['bid']; ?>" title = "<?php echo $v['title']; ?>"> <?php echo $v['title']; ?> </a>
+										</td>
+										<td>
+											<p> &nbsp; <?php echo $v['username']; ?> </p>
+										</td>
+										<td>
+											<p> &nbsp; <?php echo date('Y-m-d H:i:s', $v['ptime']); ?> </p>
+										</td>
+									</tr>
+								</table>
+							</div>
+				
+							<?php } ?>
+							<!------------ end ---------->
+							<div>
+								<p>
+								<?php
+									for($i = 1; $i <= $pages; $i++)
+									{
+										if ($i == 1)
+										{
+											$show = ($i != $page) ? "<a href='blog.php?page=".$i."'>首页</a>" : "<b>首页</b>";
+										}
+										else if ($i == $pages)
+										{
+											$show = ($i != $page) ? "<a href='blog.php?page=".$i."'>尾页</a>" : "<b>尾页</b>";
+										}
+										else
+										{
+											$show = ($i != $page) ? "[ <a href='blog.php?page=".$i."'>$i</a> ]" : "[ <b>$i</b> ]";
+										}
+										
+										echo $show." ";
+									}
+									?>
+								</p>
+							</div>
+						</div>
+						
+					</div>
+					
+					<div style = "float: left; width:10%">
+						<h1> 友情链接 </h1>
+						<div>
+						</div>
+					</div>
 				</div>
 				
-				<div style = "float: left; width:30%">
-					<a href = "filesys.php"> <h1> 文件上传 </h1> </a>
-					<div>
-						<form action = "file_act.php" method = "post" enctype="multipart/form-data"> 
-							<input type = "text" name = "username" value = "用户名" style = "width:250px;"> <br>
-							<p> <input type = "file" name = "upload" value = "浏览"> </p>
-							<input type = "submit" value = "上传" style = "width:100px;">
-						</form>
-					</div>
-					<div style = "padding-top:10px;">
-						<p style = "width:90%; height: 30px; padding-top:10px; background-color:#eee; border:1px solid #eee; border-radius:6px;"> 
-							<strong style = "font-size:18px;"> 最新上传文件列表 </strong> 
-						</p>
-						<?php 
-							foreach ($files as $v)
-							{ ?>	
-						<p> 
-							<a href = "file_page.php?fid=<?php echo $v['fid']; ?>"> <?php echo $v['filename']; ?> </a>
-						</p>
-						<?php } ?>
-						<p> <strong> <a href = "filesys.php"> 更多文件 </a> </strong> </p>
-					</div>
-				</div>
-			</div>
-		<!--//body-->
-		
-			<!--fonter-->
-			<div id = "footer">
-				<p align = "center">
-					权力所有 &copy; ywang! 请遵循本网站的《<a href = "">服务条款</a>》
-				</p>
-			</div>
-			<!--//fonter-->
-		</div>
 	</body>
 </html>
