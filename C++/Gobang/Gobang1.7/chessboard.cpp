@@ -10,6 +10,13 @@
 #include "chessboard.h"
 #include "globalcontent.h"
 
+int ChessBoard::BOARDSIZE = 14;
+
+ChessBoard::ChessBoard()
+{
+    ChessBoard(14); // 默认棋盘大小为 14*14
+}
+
 ChessBoard::ChessBoard(int n)
 {
     BOARDSIZE = n;  // 设置棋盘大小
@@ -25,7 +32,6 @@ ChessBoard::ChessBoard(int n)
 
 ChessBoard::~ChessBoard()
 {
-    std::cout << "board\n";
     for (int i = 0; i < BOARDSIZE; i++)
     {
         delete [] pBoard[i];
@@ -64,16 +70,16 @@ void ChessBoard::showBoard()
     system("cls");
     using namespace std;
 
-    cout << "\tWelcome to chess!\n";
-    cout << "\n\t************************************************\n\n";
+    cout << "Welcome to chess!\n";
+    cout << "\n************************************************\n";
     for (int i = 0; i < BOARDSIZE; i++)
     {
-        cout << "\t";
         for (int j = 0; j < BOARDSIZE; j++)
         {
+            cout << "\t";
             if (pBoard[i][j].getColor() == BLANK)
             {
-                cout << "┼";
+                cout << "┽";
             }
             else if (pBoard[i][j].getColor() == BLACK)
             {
@@ -86,7 +92,6 @@ void ChessBoard::showBoard()
         }
         cout << endl;
     }
-    cout << "\n\t************************************************\n\n";
 }
 
 bool ChessBoard::fullBoard()

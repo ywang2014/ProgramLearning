@@ -4,6 +4,7 @@
         棋子类的函数实现：
 
 ********************************************************/
+
 #include "chesspieces.h"
 
 int ChessPieces::directions = 4;
@@ -12,19 +13,14 @@ ChessPieces::ChessPieces()
 {
     color = BLANK;
     lianzishu = new int[directions];
-    for (int i = 0; i < directions; i++)
-    {
-        lianzishu[i] = 0;
-    }
 }
 
 ChessPieces::~ChessPieces()
 {
-    //std::cout << "pieces\n";
     delete [] lianzishu;
 }
 
-void ChessPieces::init()    // 修改之后需要恢复！
+void ChessPieces::init()
 {
     color = BLANK;
     for (int i = 0; i < directions; i++)

@@ -18,6 +18,8 @@
 class ChessGame: public Game
 {
 public:
+    // ChessGame();
+    // ~ChessGame();
     void gameMenu()
     {
         chessGameMenu();

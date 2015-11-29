@@ -41,7 +41,6 @@ public:
     void gameShow();
     void gameInitial();
     void gameUndo();
-    void gameMenu();
     void chessGameManage();
 };
 

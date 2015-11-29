@@ -12,21 +12,19 @@
 
 class ChessBoard
 {
+    // 棋盘是有一个一个的点组成的，如此才有棋盘矩阵！,这种思路不好，冗余太多，棋盘差不多退化成了棋子，一个一个的
+    // 棋盘就是棋子矩阵，是一个矩阵，显示为棋盘，元素是棋子，具有显示棋子的功能
 
 private:
-    int BOARDSIZE;
+    static int BOARDSIZE;
     int numPieces;  // 棋子数
 
 public:
 
     ChessPieces **pBoard;       // 棋盘
 
-    /*
-        使用默认参数的构造函数，更加高大上
-        但是很奇怪，不能通过默认构造函数调用含参数的构造函数
-        ？？？
-    */
-    ChessBoard(int n = 14);
+    ChessBoard();
+    ChessBoard(int n);
     ~ChessBoard();
 
     void init();    // 再来一局，需要初始化

@@ -1,9 +1,3 @@
-/*******************************************************
-    五子棋实现的辅助类
-
-        游戏类函数实现：
-
-********************************************************/
 
 #include <iostream>
 #include <cstdlib>
@@ -15,25 +9,17 @@ using namespace std;
 
 Gobang::Gobang()
 {
-    /*
-        不能直接使用赋值，应该是赋值函数没有定义
-        赋值运算符、拷贝构造函数
-        可以使用对象指针，然后new创建对象
-    */
-
-    //cBoard = ChessBoard();    // 对象会自动析构
-    timer = time(0);   // 计时 -- 倒计时方式
-    /*cout << timer;
-    exit(0);
-    */
-    man = Player(MAN);
+    Gobang(0);
 }
 
 Gobang::Gobang(int flag)
 {
-    Gobang();
+    man = Player(MAN);
+    timer = time(0);
+
     if (flag != 0)
     {
+        // 人人对战游戏
         computer = Player(MAN);
     }
 }
@@ -45,12 +31,19 @@ void Gobang::gameInitial()
     timer = time(0);
 }
 
+/*
+裁判：
+    如果出现连子数大于等于5，则游戏结束，返回相应的棋子颜色，用于判断哪一方胜利
+    根据 referee()函数的返回值，确定show()函数输出状态
+    禁手检查??????????
+*/
 int Gobang::gameReferee()
 {
     for (int i = 0; i < cBoard.getBoardSize(); i++)
     {
         for (int j = 0; j < cBoard.getBoardSize(); j++)
         {
+            // 利用 && 符号的顺序点特性！
             if (cBoard.pBoard[i][j].getColor() != 0 && cBoard.pBoard[i][j].getMaxLianzishu() >= 5)
             {
                 return cBoard.pBoard[i][j].getColor();
@@ -91,11 +84,6 @@ void Gobang::gameShow()
 }
 
 void Gobang::gameUndo()
-{
-    //
-}
-
-void Gobang::gameMenu()
 {
     //
 }

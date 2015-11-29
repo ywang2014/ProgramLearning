@@ -22,8 +22,6 @@
 #include <iostream>
 #include "gobang.h"
 #include <windows.h>
-#include "test.h"
-
 
 using namespace std;
 
@@ -31,12 +29,17 @@ int main()
 {
     Gobang gob;
     gob.gameShow();
-    //test t;
-    //t.pcb->showBoard();
 
     return 0;
 }
 
 
+/*
+中文输出解决办法：
+-fexec-charset = gbk
+-finput-charset = utf-8
+
+cygwin 改变了电脑的配置，使得成为了Linux系统！！！！
+*/
 
 
