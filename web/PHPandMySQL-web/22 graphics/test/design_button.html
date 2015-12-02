@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv = "Content-type" content = "text/html; charset = utf-8" />
+		<title> Design button </title>
+	</head>
+	<body>
+		<h1> Create a button </h1>
+		<form method = "post" action = "make_button.php">
+			<table >
+				<tr>
+					<td> Type button text: </td>
+					<td> <input type = "text" name = "b_text" value = "Love" /> </td>
+				</tr>
+				<tr>
+					<td> Choose button color: </td>
+					<td> 
+						<input type = "radio" name = "color" value = "def" checked /> Default
+						<input type = "radio" name = "color" value = "red" /> Red
+						<input type = "radio" name = "color" value = "green" /> Green
+						<input type = "radio" name = "color" value = "blue" /> Blue
+					</td>
+				</tr>
+				<tr>
+					<td colspan = 2 align = "center">
+						<input type = "submit" value = "Create button" style = "width:200px; height:30px; background-color:#077;"/>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</body>
+</html>
