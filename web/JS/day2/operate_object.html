@@ -53,7 +53,7 @@
 				div.style.borderBottomWidth = parseInt(div.style.borderBottomWidth) + 5 + 'px';
 			}
 			
-			function guiStyle(obj, attr)
+			function getStyle(obj, attr)
 			{
 				// 获取当前对象的属性 
 				// style如果为null，不能取属性！
@@ -76,8 +76,9 @@
 				
 				div.style.width = parseInt(getStyle(div, 'width')) + 5 + 'px';
 				div.style.height = parseInt(getStyle(div, 'height')) + 5 + 'px';
-				alert(div.style.borderBottom);
-				div.style.borderBottomWidth = parseInt(div.style.borderBottomWidth) + 5 + 'px';
+				//alert(div.style.borderBottom);
+				//div.style.borderBottomWidth = parseInt(div.style.borderBottomWidth) + 5 + 'px';
+				div.style.borderBottomWidth = parseInt(getStyle(div, 'borderBottomWidth')) + 5 + 'px';
 			}
 			
 			
@@ -87,13 +88,15 @@
 	</head>
 	<body>
 		<h1> 找对象 </h1>
-		<div class = "test1" style = "width:200px; height:200px; border-bottom:1px; solid black;" onclick = "ch();"> 
+		<div class = "test1" onclick = "ch()">
+		
+		</div>
+		
+		<h2> 下一个 </h2>
+		<div class = "test1" style = "width:200px; height:200px; border-bottom:1px; solid black;" onclick = "ch1();"> 
 			<p> a </p>
 			<p> b </p>
 			<p> c </p>
-		</div>
-		<div class = "test1" onclick = "ch1()">
-		
 		</div>
 		<p class = "test2"> boy </p>
 		<input type = "text" name = "username" id = "" value = "用户名" />

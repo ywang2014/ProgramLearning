@@ -1,0 +1,83 @@
+<!DOCTYPE html />
+<html>
+	<head>
+		<meta http-equiv = "Content-Type" content = "text/html; charset = utf-8" />
+		<title> Js learning </title>
+		
+		<script>
+		/*
+			增、删、改、找
+			
+			标签属性：table.width
+			css属性 div.className
+			style属性 div.style.width
+			
+			字符串变整形：parseInt()
+			
+			有横线的都首字母大写即可
+		*/
+		
+		/*
+			增：创建对象、找到对象的所属对象、通过其父亲添加对象
+				注意：此时没有父对象，这是js创建的，还不属于html中元素。
+		*/
+			function add()
+			{
+				// 此函数是在点击按钮的时候，才会运行，此时肯定加载好了，所以不用放在最后！
+				var li = document.createElement('li');	// 创建DOM对象
+				//document.getElementsByTagName('ul')[0].appendChild(li);	// 添加子节点
+				var txt = document.createTextNode('文本'); //创建文字节点
+				li.appendChild(txt);	// 添加文本节点
+				document.getElementsByTagName('ul')[0].appendChild(li);	// 添加子节点
+			}
+			
+		</script>
+		
+		
+	</head>
+	<body>
+		<h1> 添加 </h1>
+		<input type = "button" value = "添加一个对象" onclick = "add();"/>
+		<ul>
+			<li> a </li>
+			<li> b </li>
+			<li> c </li>
+		</ul>
+		
+		<div>
+			<p>
+				<ul>
+					<li>
+						<a href = "#"> </a>
+					</li>
+				</ul>
+			</p>
+			<p>
+				<ul>
+					<li>
+					<!----------
+						1.创建 text节点、创建<a>节点、创建href节点、
+						2.把 href节点、文本节点添加到<a>节点中
+						3.创建li、创建ul，把li放进ul，创建p
+						4.一步一步。。。
+						
+					---------->
+						<a href = "#"> web </a>
+					</li>
+				</ul>
+			</p>
+			<p>
+				<ul>
+					<li>
+						<a href = "#">  </a>
+					</li>
+				</ul>
+			</p>
+		</div>
+		
+	</body>
+		<script>
+			
+		</script>
+</html>
+

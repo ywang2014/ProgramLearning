@@ -1,0 +1,74 @@
+<!DOCTYPE html />
+<html>
+	<head>
+		<meta http-equiv = "Content-Type" content = "text/html; charset = utf-8" />
+		<title> Js learning </title>
+		
+		<script>
+		/*
+			级联菜单：
+			二级级联
+			
+			扩展：三级级联、无限极级联
+			
+		*/
+		// 创建数组
+		var area = [
+				['武汉', '黄冈', '荆州', '宜昌'],
+				['无锡', '苏州', '常州', '南京'],
+				['浦东', '宝山', '嘉定', '青浦']
+				];
+				
+		function ld()
+		{
+			var sel = document.getElementById('prov');
+			//alert(sel.value);
+			var opt = '';
+			
+			if (sel.value == -1)
+			{
+				document.getElementById('city').innerHTML = opt;
+				return ;
+			}
+			
+			for(var i = 0, len = area[sel.value].length; i < len; i++) 
+			{
+				opt = opt + '<option value = "'+ i +'">' + area[sel.value][i] + '</option>';
+			}
+			
+			alert(opt);
+			document.getElementById('city').innerHTML = opt;
+		}
+		</script>
+		
+		
+	</head>
+	<body>
+		<h1> 级联菜单 </h1>
+		<select name = "" id = "prov" onchange = "ld();">
+			<option value = "-1"> 请选择省份 </option>
+			<option value = "0"> 湖北 </option>
+			<option value = "1"> 江苏 </option>
+			<option value = "2"> 上海 </option>
+		</select>
+		<select name = "" id = "city">
+		
+		</select>
+		
+	</body>
+		<script>
+			function add3()
+			{
+				var ul = document.getElementsByTagName('ul')[0];
+				ul.innerHTML = '<li>春</li> <li>夏</li> <li>秋</li>';
+			}
+			
+			function add1()
+			{
+				var ul = document.getElementsByTagName('ul')[0];
+				alert(ul.innerHTML);
+				ul.innerHTML += '<li> 冬 </li>';
+			}
+		</script>
+</html>
+
