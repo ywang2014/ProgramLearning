@@ -70,5 +70,36 @@ function get_email()
 	return false;
 }
 
+// 校验并更新用户密码
+function change_password($email, $old_password, $new_password, $new_password_conf)
+{
+	if (login($email, $old_password))
+	{
+		if ($new_password == $new_password_conf)
+		{
+			if ($conn = db_connect())
+			{
+				$sql = "update subscribers set password = sha1('$new_password') where email = '$email'";
+				
+				$result = mysql_query($sql);
+				return $result;
+			}
+			else
+			{
+				// access failed
+				echo "<p> Database cannot be accessed now. </p>";
+			}
+		}
+		else
+		{
+			echo "<p> Password is not the same in two times. </p>";
+		}
+	}
+	else
+	{
+		echo "<p> The old_password is wrong. </p>";
+	}
+	return false;
+}
 
 ?>

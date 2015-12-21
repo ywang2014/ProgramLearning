@@ -1,0 +1,104 @@
+body
+{
+	margin:0;	/* 内外边距设为0 */
+	padding:0;
+	background:url(images/header_bg.jpg) repeat-x;
+	background-size: 100% 40px;
+	font-size:16px;
+	color:#333;
+}
+
+ul
+{
+	/* 去掉行内边距 */
+	padding: 0;
+	margin: 0;
+}
+
+ul li
+{
+	list-style-type: none;
+}
+
+#header
+{
+	width:900px;
+	height:40px;
+	margin:0 auto;	/* 居中 */
+}
+
+#header .logo
+{
+	width:629px;	/* 图片自身大小 */
+	height:220px;
+	float:left;
+}
+
+#header .logo img
+{
+	height:40px;
+	display:block;
+}
+
+#header .member
+{
+	width: 100px;
+	height:40px;
+	line-height:40px;	/* 居中 */
+	float:right;
+	/*background:#ddd;*/
+	/*background: url(images/triangle.jpg) no-repeat right center;*/
+	background: url(images/triangle3.png) no-repeat 70px center; /* 从左往右移60px */
+	background-size: 15px 10px;
+	cursor: pointer;	/* 换成手 */
+}
+
+#header .member:hover
+{
+	background: url(images/triangle2.png) no-repeat 70px center;
+	background-size: 15px 10px;
+}
+
+#header ul
+{
+	position: absolute;
+	top: 40px;
+	left: 74%;
+	background: #FBF7E1;
+	width: 100px;
+	height: 120px;
+	border: 1px solid #999;
+	border-top: none;
+	padding: 10px 0 0 0;	/* 上、右 下 左 */
+	display: none;	/* 隐藏 */
+}
+
+#header ul:hover
+{
+	display: block;
+}
+
+#header ul li 
+{
+	/* 设置距离 */
+	height: 25px;
+	line-height:25px;	/* 行高 */
+	text-indent:20px;	/* 左侧预留位置，放图标 */
+	letter-spacing:1px;	/* 分字体 */
+}
+
+#header ul li a 
+{
+	display: block;		/* 转化为区块 */
+	text-decoration: none;	/* 没有下划线 */
+	color: #333;
+	/*background: url(images/right.png) no-repeat left center;*/
+	background: url(images/right.png) no-repeat 5px 45%; /* 调整对齐位置 */
+	background-size: 12px 12px;
+}
+
+#header ul li a:hover
+{
+	background: #fc0 url(images/right2.png) no-repeat 5px 45%;
+	background-size: 12px 12px;
+}
