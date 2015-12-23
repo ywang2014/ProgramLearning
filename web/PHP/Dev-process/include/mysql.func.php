@@ -10,13 +10,13 @@
 * $sql:sql语句，$conn数据库连接资源
 * return an array(二维)
 */
-function getAll($sql, $conn)
+function getAll($sql)
 {
 	// 沿着$conn通道，发送$sql查询
 	// while 循环，取出每一行
 	// 装到二维数组，返回
 	
-	$result = mysql_query($sql, $conn);
+	$result = mysql_query($sql);
 	if (!$result)
 	{
 		return false;
@@ -36,9 +36,9 @@ function getAll($sql, $conn)
 * $sql:sql语句，$conn数据库连接资源
 * return an array
 */
-function getRow($sql, $conn)
+function getRow($sql)
 {
-	$result = mysql_query($sql, $conn);
+	$result = mysql_query($sql);
 	if (!$result)
 	{
 		return false;
@@ -47,9 +47,9 @@ function getRow($sql, $conn)
 	return mysql_fetch_assoc($result);
 }
 
-function getOne($sql, $conn)
+function getOne($sql)
 {
-	$result = mysql_query($sql, $conn);
+	$result = mysql_query($sql);
 	if (!$result)
 	{
 		return false;

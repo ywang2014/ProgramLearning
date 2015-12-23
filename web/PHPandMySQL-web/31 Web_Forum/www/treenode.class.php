@@ -94,7 +94,7 @@ class Treenode
 			$row++;
 		}
 		
-		$num_children = sizeof($this->m_childrenlist);
+		$num_children = sizeof($this->m_childlist);
 		for ($i = 0; $i < $num_children; $i++)
 		{
 			$row = $this->m_childlist[$i]->display($row, $sublist);	// 递归

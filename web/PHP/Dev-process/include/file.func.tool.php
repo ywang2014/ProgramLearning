@@ -109,7 +109,7 @@ function getfileContents($file)
 {
 	if (! file_exists($file))
 	{
-		die('您需要下载的文件不存在，可能已被删除！');
+		die('对不起，该文件不存在，可能已被删除！');
 	}
 	
 	$fp = fopen($file, "r");

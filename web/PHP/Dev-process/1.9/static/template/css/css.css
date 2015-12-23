@@ -1,0 +1,150 @@
+﻿@charset "utf-8";
+/* CSS Document */
+body{
+	padding:0px;
+	margin:0px;
+}
+body{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:9pt;
+	background-color:#fff;
+}
+ul,li{
+	padding:0px;
+	margin:0px;
+	list-style-type: none;
+}
+* a{
+	text-decoration: none;
+	color:#000;
+}
+a:hover{
+	color:#F09C42;
+}
+
+button{
+	width:120px;
+	height:40px;
+	background-color:#ddd;
+	border:1px;
+	border-radius: 6px;
+}
+button:hover{
+	background-color:#006660;
+}
+.nav_blog{
+	width:120px;
+	height:40px;
+	background-color:#C79F70;
+}
+.nav_blog:hover{
+	background-color:#006660;
+}
+
+/*导航菜单*/
+#navMenu {
+	width:100%;
+	display:block;
+	overflow:hidden;
+	background-color: #eff5fb;
+	/*background-image: url(../images/nav_bg.jpg);
+	background-repeat:repeat-x;
+	background-position: left top;*/
+}
+#navMenu ul{
+	width:95%;
+	margin-left:10px;
+	}
+	
+#navMenu .onelink{
+	background-image:none;
+	padding-left:16px;
+	padding-right:16px;
+	}
+#navMenu li {
+	width:100px;
+	text-align:center;
+	float: left;
+	line-height: 60px;
+	margin-left: 10px;
+	padding-right:10px;
+}
+
+#navMenu li a {
+	color:#000;
+	font-family: "宋体";
+	font-size: 24px;
+	margin-left: -2px;
+	display: block;
+}
+#navMenu li a:hover, #navMenu li.hover a {
+	text-decoration: none;
+	color:#FF7B0E;
+}
+
+#footer { 
+	/*position: bottom;*/
+	bottom: 0;
+	width: 100%;
+	height: 60px; 
+	background-color: #ddd; 
+	text-align: center; 
+	margin: 0px auto 0 auto; 
+} 
+
+
+/*-------- 下拉菜单 --------------*/
+.dropMenu {
+	position:absolute;
+	width: 100px;
+	visibility: hidden;
+	overflow:hidden;
+	margin-top: -1px;
+	margin-left:-2px;
+	border: 1px solid #4D5B66;
+	background-color: #42B034;
+	padding-top:6px;
+	padding-bottom:6px;
+	filter: Alpha(Opacity=85);
+}
+
+.dropMenu li {
+	overflow:hidden;
+	margin-top:2px;
+	margin-bottom:4px;
+	padding-left:6px;
+}
+.dropMenu li a {
+	width: 92%;
+	display: block;
+	overflow:hidden;
+	text-align:center;
+	color: black;
+	padding: 4px 0 4px 0px;
+	color:#000;
+	border-bottom: 0px dashed #4D5B66;
+	font-size:18px;
+}
+.dropMenu+li a{
+border-top:none;
+}
+* html .dropMenu a {
+	width: 100%;
+	color:#6CA7C7;
+}
+.dropMenu a:hover {
+	text-decoration: underline;
+	color:#F09C42;
+}
+
+.hdo{
+width:100%;
+height:auto;
+display:block;
+overflow:hidden;
+}
+
+
+
+
+

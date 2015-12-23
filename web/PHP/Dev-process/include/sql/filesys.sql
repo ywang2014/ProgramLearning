@@ -9,7 +9,12 @@ create table if not exists files(
 	username varchar(30) not null comment '上传文件者',
 	filename varchar(30) not null comment '文件名',
 	filepath varchar(100) not null comment '文件存储路径',
-	uptime int(11) not null comment '上传时间'
+	status tinyint not null default 1 comment '1 文件正常，0文件删除',
+	uptime int(11) not null comment '上传时间',
+	del_time int(11) not null comment '删除时间'
 )engine=MyISAM default charset=utf8;
 
-/* drop table files; */
+/* drop table files;
+update files set status = 1 where 1;	// 全部修改
+
+ */

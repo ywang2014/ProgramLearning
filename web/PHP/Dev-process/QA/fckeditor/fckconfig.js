@@ -125,6 +125,12 @@ FCKConfig.ToolbarSets["Mybar"] = [
 	['Image','Flash','Table','Rule','Smiley','PageBreak']
 ] ;
 
+FCKConfig.ToolbarSets["Answer"] = [
+	['Bold','Italic','-','OrderedList','UnorderedList','-','Link','Unlink'],
+	['Style','FontFormat','FontName','FontSize'],
+	['JustifyLeft','JustifyCenter','JustifyRight','JustifyFull']
+] ;
+
 FCKConfig.EnterMode = 'p' ;			// p | div | br
 FCKConfig.ShiftEnterMode = 'br' ;	// p | div | br
 

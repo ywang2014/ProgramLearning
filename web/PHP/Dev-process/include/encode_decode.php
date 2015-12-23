@@ -12,7 +12,7 @@ $temp = utf8Encode('张三');
 $template->setVariable("CUSTOMERNAME", $temp);
 
 // 第三步
-php页面
+//php页面
 $temp=urlencode('张三');
 $template->setVariable("CUSTOMERNAME",$temp);
 // 模板页面  输出时用urldecode函数解码
