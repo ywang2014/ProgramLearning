@@ -41,6 +41,63 @@
 		}
 		</script>
 		
+		<script>
+			function year()
+			{
+				var opt = '<option value = "-1"> 请选择年份 </option>';
+				for (var y = 1970; y < 2050; y++)
+				{
+					opt = opt + '<option value = "'+ y +'">' + y + '</option>';
+				}
+				document.getElementById('y').innerHTML = opt;
+			}
+			
+		function birthday()
+		{
+			var sel = document.getElementById('y');
+			var opt = '';
+			if (sel.value == -1)
+			{
+				document.getElementById('m_d').innerHTML = opt;
+				return ;
+			}
+			
+			opt = "<select name = \"month\" id = \"m\" onchange = \"bir_m();\"> ";
+			opt = opt + "<option value = \"0\"> </option>";
+			for(var i = 1; i <= 12; i++) 
+			{
+				opt = opt + '<option value = "'+ i +'">' + i + '</option>';
+			}
+			opt = opt + "</select>";
+			
+			//alert(opt);
+			document.getElementById('m_d').innerHTML = opt;
+		}
+		
+		function bir_m()
+		{
+			var days = [0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+			var sel = document.getElementById('m');
+			var opt = '';
+			if (sel.value == 0)
+			{
+				document.getElementById('d_d').innerHTML = opt;
+				return ;
+			}
+			opt = "<select name = \"day\" id = \"d\" onchange = \"bir_m();\"> ";
+			//opt = opt + "<option value = \"0\"> </option>";
+			
+			for(var i = 1; i <= days[sel.value]; i++) 
+			{
+				opt = opt + '<option value = "'+ i +'">' + i + '</option>';
+			}
+			opt = opt + "</select>";
+			
+			//alert(opt);
+			document.getElementById('d_d').innerHTML = opt;
+		}
+		</script>
+		
 		
 	</head>
 	<body>
@@ -55,19 +112,29 @@
 		
 		</select>
 		
+		<h1> 生日 </h1>
+		<div style = "float: left; padding-right: 10px;">
+			<select name = "year" id = "y" onchange = "birthday();">
+				<script> window.onload = year(); </script>
+			</select>
+		</div>
+		
+		<div id = "m_d" style = "float: left; padding-right: 10px;">
+		</div>
+		
+		<div id = "d_d" style = "float: left;">
+		</div>
+		
 	</body>
 		<script>
-			function add3()
+			function year()
 			{
-				var ul = document.getElementsByTagName('ul')[0];
-				ul.innerHTML = '<li>春</li> <li>夏</li> <li>秋</li>';
-			}
-			
-			function add1()
-			{
-				var ul = document.getElementsByTagName('ul')[0];
-				alert(ul.innerHTML);
-				ul.innerHTML += '<li> 冬 </li>';
+				var opt = '';
+				for (var y = 1970; y < 2050; y++)
+				{
+					opt = opt + '<option value = "'+ y +'">' + y + '</option>';
+				}
+				document.getElementById('y').innerHTML = opt;
 			}
 		</script>
 </html>
