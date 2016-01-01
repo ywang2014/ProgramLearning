@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--------
+Amazon站点返回的，针对一个基于特定请求参数的HTTP XML请求的响应内容
+
+第一行 标准声明
+----------------------------->
+<ItemLookupResponse xmlns="http://webservices.amazon.com/AWSECommerceService/2005-03-23">
+	<Items>
+		<Request>
+			<1sValid> True </1sValid>
+				<ItemLookupRequest>
+					<IdType> ASIN </IdType>
+					<ItemId> 0672317842 </ItemId>
+					<ResponseGroup> Similarities </ResponseGroup>
+					<ResponseGroup> Small </ResposeGroup>
+				</ItemLookupRequest>
+		</Request>
+		<Item>
+			<ASIN> 0672317842 </ASIN>
+			<DetailPageURL> 
+				http://www.amazon.com/PHP-MySQL-Development-Luke-Welling/dp/0672317842%1F%26linkCode%3Dspl%26camp%3D2025%26creative%3D165953%26creativeASIN%3D0672317842 
+			</DetailPageURL>
+			<ItemAttributes>
+				<Author> Luke Welling </Author>
+				<Author> Laura Thomson </Author>
+				<Manufacture> Sams </Manufacture>
+				<ProductGroup> Book </ProductGroup>
+				<Title> PHP and MySQL Web Development </Title>
+			</ItemAttributes>
+			<SimilarProducts>
+				<SimilarProduct>
+					<ASIN> 1590598628 </ASIN>
+					<Title> Beginning PHP and MySQL: From Novice to Professional, Third Edition (Beginning
+						from Novice to Professional) </Title>
+				</SimilarProduct>
+				<SimilarProduct>
+					<ASIN> 032152599 </ASIN>
+					<Title> PHP 6 and MySQL 5 for Dynamic Web Sites: Visual QuickPro Guide </Title>
+				</SimilarProduct>
+				<SimilarProduct>
+					<ASIN> B0005UL4F </ASIN>
+					<Title> JavaScript Definitive Guide </Title>
+				</SimilarProduct>
+				<SimilarProduct> 
+					<ASIN> 1590596145 </ASIN>
+					<Title> CSS Mastery: Advanced Web Standards Solutions </Title>
+				</SimilarProduct>
+				<SimilarProduct>
+					<ASIN> 0596005431 </ASIN>
+					<Title> Web Database Applications with PHP &amp; MySQL, 2nd Edition </Title>
+				</SimilarProduct>
+			</SimilarProducts>
+		</Item>
+	</Items>

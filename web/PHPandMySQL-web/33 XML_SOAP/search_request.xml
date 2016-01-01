@@ -1,0 +1,18 @@
+<!----  
+	基于ASIN的SOAP搜索请求
+
+--->
+<SOAP-ENV:Envelope>
+	<SOAP-ENV:Body>
+		<m:ItemLookup>
+			<m:Request>
+				<m:AssociateTag> webservices-20 </m:AssociateTag>
+				<m:IdType> ASIN </m:IdType>
+				<m:ItemId> 0672317842 </m:ItemId>
+				<m:AWSAccessKeyId> 0XKKZBBJHE7GNBWF2ZG2 </m:AWSAccessKeyId>
+				<m:ResponseGroup> Similarities </m:ResponseGroup>
+				<m:ResponseGroup> Small </m:ResponseGroup>
+			</m:Request>
+		</m:ItemLookup>
+	</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
