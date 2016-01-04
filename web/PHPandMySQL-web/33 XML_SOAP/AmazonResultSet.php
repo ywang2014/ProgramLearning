@@ -44,6 +44,7 @@ class AmazonResultSet
 	
 	function browseNodeSearch($browseNode, $page, $mode)
 	{
+		// 具体参数配置，见AWS开发人员手册
 		$this->Service = "AWSECommerceService";
 		$this->Operation = "ItemSearch";
 		$this->AWSAccessKeyId = DEVTAG;
@@ -86,6 +87,7 @@ class AmazonResultSet
 		}
 		else
 		{
+			// 具体参数配置，见AWS开发人员手册
 			$this->url = "http://ecs.amazonaws.com/onca/xml?".
 						"Service=".$this->Service.
 						"&Operation=".$this->Operation.
@@ -228,10 +230,10 @@ class AmazonResultSet
 		return $this->products;
 	}
 	
-	// parse the XML into Product object(s)
+	// parse the XML into Product object(s) 分析由查询返回的XML
 	function parseXML()
 	{
-		$xml = @simplexml_load_file($this->url);
+		$xml = @simplexml_load_file($this->url);	// 从文件中读入XML文档
 		if (!$xml)
 		{
 			// try a second time in case just server busy.
