@@ -5,10 +5,7 @@
 require_once('bookmark_fns.php');
 session_start();
 
-/*
-print_r($_POST);
-exit; */
-
+$del_me = $_POST['del_me'];
 $username = $_SESSION['valid_user'];
 
 do_html_header('Deleting Bookmarks');
@@ -23,10 +20,9 @@ if (!filled_out($_POST))
 }
 else
 {
-	$del_bm = isset($_POST['del_bm']) ? $_POST['del_bm'] : array();
-	if (count($del_bm) > 0)
+	if (count($del_me) > 0)
 	{
-		foreach ($del_bm as $url)
+		foreach ($del_me as $url)
 		{
 			if (delete_bm($username, $url))
 			{

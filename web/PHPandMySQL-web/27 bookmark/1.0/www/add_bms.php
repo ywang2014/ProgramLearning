@@ -12,24 +12,22 @@ do_html_header('Adding bookmarks');
 try
 {
 	check_valid_user();
-	
 	if (!filled_out($_POST))
 	{
 		throw new Exception('Form not completely filled out.');
 	}
 	
-	if ((strstr($new_url, "http://") === false) && (strstr($new_url, "https://") === false))
+	if (strstr($new_url, "http://") === false)
 	{
 		$new_url = "http://".$new_url;
 	}
-	//print_r($new_url);
-	if (!(@fopen($new_url, 'r')))
+	
+	if (!(@fopen($new_url), 'r'))
 	{
 		throw new Exception('Not a valid URL');
 	}
 	
 	add_bm($new_url);
-	
 	echo "Bookmark added successfully.";
 	
 	if ($url_array = get_user_urls($_SESSION['valid_user']))

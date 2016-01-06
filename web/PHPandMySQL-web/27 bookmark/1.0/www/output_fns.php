@@ -27,13 +27,13 @@ function do_html_header($title)
 				{
 					padding-left: 20px;
 					font-family: Arial, Helvetica, sans-serif; 
-					font-size: 16px;
+					font-size: 13px;
 				}
 				
 				li, td
 				{
 					font-family: Arial, Helvetica, sans-serif; 
-					font-size: 16px;
+					font-size: 13px;
 				}
 				
 				hr
@@ -45,7 +45,7 @@ function do_html_header($title)
 				
 				a 
 				{
-					color: #2233aa;
+					color: #000000;
 					text-decoration: none;
 				}
 				
@@ -53,12 +53,6 @@ function do_html_header($title)
 				{
 					color: #f00;
 					text-decoration: none;
-				}
-				
-				p
-				{
-					padding-top:10px;
-					padding-bottom:10px;
 				}
 			</style>
 		</head>
@@ -78,35 +72,18 @@ function do_html_header($title)
 
 function do_html_heading($title)
 {
+	
 	echo "<br> <h3> $title </h3>";
+	if (isset($_SESSION['valid_user']))
+	{
+		echo "<p> Logged in as ".$_SESSION['valid_user']."</p>";
+	}
 }
 
 function do_html_footer()
 {
-	echo "<div style = \"width:98%; padding:0px; position:absolute; bottom:0px; text-align:center; border:1px solid #ddd; background-color:#ddd; \">";
-	echo "<br>";
-	echo "<p > You should follow our <a href = \"\"> \"service agreement\" </a> </p>";
-	echo "<p > All rights reserved &copy ywang_ltd </p>";
-	echo "<br>";
-	echo "</div>";
-	
-}
-
-function do_html_err($str)
-{
-	?>
-	<div style = "width:80%; border:1px solid #f22; background-color:#eff; padding:10px; margin:20px auto;">
-		<p>
-			<font style = "font-size:18px; font-weight:bold; color:#a33;"> <?php echo $str; ?> </font> <br />
-			<a href = "<?php echo $_SERVER['HTTP_REFERER']; ?>"> Back </a>
-		</p>
-	</div>
-	<?php 
-}
-
-function do_html_url($url, $urlname)
-{
-	echo "<a href = \"".$url."\"> ".$urlname." </a>";
+	echo "<p align = \"center\"> You should follow our <a href = \"\"> service agreement </a> </p>";
+	echo "<p align = \"center\"> All rights reserved &copy ywang_ltd </p>";
 }
 
 function display_site_info()
@@ -125,18 +102,8 @@ function display_site_info()
 function display_login_form()
 {
 	?>
-	<style>
-	input:-webkit-autofill 
-	{
-		-webkit-box-shadow: 0 0 0px 1000px white inset;
-			border: 1px solid #CCC!important;
-	}
-	
-	</style>
-	<br />
 	<a href = "register_form.php"> Not a member? </a> <br>
 	<table style = "background-color:#ddd">
-	<form action = "member.php" method = "post">
 		<tr>
 			<td colspan = 2>
 				<strong> Member log in here </strong>
@@ -147,7 +114,7 @@ function display_login_form()
 				<strong> Username </strong>
 			</td>
 			<td>
-				<input type = "text" name = "username" value = "" placeholder = "username" />
+				<input type = "text" name = "username" value = "" placeholder = "username"/>
 			</td>
 		</tr>
 		<tr>
@@ -160,29 +127,15 @@ function display_login_form()
 		</tr>
 		<tr>
 			<td colspan = 2 align = "center">
-				<input type = "submit" value = "Log in" style = "width:150px; height:30px; background-color:#a8e;"/>
+				<input type = "submit" value = "Log in" />
 			</td>
 		</tr>
-	</form>
 		<tr>
 			<td >
 				<a href = "forgot_password_form.php" > <strong> Forgot your password? </strong> </a>
 			</td>
 		</tr>
 	</table>
-	<?php 
-}
-
-function display_index_menu()
-{
-	?>
-	<br />
-	<a href = "register_form.php"> Not a member? </a> <br />
-	<a href = "login.php"> Login </a> <br />
-	<a href = "forgot_password_form.php" > Forgot your password? </a> <br />
-	
-	<a href = "member.php" > User Page </a> <br />
-		
 	<?php 
 }
 
@@ -210,8 +163,8 @@ function display_registration_form()
 			</tr>
 			<tr>
 				<td>
-					Password:<br>
-					<font style = "font-size:12px; color:#aaa;"> (between 6 and 32 chars) </font>
+					Password:
+					<font style = "font-size:10px; color:#ddd;"> (between 6 and 32 chars) </font>
 				</td>
 				<td>
 					<input type = "password" name = "password" value = "" />
@@ -239,14 +192,14 @@ function display_registration_form()
 function display_change_password_form()
 {
 	?>
-	<form method = "post" action = "change_password.php">
+	<form method = "post" action = "register_new.php">
 		<table style = "background-color:#ddd">
 			<tr>
 				<td>
 					Old password:
 				</td>
 				<td>
-					<input type = "password" name = "old_password" value = "" />
+					<input type = "password" name = "oldpassword" value = "" />
 				</td>
 			</tr>
 			<tr>
@@ -254,7 +207,7 @@ function display_change_password_form()
 					New password:
 				</td>
 				<td>
-					<input type = "password" name = "new_password" value = "" />
+					<input type = "password" name = "newpassword" value = "" />
 				</td>
 			</tr>
 			<tr>
@@ -262,7 +215,7 @@ function display_change_password_form()
 					Repeat new Password:
 				</td>
 				<td>
-					<input type = "password" name = "new_password2" value = "" />
+					<input type = "password" name = "newpassword2" value = "" />
 				</td>
 			</tr>
 			<tr>
@@ -279,7 +232,7 @@ function display_change_password_form()
 function display_forgot_password_form()
 {
 	?>
-	<form method = "post" action = "forgot_password.php">
+	<form method = "post" action = "register_new.php">
 		<table style = "background-color:#ddd">
 			<tr>
 				<td>
@@ -302,14 +255,14 @@ function display_forgot_password_form()
 function display_add_bm_form()
 {
 	?>
-	<form method = "post" action = "add_bms.php">
+	<form method = "post" action = "register_new.php">
 		<table style = "background-color:#ddd">
 			<tr>
 				<td>
 					New BM:
 				</td>
 				<td>
-					<input type = "text" name = "new_url" value = "http://" placeholder = "http://www.helloworld.com"/>
+					<input type = "text" name = "username" value = "http://" placeholder = "http://www.helloworld.com"/>
 				</td>
 			</tr>
 			<tr>
@@ -322,31 +275,15 @@ function display_add_bm_form()
 	<?php
 }
 
-function display_delete_bm_form($username)
-{
-	?>
-	<form action = "delete_bms.php" method = "post">
-	<?php
-	if ($url_array = get_user_urls($username))
-	{
-		display_user_urls_del($url_array);
-	}
-	?>
-		&nbsp; &nbsp; &nbsp; <input type = "submit" value = "Confirm" style = "width:80px; background-color:#ff2; border:1px solid #333; "/>
-	</form>
-	<?php 
-	
-}
 
 function display_user_menu()
 {
 	?>
-	
-	<br> <hr /> <br>
+	<hr />
 	<table>
 		<tr>
 			<td>
-				<a href = "index.php"> Home </a>
+				<a href = "login.php"> Home </a>
 				&nbsp;|&nbsp;
 				<a href = "add_bm_form.php"> Add BM </a>
 				&nbsp;|&nbsp;
@@ -367,8 +304,7 @@ function display_user_menu()
 	<?php
 }
 
-// 删除使用
-function display_user_urls_del($url_array)
+function display_user_urls($url_array)
 {
 	?>
 	<table>
@@ -388,7 +324,7 @@ function display_user_urls_del($url_array)
 						<a href = "<?php echo $url; ?>"> <?php echo $url; ?> </a>
 					</td>
 					<td>
-						<input type = "checkbox" name = "del_bm[]" value = "<?php echo $url; ?>">
+						<input type = "checkbox" name = "del_bm" value = "<?php echo $url; ?>">
 					</td>
 				</tr>
 			<?php
@@ -396,28 +332,5 @@ function display_user_urls_del($url_array)
 	echo "</table>";
 }
 
-
-// 显示使用
-function display_user_urls($url_array)
-{
-	?>
-	<table>
-		<tr>
-			<td width = "200">
-				<strong> Bookmark </strong>
-			</td>
-		</tr>
-		<?php
-			foreach ($url_array as $url)
-			{ ?>
-				<tr>
-					<td>
-						<a href = "<?php echo $url; ?>"> <?php echo $url; ?> </a>
-					</td>
-				</tr>
-			<?php
-			} 
-	echo "</table>";
-}
 
 ?>

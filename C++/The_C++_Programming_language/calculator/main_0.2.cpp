@@ -5,12 +5,9 @@
     此版本处理非常粗燥，只能按照设计模式，标准输入才行
     错误处理能力很差
 
-    输入：可以以 ':' 或者 '\n'都可以，有些地方不需要空格等，作为标识符的区分点
+    输入：必须使用空格，结束 ;
 
-    语法规则更加灵活
-
-    0.4 进一步优化输入，使用更加低级的输入，解析能力更强，用户体验更好
-    只需要修改 get_token() 函数的输入解析方法即可，一个一个字符的解析
+    0.2 改进输入，可以从命令行读取输入
 */
 
 #include <iostream>
@@ -38,12 +35,11 @@ map<string, double>table;
 
 
 // 函数声明
-double expr(bool, istream&);
-double term(bool, istream&);
-double prim(bool, istream&);
+double expr(bool);
+double term(bool);
+double prim(bool);
 double error(const string&);
-TokenValue get_token(istream&);
-void manage(istream& input);
+TokenValue get_token();
 
 
 /*
@@ -51,18 +47,18 @@ void manage(istream& input);
     bool 参数，指明函数是否需要调用get_token()函数，读取单词
     循环处理连加连减情况
 */
-double expr(bool get, istream& input)
+double expr(bool get)
 {
-    double left = term(get, input);
+    double left = term(get);
     for (; ; ) // 无限循环，根据输入自动结束
     {
         switch (curr_tok)
         {
         case PLUS:
-            left += term(true, input);
+            left += term(true);
             break;
         case MINUS:
-            left -= term(true, input);
+            left -= term(true);
             break;
         default:
             return left;
@@ -73,18 +69,18 @@ double expr(bool get, istream& input)
 /*
     term() 处理乘法、除法
 */
-double term(bool get, istream& input)
+double term(bool get)
 {
-    double left = prim(get, input);
+    double left = prim(get);
     for (; ; )
     {
         switch (curr_tok)
         {
         case MUL:
-            left *= prim(true, input);
+            left *= prim(true);
             break;
         case DIV:
-            if (double div_num = prim(true, input))
+            if (double div_num = prim(true))
             {
                 left /= div_num;
                 break;
@@ -102,42 +98,42 @@ double term(bool get, istream& input)
 /*
     处理初等项
 */
-double prim(bool get, istream& input)
+double prim(bool get)
 {
     if (get)
     {
-        get_token(input);
+        get_token();
     }
     switch (curr_tok)
     {
     case NUMBER:    // 定义了变量，必须用花括号括起来，否则编译错误 error:   crosses initialization of 'double value_n'|
         {
             double value_n = number_value;
-            get_token(input);
+            get_token();
             return value_n;
         }
 
     case NAME:
         {
             double& value = table[string_value];    // &?
-            if (get_token(input) == ASSIGN)
+            if (get_token() == ASSIGN)
             {
-                value = expr(true, input);     // 可能被修改，所以用引用
+                value = expr(true);     // 可能被修改，所以用引用
             }
             return value;
         }
 
     case MINUS:
-        return -prim(true, input);
+        return -prim(true);
 
     case LP:
         {
-            double e = expr(true, input);
+            double e = expr(true);
             if (curr_tok != RP)
             {
                 return error(") expected");
             }
-            get_token(input);    // 消掉 ')'
+            get_token();    // 消掉 ')'
             return e;
         }
 
@@ -150,18 +146,18 @@ double prim(bool get, istream& input)
 /*
     get_token 输入处理函数
 */
-TokenValue get_token(istream& input)    // 为什么不能使用 const
+TokenValue get_token()
 {
     char ch = 0;
-
-    while (input.get(ch) && ch != '\n' && isspace(ch)); // 处理非'\n' 的空白部分
+    cin >> ch;
 
     switch (ch)
     {
     case 0:
-        return curr_tok = END;  // 读入失败，则ch不会修改，while循环也会退出，逻辑正确 (未实验)
+        return curr_tok = END;  // 读入失败
 
-    case '*':   // 同一类的处理方法一样，所以重叠
+    case ';':   // 同一类的处理方法一样，所以重叠
+    case '*':
     case '/':
     case '+':
     case '-':
@@ -172,29 +168,22 @@ TokenValue get_token(istream& input)    // 为什么不能使用 const
 
     case '0': case '1': case '2': case '3': case '4': case '5': case '6':
     case '7': case '8': case '9': case '.':     // 小数点，都是数字一类，统一处理
-        input.putback(ch);    // 回退一步，插入到输入流中
-        input >> number_value;  // 专门写一个函数处理数字输入
+        cin.putback(ch);    // 回退一步，插入到输入流中
+        cin >> number_value;
         return curr_tok = NUMBER;
-
-    case ';':   // 都当做输入结束符
-    case '\n':
-        return curr_tok = PRINT;
 
     default:
         if (isalpha(ch))
         {
-            string_value = ch;
-            while(input.get(ch) && isalnum(ch))
-            {
-                string_value.push_back(ch);
-            }
-
-            input.putback(ch);
+            cin.putback(ch);
+            cin >> string_value;
             return curr_tok = NAME;
         }
-
-        error("bad token");
-        return curr_tok = PRINT;
+        else
+        {
+            error("bad token");
+            return curr_tok = PRINT;
+        }
     }
 }
 
@@ -211,16 +200,33 @@ double error(const string& str)
 }
 
 /*
-    主体函数--manage()
-
-    进一步优化，直接重定向到标注输入流，都使用new，实现统一
+    主程序，也叫驱动程序
 */
+istream* input; // 指向输入流
 
-void manage(istream& input)
+int main(int argc, char* argv[])
 {
-    while (input)
+    switch (argc)
     {
-        get_token(input);
+    case 1:
+        input = &cin;   // 指向标准输入流
+        break;
+
+    case 2:
+        input = new istringstream(argv[1]);
+		break;
+
+    default:
+        error("too many arguments");
+        return 1;
+    }
+
+    table["pi"] = 3.1415926535897932385;
+    table["e"] = 2.7182818284590452354;
+
+    while (*input)
+    {
+        get_token();
         if (curr_tok == END)
         {
             break;
@@ -231,7 +237,7 @@ void manage(istream& input)
             continue;
         }
 
-        cout << expr(false, input) << endl;
+        cout << expr(false) << endl;
 
         /* 等价
         if (curr_tok != PRINT)
@@ -241,43 +247,9 @@ void manage(istream& input)
         */
     }
 
-    /* 函数外处理更好
     if (input != &cin)
     {
         delete input;   // 与 new 对应
-    }
-    */
-}
-
-
-/*
-    主程序，也叫驱动程序
-*/
-
-int main(int argc, char* argv[])
-{
-    table["pi"] = 3.1415926535897932385;
-    table["e"] = 2.7182818284590452354;
-
-    switch (argc)
-    {
-    case 1:
-        //input = &cin;   // 指向标准输入流
-        manage(cin);
-        break;
-
-    case 2:
-        {   // 必须使用{} 定义新变量
-            istream* input = new istringstream(argv[1]);
-            manage(*input);
-
-            delete input;   // new 对应，函数里面处理不好
-            break;
-        }
-
-    default:
-        error("too many arguments");
-        return 1;
     }
 
     return no_errors;

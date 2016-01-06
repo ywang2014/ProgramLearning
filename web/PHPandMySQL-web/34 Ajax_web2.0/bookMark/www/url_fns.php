@@ -11,13 +11,10 @@ function add_bm($new_url)
 	$sql = "select * from bookmark where bm_url = '$new_url' and username = '$username'";
 	
 	$result = mysql_query($sql);
-	if (!$result)
+	if ($result && mysql_num_rows($result) > 0)
 	{
-		throw new Exception('could not execute query');
-	}
-	else if (mysql_num_rows($result) > 0)
-	{
-		throw new Exception('That url has been added, go back and choose another one.');
+		// throw new Exception('That url has been added, go back and choose another one.');
+		echo "<p class = \"warn\"> Bookmark already exists. </p>";
 	}
 	else
 	{
@@ -25,7 +22,12 @@ function add_bm($new_url)
 		$result = mysql_query($sql);
 		if (!$result)
 		{
-			throw new Exception('Could not add url in database, please try again later.');
+			//throw new Exception('Could not add url in database, please try again later.');
+			echo "<p class = \"warn\"> Bookmark could not be inserted. </p>";
+		}
+		else
+		{
+			echo "<p> Bookmark added. </p>";
 		}
 	}
 	

@@ -11,9 +11,6 @@ $password = $_POST['password'];		// 密码应该允许两端使用空格
 $password2 = $_POST['password2'];
 
 session_start();
-/*print_r($_POST);
-exit;*/
-
 try
 {
 	if (!filled_out($_POST))
@@ -23,7 +20,7 @@ try
 	
 	if (!valid_email($email))
 	{
-		throw new Exception('That is not a valid email address, please go back and try again.');
+		throw new Exception('Taht is not a valid email address, please go back and try again.');
 	}
 	
 	if ($password != $password2)
@@ -51,7 +48,7 @@ try
 catch (Exception $e)
 {
 	do_html_header('Error');
-	do_html_err($e->getMessage());
+	echo $e->getMessage();
 	do_html_footer();
 	exit;
 }

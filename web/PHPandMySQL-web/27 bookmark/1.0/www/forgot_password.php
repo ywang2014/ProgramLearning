@@ -11,13 +11,11 @@ $username = trim($_POST['username']);
 try
 {
 	$password = reset_password($username);
-	//print_r($password);
-	notify_password($username, $password);
+	notity_password($username, $password);
 	echo 'Your new password has been emailed to you. <br>';
 }
 catch (Exception $e)
 {
-	echo "<p> ".$e->getMessage()."</p>";
 	echo "Your password could not be reset. Please try again later.";
 }
 

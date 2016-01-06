@@ -6,7 +6,9 @@
 require_once('bookmark_fns.php');
 do_html_header('');
 
-display_login_form();
+display_site_info();
+
+display_index_menu();
 
 do_html_footer();
 

@@ -23,9 +23,9 @@ try
 	{
 		throw new Exception('Passwords entered were not the same. Try again.');
 	}
-	else if (strlen($new_password) > 32 || strlen($new_password) < 6)
+	else if (strlen($new_password) > 32 || strlen($newpassword) < 6)
 	{
-		throw new Exception('New password must be between 6 and 16 characters. Try again.');
+		throw Exception('New password must be between 6 and 16 characters. Try again.');
 	}
 	
 	change_password($_SESSION['valid_user'], $old_password, $new_password);

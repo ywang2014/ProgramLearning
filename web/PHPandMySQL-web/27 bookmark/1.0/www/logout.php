@@ -5,7 +5,7 @@
 require_once('bookmark_fns.php');
 session_start();
 
-$old_user = isset($_SESSION['valid_user']) ? $_SESSION['valid_user'] : '' ;
+$old_user = $_SESSION['valid_user'];
 
 unset($_SESSION['valid_user']);
 $result_dest = session_destroy();

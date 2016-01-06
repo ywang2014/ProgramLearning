@@ -5,12 +5,9 @@
     此版本处理非常粗燥，只能按照设计模式，标准输入才行
     错误处理能力很差
 
-    输入：可以以 ':' 或者 '\n'都可以，有些地方不需要空格等，作为标识符的区分点
+    输入：必须使用空格，结束 ;
 
-    语法规则更加灵活
-
-    0.4 进一步优化输入，使用更加低级的输入，解析能力更强，用户体验更好
-    只需要修改 get_token() 函数的输入解析方法即可，一个一个字符的解析
+    0.3 进一步优化输入，使得更加灵活
 */
 
 #include <iostream>
@@ -38,9 +35,16 @@ map<string, double>table;
 
 
 // 函数声明
+/*
+输入值流，不能使用const
+double expr(bool, const istream&);
+double term(bool, const istream&);
+double prim(bool, const istream&);
+*/
 double expr(bool, istream&);
 double term(bool, istream&);
 double prim(bool, istream&);
+
 double error(const string&);
 TokenValue get_token(istream&);
 void manage(istream& input);
@@ -153,15 +157,15 @@ double prim(bool get, istream& input)
 TokenValue get_token(istream& input)    // 为什么不能使用 const
 {
     char ch = 0;
-
-    while (input.get(ch) && ch != '\n' && isspace(ch)); // 处理非'\n' 的空白部分
+    input>>ch;
 
     switch (ch)
     {
     case 0:
-        return curr_tok = END;  // 读入失败，则ch不会修改，while循环也会退出，逻辑正确 (未实验)
+        return curr_tok = END;  // 读入失败
 
-    case '*':   // 同一类的处理方法一样，所以重叠
+    case ';':   // 同一类的处理方法一样，所以重叠
+    case '*':
     case '/':
     case '+':
     case '-':
@@ -173,28 +177,21 @@ TokenValue get_token(istream& input)    // 为什么不能使用 const
     case '0': case '1': case '2': case '3': case '4': case '5': case '6':
     case '7': case '8': case '9': case '.':     // 小数点，都是数字一类，统一处理
         input.putback(ch);    // 回退一步，插入到输入流中
-        input >> number_value;  // 专门写一个函数处理数字输入
+        input >> number_value;
         return curr_tok = NUMBER;
-
-    case ';':   // 都当做输入结束符
-    case '\n':
-        return curr_tok = PRINT;
 
     default:
         if (isalpha(ch))
         {
-            string_value = ch;
-            while(input.get(ch) && isalnum(ch))
-            {
-                string_value.push_back(ch);
-            }
-
             input.putback(ch);
+            input >> string_value;
             return curr_tok = NAME;
         }
-
-        error("bad token");
-        return curr_tok = PRINT;
+        else
+        {
+            error("bad token");
+            return curr_tok = PRINT;
+        }
     }
 }
 

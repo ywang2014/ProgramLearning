@@ -4,32 +4,7 @@
 */
 function add_bm($new_url)
 {
-	$conn = db_connect();
 	
-	$username = $_SESSION['valid_user'];
-	
-	$sql = "select * from bookmark where bm_url = '$new_url' and username = '$username'";
-	
-	$result = mysql_query($sql);
-	if (!$result)
-	{
-		throw new Exception('could not execute query');
-	}
-	else if (mysql_num_rows($result) > 0)
-	{
-		throw new Exception('That url has been added, go back and choose another one.');
-	}
-	else
-	{
-		$sql = "insert into bookmark (username, bm_url) values ('$username', '$new_url')";
-		$result = mysql_query($sql);
-		if (!$result)
-		{
-			throw new Exception('Could not add url in database, please try again later.');
-		}
-	}
-	
-	return true;
 }
 
 
@@ -37,15 +12,14 @@ function get_user_urls($username)
 {
 	$conn = db_connect();
 	$sql = "select bm_url from bookmark where username = '$username'";
-	$result = mysql_query($sql);
-	
+	$result = $conn->query($sql);
 	if (!$result)
 	{
 		return false;
 	}
 	$url_array = array();
 	
-	for ($count = 0; $row = mysql_fetch_row($result); $count++)
+	for ($count = 0; $row = $result->fetch_row(); $count++)
 	{
 		$url_array[$count] = $row[0];
 	}
@@ -59,7 +33,7 @@ function delete_bm($username, $url)
 	$conn = db_connect();
 	
 	$sql = "delete from bookmark where username = '$username' and bm_url = '$url'";
-	if (!mysql_query($sql))
+	if (!$conn->query($sql))
 	{
 		throw new Exception('Bookmark could not be deleted.');
 	}
@@ -79,17 +53,17 @@ function recommend_urls($username, $popularity = 1)
 			"and bm_url not in (select bm_url from bookmark where username = '".$username."')".
 			"group by bm_url having count(bm_url)>".$popularity;
 			
-	if (!($result = mysql_query($sql)))
+	if (!($result = $conn->query($query)))
 	{
 		throw new Exception('Could not find any bookmarks to recommend.');
 	}
-	else if (mysql_num_rows($result) == 0)
+	else if ($result->num_rows == 0)
 	{
 		throw new Exception('Could not find any bookmarks to recommend.');
 	}
 	
 	$urls = array();
-	for ($count = 0; $row = mysql_fetch_array($result); $count++)
+	for ($count = 0; $row = $result->fetch_object(); $count++)
 	{
 		$urls[$count] = $row->bm_url;
 	}

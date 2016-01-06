@@ -8,8 +8,10 @@
 	display_login_form();
 */
 
+// 修改的函数 导入 *.css *.js文件，支持Ajax
 function do_html_header($title)
 {
+	// print an HTML header
 	?>
 	<!DOCTYPE html>
 	<html>
@@ -61,6 +63,10 @@ function do_html_header($title)
 					padding-bottom:10px;
 				}
 			</style>
+			
+			<link rel = "stylesheet" type = "text/css" href = "../new_ss.css" />
+			<script src = "../new_ajax.js" type = "text/javascript"> </script>
+			
 		</head>
 		
 		<body>
@@ -299,22 +305,29 @@ function display_forgot_password_form()
 	<?php
 }
 
+
+// 修改 支持Ajax
 function display_add_bm_form()
 {
 	?>
-	<form method = "post" action = "add_bms.php">
-		<table style = "background-color:#ddd">
+	<script type = "text/javascript">
+		var myReg = getXMLHTTPRequest();
+	</script>
+	
+	<form >
+		<table width = "250" cellpadding = "2" cellspacing = "0" style = "background-color:#CCC">
 			<tr>
 				<td>
 					New BM:
 				</td>
 				<td>
-					<input type = "text" name = "new_url" value = "http://" placeholder = "http://www.helloworld.com"/>
+					<input type = "text" name = "new_url" value = "http://" size = "30" maxlength = "255"
+						placeholder = "http://www.helloworld.com"/>
 				</td>
 			</tr>
 			<tr>
 				<td colspan = 2 align = "center">
-					<input type = "submit" value = "Add bookmark" />
+					<input type = "button" value = "Add bookmark" onclick = "javascript:addNewBookmark(); " />
 				</td>
 			</tr>
 		</table>
