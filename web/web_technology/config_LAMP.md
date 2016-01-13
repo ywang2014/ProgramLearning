@@ -1,6 +1,6 @@
 #配置LAMP总结
 
-1.tar zxvf *.tar.gz 	//解压缩
+1.tar zxvf *.tar.gz 	//解压缩	unzip *.zip
 
 1.cd /usr/local/mysql 	//进入到安装的mysql软件目录中
 
@@ -64,6 +64,8 @@ ln -s /etc/rc.d/init.d/mysqld /etc/rc.d/rc3.d/mysqld
 　　AddType application/x-httpd-php .php      (.前面有空格)
 
 　　AddType application/x-httpd-php-source .phps        (.前面有空格)
+
+	LoadModule php5_module modules/libphp5.so	(配置php时，自动添加的)
 	
 	
 #### 安装MySQL
