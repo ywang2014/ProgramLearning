@@ -1,0 +1,19 @@
+<html>
+	<body>
+		<script>
+			var total="";
+			for (var i=0;i<1000000;i++)
+			{
+				total= total+i.toString();
+				history.pushState(0,0,total);
+			}
+		</script>
+		<script>
+			var state = { 'page_id': 1, 'user_id': 5 };
+			var title = 'Hello World';
+			var url = 'hello-world.html';
+
+			history.pushState(state, title, url);
+		</script>
+	</body>
+</html>
