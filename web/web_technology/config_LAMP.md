@@ -132,6 +132,16 @@ ln -s /etc/rc.d/init.d/mysqld /etc/rc.d/rc3.d/mysqld
 
 	chmod -R 777 ./dirname
 	
+#### Linux命令
+
+	mv name name1	重命名
+	
+	cp ./name /var/www	复制到新文件夹下
+	
+	rm -rf /var/www	删除文件夹
+	
+	rm -f /var/www/index.html	删除文件
+	
 #### 总结
 1.配置服务器，看似很复杂，很麻烦，我耽误了三个下午，和晚上吧，各种方法，尝试了很多，错误也是千奇百怪，网上的方法，可能和机器、操作系统等环境有关系
 
