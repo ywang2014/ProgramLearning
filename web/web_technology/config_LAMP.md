@@ -81,12 +81,95 @@ ln -s /etc/rc.d/init.d/mysqld /etc/rc.d/rc3.d/mysqld
 	
 	cp php.ini.development /usr/local/php/lib/php.ini 	// 或者安装的时候，指定目录 --with-config-file-path=/usr/local/php/etc
 	
+	安装GD
+	wget http://www.boutell.com/gd/http/gd-2.0.33.tar.gz
+	wget http://download.chinaunix.net/download.php?id=28882&ResourceID=5095
+	wget http://nchc.dl.sourceforge.net/sourceforge/libpng/libpng-1.2.8-config.tar.gz
+	wget http://zlib.net/zlib-1.2.8.tar.gz
+	wget http://ftp.yzu.edu.tw/nongnu/freetype/freetype-2.6.2.tar.gz
+	
+#### 安装GD库
+	
+	1.安装zlib 
+	tar zxvf zlib-1.2.3.tar.gz 
+	cd zlib-1.2.3 
+	./configure --prefix=/usr/local/zlib 
+	make 
+	make install 
+	
+	2.安装libpng 
+	tar zxvf libpng-1.2.8.tar.tar 
+	cd libpng-1.2.8 
+	mv ./scripts/makefile.linux ./makefile 
+	make 
+	make install 
+	注意，这里的makefile不是用./configure生成，而是直接从scripts/里拷一个 
+	
+	3.安装freetype 
+	tar zxvf freetype-2.1.10.tar.gz 
+	cd freetype-2.1.10 
+	./configure --prefix=/usr/local/freetype  有错误
+	解决方法：./configure –prefix=/usr/local/freetype –without-png
+	make 
+	make install 
+	
+	4.安装Jpeg 
+	tar zxvf jpegsrc.v6b.tar.gz 
+	cd jpeg-6b/ 
+	./configure --enable-shared 
+	make 
+	make test 
+	make install 
+	注意，这里configure一定要带--enable-shared参数，不然，不会生成共享库 
+
+	5.安装GD 
+	tar zxvf gd-2.0.33.tar.gz 
+	cd gd-2.0.33 
+	./configure --with-png --with-jpeg --with-freetype=/usr/local/freetype 
+	make 
+	make install 
+	
+	
+###### 不重新编译php
+	
+	cd /root/tmp/php-5.6.16/ext/gd
+	/usr/local/php/bin/phpize
+	./configure --with-zlib-dir=/usr/local/zlib --with-php-config=/usr/local/php/bin/php-config
+		--with-gd=/usr/local/gd --with-jpeg-dir=/usr/local/jpeg --with-png-dir=/usr/local/libpng --with-freetype-dir=/usr/local/freetype
+	遇到了错误！configure: error: Problem with libpng.(a|so) or libz.(a|so). Please check config.log for more information. 
+	make && make install
+	
+###### 重新编译PHP
+
+	cd /root/tmp/php-5.6.16
+	./configure --prefix=/usr/local/php --with-apxs2=/usr/local/apache2/bin/apxs --with-mysql
+		--with-gd --enable-gd-native-ttf --with-zlib-dir=/usr/local/zlib --with-freetype-dir=/usr/local/freetype 
+	
+	这两个参数已经被舍弃 --with-png --with-jpeg yum自带的有！
+	遇到问题：
+		virtual memory exhausted: Cannot allocate memory
+		make: *** [ext/fileinfo/libmagic/apprentice.lo] Error 1
+		
+		解决方法：在php安装配置文件中添加了引号中的配置（不包括引号）“--disable-fileinfo”后，终于编译通过。
+
+[官方解释](https://bugs.php.net/bug.php?id=48809)
+	
+	Adding --disable-fileinfo to ./configure solves the problem.
+	
+	方法二：
+		发生该问题的原因是服务器的内存不够，从而导致编译失败。
+		而购买的Linux服务器，未给你分配虚拟内存，所以可以通过自行增加虚拟内存的方法予以解决：
+		
+		dd if = / dev / zero of = / swap bs = 1024 count = 1M
+		mkswap / swap
+		swapon / swap
+		echo "/swap  swap  swap  sw  0  0"  >> / etc / fstab
+	不懂！
+
+	
 **修改配置文件：php.ini**
 
 	data.timezone = UTC		// 否则报错
-	
-	error_report(E_ALL & ~E_DEPRECATED)	//高版本不支持 mysql_connect()
-	
 	
 
 #### 复制文件夹
