@@ -59,5 +59,34 @@ class std::vector
 		void assign(size_type n, const T& val);
 		
 		
+		// 堆栈操作
+		void push_back(const T& x);
+		void pop_back();
+		const T& back();
+		
+		
+		// 表操作
+		iterator insert(iterator pos, const T& x);		// 在pos前加入x
+		void insert(iterator pos, size_type n, const T& x);		// 在pos前加入n个x
+		template <class In> 
+			void insert(iterator pos, In first, In last);
+		
+		iterator erase(iterator pos);
+		iterator erase(iterator first, iterator last);
+		void clear();
+		
+		
+		// 容量操作
+		size_type size() const;
+		bool empty() const { return size() == 0;}
+		size_type max_size() const;
+		void resize(size_type sz, T val = T());
+		
+		size_type capacity() const;
+		void reserve(size_type n);
+		
+		
 		//
+		void swap(vector& );
+		allocator_type get_allocator() const;
 };
