@@ -1,5 +1,7 @@
 /**
 	STL vector
+	
+	用于存放元素的数据成员，没有看见！
 */
 
 template <class T, class A = allocator<T> > 
