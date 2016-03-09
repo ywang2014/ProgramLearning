@@ -58,7 +58,7 @@ void deleteNode(ListNode** listHead, ListNode* beDeleted)
 			p = p->next;
 		}
 		
-		if (p == NULL)
+		if (p == NULL)	// 没有找到删除的元素
 		{
 			return ;
 		}
@@ -74,6 +74,46 @@ void deleteNode(ListNode** listHead, ListNode* beDeleted)
 		beDeleted->value = p->value;
 		beDeleted->next = p->next;	// 删除p
 		delete p;
+	}
+}
+
+
+// 参考答案 源代码
+void DeleteNode(ListNode** pListHead, ListNode* pToBeDeleted)
+{
+	if (!pListHead || !pToBeDeleted)
+	{
+		return ;
+	}
+	
+	// 删除的节点非尾节点
+	if (pToBeDeleted->m_pNext != NULL)
+	{
+		ListNode* pNext = pToBeDeleted->m_pNext;
+		pToBeDeleted->m_nValue = pNext->m_nValue;
+		pToBeDeleted->m_pNext = pNext->m_pNext;
+		
+		delete pNext;
+		pNext = NULL;
+	}
+	else if (*pListHead == pToBeDeleted)	// 只有一个节点情况
+	{
+		delete pToBeDeleted;
+		pToBeDeleted = NULL;
+		*pListHead = NULL;
+	}
+	else
+	{
+		// 多个节点，删除尾节点
+		ListNode* pNode = *pListHead;
+		while (pNode->m_pNext != pToBeDeleted)
+		{
+			pNode = pNode->m_pNext;
+		}
+		
+		pNode->m_pNext = NULL;
+		delete pToBeDeleted;
+		pToBeDeleted = NULL;
 	}
 }
 
