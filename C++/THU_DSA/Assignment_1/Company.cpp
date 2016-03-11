@@ -125,8 +125,13 @@ int main()
 				
 			case 'C':
 				//memset(member, -1, sizeof(member));	// 对了50%
-				memset(member, -1, (n+1) * sizeof(int));
-				member[0] = 0;
+				//memset(member, -1, (n+1) * sizeof(int));
+				//member[0] = 0;
+				if (member[0] != 0) // 简单利用缓存技术
+                {
+                    memset(member, -1, (n+1) * sizeof(int));
+                    member[0] = 0;
+                }
 				break;
 				
 			case 'N':
