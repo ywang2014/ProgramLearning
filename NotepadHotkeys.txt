@@ -1,10 +1,18 @@
 ﻿Notepad++ 快捷键 大全
+
+Ctrl+A 全选
 Ctrl+C 复制
 Ctrl+X 剪切
 Ctrl+V 粘贴
+
+注释方法：
+ctrl+k			单行、多行注释
+ctrl+q			取消注释
+ctrl+shift+q	区块注释 
+
 Ctrl+Z 撤消
 Ctrl+Y 恢复
-Ctrl+A 全选
+
 Ctrl+F 键查找对话框启动
 Ctrl+H 查找/替换对话框
 Ctrl+D 复制并粘贴当行
@@ -14,6 +22,7 @@ Ctrl+L 删除当前行
 Ctrl+T 当行向上移动一行
 F3 查找下一个
 Shift+F3 查找上一个
+
 Ctrl+Shift+F 组合在文件中查找
 Ctrl+F3 查找（volatil）下一页
 Ctrl+Shift+F3 查找（volatil）上一页
@@ -61,6 +70,7 @@ Ctrl+Shift+P 播放录制的宏
 CTRL+Q 注释/取消注释
 Ctrl+Shift+Q 值流评论
 Ctrl+Shift+T 当前行复制到剪贴板
+
 Ctrl+P 打印
 Alt+F4 退出
 Ctrl+I 分割线
