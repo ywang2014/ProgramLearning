@@ -99,5 +99,30 @@ map是有序的，hash_map是无序的。hash_map查找效率更高。
 	函数指针适配器
 	否定器
 	
+	排序序列：sort、二分查找、归并、划分、集合操作：includes()、set_difference()、set_symmetric_difference()
+	
+	堆：heap	<--> priority_queue
+		push_heap()、pop_heap()、sort_heap()	
+	
+	最大、最小	max_element()	min_element()
+	字典序：lexicographical_compare()
+	
+	排列 next_permutation()		prev_permutation()
+	
+	兼容性：
+		C语言中：qsort()	bsearch()
+		C++中：  sort()		search()
+		
+	std::mem_fun和std::mem_fun_ref所实现的是相同的功能
+		mem_fun()用于处理容器对象指针
+		mem_fun_ref()用于处理容器对象实体
+		
+总结：标准库提供了很多算法，通用性、完整性、鲁棒性非常好，多使用算法，少使用循环，少造轮子！
+find()	for_each()	tranform()	search()	sort()	unique()	remove()	lower_bound()...
+
+第19章 迭代器和分配器 
+	
+	迭代器是链接容器和算法的纽带，提供了一个数据访问的标准模型
+	分配器被用于将容器的实现隔离在对存储访问的细节之外，提供了一种映射，将低级数据结构模型映射到高级对象模型。
 	
 	
