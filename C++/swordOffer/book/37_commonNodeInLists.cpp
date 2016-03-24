@@ -112,5 +112,4 @@ unsigned int getListLength(ListNode* head)
 	}
 	
 	return len;
-	
 }
