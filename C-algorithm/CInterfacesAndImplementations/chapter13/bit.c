@@ -24,6 +24,20 @@ struct T{
 // +7 为了向上取整
 #define nbytes(len) ((((len) + 8 - 1) & (~(8 - 1))) / 8)
 
+#define setop(sequal, snull, tnull, op) \
+	if (s == t) { assert(s); return sequal; } \
+	else if (s == NULL) { assert(t); return snull; } \
+	else if (t == NULL) { return tnull; } \
+	else {	\
+		int i; T set; \
+		assert(s->length == t->length); \
+		set = Bit_new(s->length); \
+		for (i = nwords(s->length); --i >= 0; ){ \
+			set->words[i] = s->words[i] op t->words[i]; \
+		} \
+		return set; \
+	}
+
 
 // static data
 // lo%8 索引掩码表 0位，则所有的设置为1(0xFF)，...，7位则仅最高位设置为1(0x80)
@@ -39,6 +53,18 @@ unsigned char lsbmask[] = {
 
 
 // static functions
+static T copy(T t){
+	T set;
+	
+	assert(t);
+	
+	set = Bit_new(t->length);
+	if (t->length > 0){
+		memcpy(set->bytes, t->bytes, nbytes(t->length));
+	}
+	
+	return set;
+}
 
 
 // functions
@@ -219,4 +245,63 @@ int Bit_eq(T s, T t){
 	}
 	
 	return 1;	// 相等
+}
+
+
+// 子集
+int Bit_leq(T s, T t){
+	int i;
+	
+	assert(s && t);
+	assert(s->length == t->length);
+	
+	for (i = nwords(s->length); --i >= 0; ){
+		if ((s->words[i] & ~t->words[i]) != 0){
+			return 0;
+		}
+	}
+	
+	return 1;
+}
+
+
+// 真子集
+int Bit_lt(T s, T t){
+	int i;
+	int lt = 0;
+	
+	assert(s && t);
+	assert(s->length == t->length);
+	
+	for (i = nwords(s->length); --i >= 0; ){
+		if ((s->words[i] & ~t->words[i]) != 0){
+			return 0;
+		}
+		else if (s->words[i] != t->words[i]){
+			lt |= 1;
+		}
+	}
+	
+	return lt;
+}
+
+
+T Bit_union(T s, T t){
+	setop(copy(t), copy(t), copy(s), |)
+}
+
+
+T Bit_inter(T s, T t){
+	// 一个为空，则返回空集合，长度等于非空集合的长度
+	setop(copy(t), Bit_new(t->length), Bit_new(s->length), &)
+}
+
+
+T Bit_minus(T s, T t){
+	setop(Bit_new(s->length), Bit_new(t->length), copy(s), & ~)
+}
+
+
+T Bit_diff(T s, T t){
+	setop(Bit_new(s->length), copy(t), copy(s), ^)
 }
