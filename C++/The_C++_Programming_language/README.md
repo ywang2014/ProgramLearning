@@ -125,4 +125,29 @@ find()	for_each()	tranform()	search()	sort()	unique()	remove()	lower_bound()...
 	迭代器是链接容器和算法的纽带，提供了一个数据访问的标准模型
 	分配器被用于将容器的实现隔离在对存储访问的细节之外，提供了一种映射，将低级数据结构模型映射到高级对象模型。
 	
+	iterator
+		分类：Out In For Binary Rand
+		操作：++ *p(读、写) --  +  == !=  
+	
+	iterator_traits
+	
+	inserter /back_inserter	(避免容器的溢出)
+	
+	迭代器操作，尽量使用前缀++，后缀++会产生临时变量，影响效率
+	
+	allocator
+		new/delete
+		malloc/free
+	
+	未初始化内存分配：
+		uninitialized_copy()
+		uninitialized_fill()
+		uninitialized_fill_n()
+		get_temporary_buffer() // 只分配不构造		return_temporary_buffer() // 只释放不销毁  (成对使用)
+		get_temporary_buffer属于低级机制，专门用于快速分配，优化使用的，不能代替new()，allocator::allocate()
+		
+		Obj a = new Obj()	/	Obj *b = new Obj	a将被初始化为0，b不会被初始化，垃圾值
+		
+	raw_storage_iterator	做的是初始化，而不是赋值
+	
 	
