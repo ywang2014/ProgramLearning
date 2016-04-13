@@ -150,4 +150,32 @@ find()	for_each()	tranform()	search()	sort()	unique()	remove()	lower_bound()...
 		
 	raw_storage_iterator	做的是初始化，而不是赋值
 	
+第20章 串
+
+	这一章，完整讲解了basic_string类的接口实现，接口非常多，但是分类很清晰，明确，并讲解了实现所需技巧和注意事项。
+	typedef basic_string<char> string	basic_string<>是一个模板类，类似于vector一样的容器，接口和vector相似，
+	string是basic_string模板的一个实例化。
+	basic_string模板类的接口非常多，包含各种常规的操作。
 	
+	C标准库中，关于C风格字符串的操作函数，字符操作函数等
+	
+	atoi() atol() atof()		strtol() strtod()	仅错误处理方式不同，其他一样。
+	long atol(const cahr *p);		long strtol(const char *p, char **end, int b);
+	atol(s) = strtol(s, 0, 10)
+	
+	at() operator[] 区别：at()更加安全，有返回越界检查，[]和迭代器都没有检查。[]速度更快，效率高
+	
+	C++编程，尽量多用string，少用c风格字符串(多使用容器，标准库算法，少些循环，数组等一样) 【安全、效率】
+	
+第21章 流
+
+	<iosfwd> 流I/O类和模板声明，标准typedef等，部分I/O头文件
+	
+	输出：从各种类型，到字符序列的转换结果
+	输入：从字符序列，获取各种类型格式的值
+	格式化：输出布局的需求
+	
+	流：文件(istream, ostream, file)
+	缓冲区：提高I/O效率
+	locale：文化差异
+	C语言I/O：scanf() printf()
