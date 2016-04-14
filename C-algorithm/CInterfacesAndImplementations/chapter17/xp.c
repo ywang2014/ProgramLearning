@@ -6,7 +6,21 @@
 #define T XP_T
 #define BASE (1 << 8)
 
+// *p is a digit in base
+#define isBaseDigit(p) ((p) && isalnum(p) && map[(p) - '0'] < base)
+
 // data
+static char map[] = {
+	0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
+	36, 36, 36, 36, 36, 36, 36,
+	10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 
+	20, 21, 22, 23, 24, 25, 26, 27, 28, 29,
+	30, 31, 32, 33, 34, 35,
+	36, 36, 36, 36, 36, 36,
+	10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+	20, 21, 22, 23, 24, 25, 26, 27, 28, 29,
+	30, 31, 32, 33, 34, 35
+};
 
 
 // functions 
@@ -185,10 +199,39 @@ int XP_div(int n, T q, T x, int m, T y, T r, T tmp){
 		for (k = n - m; k >= 0; k--){
 			int qk;
 			// compute qk, dq <-- y*qk 
+			{
+				int i;
+				assert(2 <= m && m <= k + m; && k + m <= n);
+				// qk <-- y[m-2...m-1]/rem[k+m-2...k+m]
+				{
+					int km = k + m;
+					unsigned long y2 = y[m - 1] * BASE + y[m - 2];
+					unsigned long r3 = rem[km] * (BASE * BASE) + rem[km - 1] * BASE + rem[km - 2];
+					
+					qk = r3 / y2;
+					if (qk >= BASE){
+						qk = BASE - 1;
+					}
+				}
+				
+				for (i = m; i > 0; i--){
+					if (rem[i + k] != dq[i]){
+						break;
+					}
+				}
+				if (rem[i + k] < dq[i]){
+					dq[m] = XP_product(m, dq, y, --qk);
+				}
+			}
 			
 			q[k] = qk;
 			// rem <-- rem - dq*b^k 
-			
+			{
+				int borrow;
+				assert(0 <= k && k <= k + m);
+				borrow = XP_sub(m + 1, &rem[k], &rem[k], dq, 0);
+				assert(borrow == 0);
+			}
 		}
 		memcpy(r, rem, m);
 		// fill out q and r with 0s 
@@ -219,4 +262,139 @@ int XP_quotient(int n, T z, T x, int y){
 	}
 	
 	return carry;
+}
+
+
+int XP_cmp(int n, T x, T y){
+	int i = n - 1;
+	
+	while (i > 0 && x[i] == y[i]){
+		i--;
+	}
+	
+	return x[i] - y[i];
+}
+
+
+void XP_lshift(int n, T z, int m, T x, int s, int fill){
+	fill = (fill ? 0XFF : 0);
+	// shift left by s/8 bytes
+	{
+		int i;
+		int j = n - 1;
+		if (n > m){
+			i = m - 1;
+		}
+		else{
+			i = n - s / 8 - 1;
+		}
+		
+		for (; j >= m + s/8; j--){
+			z[j] = 0;
+		}
+		for (; i >= 0; i--, j--){
+			z[j] = x[i];
+		}
+		for (; j >= 0; j--){
+			z[j] = fill;
+		}
+	}
+	
+	s % = 8;
+	if (s > 0){
+		// shift z left by s bits
+		XP_product(n, z, z, 1 << s);
+		z[0] |= fill >> (8 - s);
+	}
+}
+
+
+void XP_rshift(int n, T z, int m, T x, int s, int fill){
+	fill = (fill ? 0XFF : 0);
+	// shift right by s/8 bytes
+	{
+		int i;
+		int j = 0;
+		
+		for (i = s/8; i < m && j < n; i++, j++){
+			z[j] = x[i];
+		}
+		for (; j < n; j++){
+			z[j] = fill;
+		}
+	}
+	
+	s % = 8;
+	if (s > 0){
+		// shift z right by s bits
+		XP_quotient(n, z, z, 1 << s);
+		z[n - 1] |= fill << (8 - s);
+	}
+}
+
+
+int XP_fromstr(int n, T z, const char *str, int base, char **end){
+	const char *p = str;
+	
+	assert(p);
+	assert(base >= 2 && base <= 36);
+	
+	// skip white space
+	while (*p && isspace(*p)){
+		p++;
+	}
+	
+	// *p  is a digit in base
+	if (isBaseDigit(*p){
+		int carry;
+		// *p is digit in base
+		for (; isBaseDigit(*p); p++){
+			carry = XP_product(n, z, z, base);
+			if (carry){
+				break;
+			}
+			XP_sum(n, z, z, map[*p - '0']);	// map[*p - '0'] 字符映射为数字
+		}
+		if (end){
+			*end = (char *)p;
+		}
+	}
+	else{
+		if (end){
+			*end = (char *)str;
+		}
+		
+		return 0;
+	}
+}
+
+
+char *XP_tostr(char *str, int size, int base, int n, T x){
+	int i = 0;
+	
+	assert(str);
+	assert(2 <= base && base <= 36);
+	
+	do{
+		int r = XP_quotient(n, x, x, base);
+		assert(i < base);
+		str[i++] = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"[r];	// =p[i]
+		while (n > 1 && x[n - 1] == 0){
+			n--;
+		}
+	} while (n > 1 || x[0] != 0);
+	
+	assert(i < size);
+	str[i] = '\0';
+	// reverse str 
+	{
+		int j;
+		for (j = 0; j < --i; j++){
+			char c = str[i];
+			str[j] = str[i];
+			str[i] = c;
+		}
+	}
+	
+	return str;
 }
