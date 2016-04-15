@@ -22,8 +22,17 @@ struct T{
 
 #define maxdigits(x, y) ((x)->ndigits > (y)->ndigits ? (x)->ndigits : (y)->ndigits)
 
+#define isone(x) ((x)->ndigits == 1 && (x)->digits[0] == 1)
+
+// *p is a digit in base
+#define isBaseDigit(p) ('0' <= (p) && (p) <= '9' && (p) < '0' + base || \
+	'a' <= (p) && (p) <= 'z' && (p) < 'a' + base - 10 ||	\
+	'A' <= (p) && (p) <= 'Z' && (p) < 'A' + base - 10	\
+	)
+
 // prototype
 static T normalize(T z, int n);
+static int cmp(T x, T y);
 
 // static functions
 static T mk(int size){
@@ -89,6 +98,25 @@ static T sub(T z, T x, T y){
 	assert(borrow == 0);
 	
 	return normalize(z, z->size);
+}
+
+static T mulmod(T x, T y, T p){
+	T z;
+	T xy = AP_mul(x, y);
+	
+	z = AP_mod(xy, p);
+	AP_free(&xy);
+	
+	return z;
+}
+
+static int cmp(T x, T y){
+	if (x->ndigits != y->ndigits){
+		return x->ndigits - y->ndigits;
+	}
+	else{
+		return XP_cmp(x->ndigits, x->digits, y->digits);
+	}
 }
 
 // functions
@@ -245,4 +273,307 @@ T AP_mod(T x, T y){
 	AP_free(&q);
 	
 	return r;
+}
+
+
+T AP_pow(T x, T y, T p){
+	T z;
+	
+	assert(x);
+	assert(y);
+	assert(y->sign == 1);
+	assert(!p || (p->sign == 1) && (!iszero(p)) && (!isone(p)));
+	
+	// special cases
+	if (iszero(x)){
+		return AP_new(0);
+	}
+	if (iszero(y)){
+		return AP_new(1);
+	}
+	if(isone(x)){
+		return AP_new((((y)->digits[0] & 0x1) == 0) ? 1 : x->sign);	// y is even (((y)->digits[0] & 0x1) == 0)
+	}
+	
+	if (p){
+		// z <- x^y mod p 
+		if (isone(y)){
+			z = AP_mod(x, p);
+		}
+		else{
+			T y2 = AP_rshift(y, 1);
+			T t = AP_pow(x, y2, p);
+			
+			z = mulmod(t, t, p);
+			AP_free(&y2);
+			AP_free(&t);
+			if (!(((y)->digits[0] & 0x1) == 0)){
+				z = mulmod(y2 = AP_mod(x, p), t = z, p);
+				AP_free(&y2);
+				AP_free(&t);
+			}
+		}
+	}
+	else{
+		// z <- x^y 
+		if (isone(y)){
+			z = AP_addi(x, 0);
+		}
+		else{
+			T y2 = AP_rshift(y, 1);
+			T t = AP_pow(x, y2, NULL);
+			z = AP_mul(t, t);
+			AP_free(&y2);
+			AP_free(&t);
+			if (!(((y)->digits[0] & 0x1) == 0)){
+				z = AP_mul(x, t = z);
+				AP_free(&t);
+			}
+		}
+		
+		/*********************************/
+		// z = AP_addi(x, 0);
+		// AP_T u = AP_new(1);
+		// while (!isone(y){
+			// if ((y->digits[0] & 0x1) != 0){
+				// u = AP_mul(z, u);
+			// }
+			// z = AP_mul(z, z);
+			// y = AP_divi(y, 2);
+		// }
+		// z = AP_mul(z, u);
+		// AP_free(&u);
+	}
+	
+	return z;
+}
+
+
+int AP_cmp(T x, T y){
+	assert(x);
+	assert(y);
+	
+	if (!((x->sign ^ y->sign) == 0)){
+		return x->sign;
+	}
+	else if (x->sign == 1){
+		return cmp(x, y);
+	}
+	else{
+		return cmp(y, x);
+	}
+}
+
+
+T AP_addi(T x, long int y){
+	// declare and initialize t
+	unsigned char d[sizeof(unsigned long)];
+	struct T t;
+	t.size = sizeof(d);
+	t.digits = d;
+	
+	return AP_add(x, set(&t, y));
+}
+
+
+T AP_subi(T x, long int y){
+	// declare and initialize t
+	unsigned char d[sizeof(unsigned long)];
+	struct T t;
+	t.size = sizeof(d);
+	t.digits = d;
+	
+	return AP_sub(x, set(&t, y));
+}
+
+
+T AP_muli(T x, long int y){
+	// declare and initialize t
+	unsigned char d[sizeof(unsigned long)];
+	struct T t;
+	t.size = sizeof(d);
+	t.digits = d;
+	
+	return AP_mul(x, set(&t, y));
+}
+
+
+T AP_divi(T x, long int y){
+	// declare and initialize t
+	unsigned char d[sizeof(unsigned long)];
+	struct T t;
+	t.size = sizeof(d);
+	t.digits = d;
+	
+	return AP_div(x, set(&t, y));
+}
+
+
+T AP_cmpi(T x, long int y){
+	// declare and initialize t
+	unsigned char d[sizeof(unsigned long)];
+	struct T t;
+	t.size = sizeof(d);
+	t.digits = d;
+	
+	return AP_cmp(x, set(&t, y));
+}
+
+
+long int AP_modi(T x, long int y){
+	long int rem;
+	T r;
+	// declare and initialize t
+	unsigned char d[sizeof(unsigned long)];
+	struct T t;
+	t.size = sizeof(d);
+	t.digits = d;
+	
+	r = AP_mod(x, set(&t, y));
+	rem = XP_toint(r->ndigits, r->digits);
+	AP_free(&r);
+	
+	return rem;
+}
+
+
+T AP_lshitf(T x, int s){
+	T s;
+	
+	assert(x);
+	assert(s >= 0);
+	
+	z = mk(x->ndigits + ((s + 7) & ~7) / 8);
+	XP_lshift(z->size, z->digits, x->ndigits, x->digits, s, 0);
+	z->sign = x->sign;
+	
+	return normalize(z, z->size);
+}
+
+
+T AP_rshift(T x, int s){
+	assert(x);
+	assert(s >= 0);
+	
+	if (s >= 8 * x->ndigits){
+		return AP_new(0);
+	}
+	else{
+		T z = mk(x->ndigits - s / 8);
+		XP_rshift(z->size, z->digits, x->ndigits, x->digits, s, 0);
+		normalize(z, z->size);
+		z->sign = iszero(z) ? 1 : x->sign;
+		
+		return z;
+	}
+}
+
+
+long int AP_toint(T x){
+	unsigned long u;
+	
+	assert(x);
+	
+	u = XP_toint(x->ndigits, x->digits) % (LONG_MAX + 1UL);
+	if (x->sign == -1){
+		return ~(long)u;
+	}
+	else{
+		return (long)u;
+	}
+}
+
+
+T AP_fromstr(const char *str, int base, char **end){
+	T z;
+	const char *p = str;
+	char *endp;
+	char sign = '\0';
+	int carry;
+	
+	assert(p);
+	assert(base >= 2 && base <= 36);
+	while (*p && isspace(*p)){
+		p++;
+	}
+	if (*p == '-' || *p == '+'){
+		sign = *p++;
+	}
+	// z <- 0 
+	{
+		const char *start;
+		int k;
+		int n = 0;
+		
+		for (; *p == '0' && p[1] == '0'; p++){
+			;
+		}
+		start = p;
+		for (; isBaseDigit(*p); p++){	// *p is a digit in base
+			n++;
+		}
+		for (k = 1; (1 << k) < base; k++){
+			;
+		}
+		z = mk(((k * n + 7) & ~7) / 8);
+		p = start;
+	}
+	
+	carry = XP_fromstr(z->size, z->digits, p, base, &endp);
+	assert(carry == 0);
+	
+	normalize(z, z->size);
+	if (endp == p){
+		endp = (char *)str;
+		z = AP_new(0);
+	}
+	else{
+		z->sign = (iszero(z) || sign != '-') ? 1 : -1;
+	}
+	if (end){
+		*end = (char *)endp;
+	}
+	
+	return z;
+}
+
+
+char *AP_tostr(char *str, int size, int base, T x){
+	XP_T q;
+	
+	assert(x);
+	assert(base >= 2 && base <= 36);
+	assert(str == NULL || size > 1);
+	
+	if (str == NULL){
+		// size <- number of characters in str 
+		str = ALLOC(size);
+	}
+	q = ALLOC(x->ndigits);
+	memcpy(q, x->digits, x->ndigits);
+	if (x->sign == -1){
+		str[0] = '-';
+		XP_tostr(str + 1, size - 1, base, x->ndigits, q);
+	}
+	else{
+		XP_tostr(str, size, base, x->ndigits, q);
+	}
+	FREE(q);
+	
+	return str;
+}
+
+
+void AP_fmt(int code, va_list *app, int put(int c, void *c1), void *c1,
+	unsigned char flags[], int width, int precision){
+	T x;
+	char *buf;
+	
+	assert(app && flags);
+	
+	x = va_arg(*app, T);
+	assert(x);
+	buf = AP_tostr(NULL, 0, 10, x);
+	Fmt_putd(buf, strlen(buf), put, c1, flags, width, precision);
+	FREE(buf);
 }

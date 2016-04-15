@@ -170,11 +170,16 @@ find()	for_each()	tranform()	search()	sort()	unique()	remove()	lower_bound()...
 第21章 流
 
 	<iosfwd> 流I/O类和模板声明，标准typedef等，部分I/O头文件
+	ios_base <-- bisic_ios <--(virtual public) basic_ostream(basic_istream)
 	
 	输出：从各种类型，到字符序列的转换结果
 	输入：从字符序列，获取各种类型格式的值
+		tie() 流联结，cin.tie(&cout)	自动刷新 cout.flush()
+		sentry类：通过一个类，采用构造函数和析构函数，提供公共的前缀和后缀代码
 	格式化：输出布局的需求
-	
+		flags()		用标志位的方式控制流状态
+		操控符
+		
 	流：文件(istream, ostream, file)
 	缓冲区：提高I/O效率
 	locale：文化差异
