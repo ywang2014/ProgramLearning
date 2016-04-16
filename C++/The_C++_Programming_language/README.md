@@ -181,6 +181,10 @@ find()	for_each()	tranform()	search()	sort()	unique()	remove()	lower_bound()...
 		操控符
 		
 	流：文件(istream, ostream, file)
+		ostream istream iostream 
+		ofstream ifstream fstream
+		ostringstream istringstream stringstream
+		ostrstream istrstream
 	缓冲区：提高I/O效率
 	locale：文化差异
 	C语言I/O：scanf() printf()
