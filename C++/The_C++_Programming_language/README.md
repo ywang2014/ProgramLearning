@@ -170,7 +170,7 @@ find()	for_each()	tranform()	search()	sort()	unique()	remove()	lower_bound()...
 第21章 流
 
 	<iosfwd> 流I/O类和模板声明，标准typedef等，部分I/O头文件
-	ios_base <-- bisic_ios <--(virtual public) basic_ostream(basic_istream)
+	ios_base <-- bisic_ios <--(virtual public) basic_ostream(basic_istream) <-- iostream
 	
 	输出：从各种类型，到字符序列的转换结果
 	输入：从字符序列，获取各种类型格式的值
@@ -186,5 +186,18 @@ find()	for_each()	tranform()	search()	sort()	unique()	remove()	lower_bound()...
 		ostringstream istringstream stringstream
 		ostrstream istrstream
 	缓冲区：提高I/O效率
+		basic_streambuf有两个界面：公共界面，保护界面
+		showmanyc() 慎用(低级函数，与实现密切相关)
 	locale：文化差异
+		imbue() global() locale类、facet类
+		流回调：xalloc() iword() pword()
+		typedef void (*event_callback)(event, ios_base &, int i);
+		void register_callback(event_callback f, int i);
+		在流状态改变时，就会调用注册的“事件”相关函数，通知用户
 	C语言I/O：scanf() printf()
+		printf(const char *format, ...)
+		fprintf(FILE *, const char *format, ...)
+		sprintf(char *, const char *format, ...)
+	printf()不检查参数类型，不安全
+	
+第22章 数值
