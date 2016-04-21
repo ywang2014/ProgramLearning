@@ -201,3 +201,8 @@ find()	for_each()	tranform()	search()	sort()	unique()	remove()	lower_bound()...
 	printf()不检查参数类型，不安全
 	
 第22章 数值
+
+	数值限制：模板类numeric_limits<>(limits)  继承于C的宏 INT_MAX(climits, cfloat)
+	valarray 构造函数，值在前，个数在后valarray(value, nums)
+		slice_array gslice_array mask_array indirect_array
+	
