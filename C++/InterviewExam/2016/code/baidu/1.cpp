@@ -146,3 +146,71 @@ float waitingTimeSJF(int *requestTimes, int *durations, int n)
     
     return (float)(sum / n);
 }
+
+
+/********************************************************************/
+// 新版本2
+float waitingTimeSJF(int *requestTimes, int *durations, int n)
+{
+    // WRITE YOUR CODE HERE
+    if (requestTimes == NULL || durations == NULL || n < 1){
+        return 0;   // invalid args
+    }
+    
+    task *arr = new task[n];
+    bool *done = new bool[n];
+    for (int i = 0; i < n; i++)
+    {
+        done[i] = false;
+    }
+    
+    int index = 1;
+    int minDur = durations[0];
+    int minIndex = 0;
+    while (index < n && requestTimes[0] == requestTimes[index]){
+        if (minDur > durations[index]){
+            minDur = durations[index];
+            minIndex = index;
+        }   // 从前往后，自然相等的时候，取最小的requestTime
+        index++;
+    }
+    int endTime = requestTimes[minIndex] + durations[minIndex];
+    done[minIndex] = true;
+    
+    int count = 1;
+    float sum = (float)0.0;
+	int t_index = 1;
+	int start = 0;	// 记录搜索任务的起点
+    while (t_index < n){
+		// 寻找出第一个未处理的任务
+        for (int i = start; i < n; i++)
+        {
+            if (!done[i]){
+                index = i;
+                break;
+            }
+        }
+        if (index == n){
+            break;
+        }
+			
+		start = index + 1;	// 下次搜索的起点，优化效率，不需要每次从0开始
+		
+        minDur = durations[index];
+        minIndex = index++;
+        while (index < n && requestTimes[index] <= endTime ){
+            if (!done[index] && minDur > durations[index]){
+                minDur = durations[index];
+                minIndex = index;
+            }
+            index++;
+        }
+		
+        sum += endTime - requestTimes[minIndex];
+		endTime += durations[minIndex];
+		done[minIndex] = true;
+        t_index++;
+    }
+    
+    return (float)(sum / n);
+}

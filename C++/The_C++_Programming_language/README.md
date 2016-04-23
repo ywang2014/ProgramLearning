@@ -204,5 +204,30 @@ find()	for_each()	tranform()	search()	sort()	unique()	remove()	lower_bound()...
 
 	数值限制：模板类numeric_limits<>(limits)  继承于C的宏 INT_MAX(climits, cfloat)
 	valarray 构造函数，值在前，个数在后valarray(value, nums)
-		slice_array gslice_array mask_array indirect_array
+		slice_array：slice作为valarray的下标的结果，禁止构造和复制
+		gslice_array：gslice作为valarray的下标的结果，禁止构造和复制
+		mask_array：valarray<bool>屏蔽的效果，用valarray<bool>作为valarray的下标的结果
+			bool b[] = { true, false, false, true, ture, ture };
+			valarray<bool> mask(b, 6);
+			valarray<double> val1 = { ... };
+			valarray<double> val2 = val1[mask]; // mask.size() < val1.size()
+		indirect_array :将一个valarray<size_t>用作valarray的下标的结果
+			size_t i[] = { 3, 2, 1, 0 };	// 下标不能重复，否则indirect_array结果未定义
+			valarray<size_t> index(i, 4);
+			valarray<double> val1 = { ... };
+			valarray<double> val2 = val1[index];	// index.size() < val1.size()
+		四个类valarray，都是禁止构造和复制
+		
+	slice Slice_iter Cslice_iter
 	
+	封装表达式的求值，多元运算符的实现，辅助类(闭包对象包装)，函数指针
+	性能的优化：避免类对象的临时变量、对象复制、循环中重复操作
+	
+	通用数值算法：
+		accumulate: 向量元素求和的推广，累加序列所有元素的和，或者传入二元运算符函数对象，做对应操作
+			template<class In, class T> T accumulate(In first, In last, T init);	// 默认 + 求和
+			template<class In, class T, class BinOp> T accumulate(In first, In last, T init, BinOp op);
+			
+		inner_product: 
+		partial_sum: 
+		adjacent_difference: 

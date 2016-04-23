@@ -6,7 +6,7 @@
 	输入，两颗树的根节点。
 */
 
-static int res = -1;
+// static int res = -1;	// 尽量不要使用全局变量
 
 struct tnode{
 	int value;
@@ -14,7 +14,7 @@ struct tnode{
 	tnode* right;
 }
 
-void  maybeSubTree(tnode* root1, tnode* root2){
+void  maybeSubTree(tnode* root1, tnode* root2, int &res){
     
     if (root1->value == root2->value){
         if (root2->left == NULL && root2->right == NULL){
@@ -32,14 +32,14 @@ void  maybeSubTree(tnode* root1, tnode* root2){
     }
 }
 
-void subTree(tnode* root1, tnode* root2){
+void subTree(tnode* root1, tnode* root2, int &res){
     if (root1 == NULL)
     {
         return ;
     }
     
     if (root1->value == root2->value){
-       maybeSubTree(root1, root2);
+       maybeSubTree(root1, root2, res);
     }
    
    if (root1->left != NULL){
@@ -57,9 +57,11 @@ int isSubTree(tnode* root1, tnode* root2)
 {
    // WRITE YOUR CODE HERE
    if (root1 == NULL || root2 == NULL){
-       return res;
+       return -1;
    }
-   subTree(root1, root2);
+   int res = -1;
+   
+   subTree(root1, root2, res);
    
    return res;
 }
