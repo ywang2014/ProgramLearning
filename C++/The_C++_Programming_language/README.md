@@ -228,6 +228,22 @@ find()	for_each()	tranform()	search()	sort()	unique()	remove()	lower_bound()...
 			template<class In, class T> T accumulate(In first, In last, T init);	// 默认 + 求和
 			template<class In, class T, class BinOp> T accumulate(In first, In last, T init, BinOp op);
 			
-		inner_product: 
-		partial_sum: 
-		adjacent_difference: 
+		inner_product: 内积，默认 +，* 向量点乘法
+			template<...> T inner_product(In first, In last, In2 first2, T init);	// 向量点乘 
+			template<...> T inner_product(In first, In last, In2 first2, T init, BinOp op, BinOp2 op2);	// 自定义操作 
+			
+		partial_sum: 输入序列a,b,c,d 返回序列：a,a+b,a+b+c,a+b+c+d.
+		adjacent_difference: 输入序列a,b,c,d 返回序列：a,b-a,c-b,d-c.
+		这两个操作的结果互逆。
+		
+		随机数 rand() srand()
+		int((double(rand()) / RAND_MAX) * n) 要好于 rand() % n
+		
+第23章 开发和设计
+
+	面向对象的设计：C++的数据抽象，面向对象程序设计功能
+	
+	
+第24章 设计和编程
+
+第25章 类的作用
