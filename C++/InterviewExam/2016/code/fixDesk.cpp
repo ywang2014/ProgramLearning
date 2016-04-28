@@ -78,6 +78,8 @@ int getMinPrice(int *len, int *price, int n){
 		l_index = k;
 		maxLen = legs_len[l_index].length;
 	}
+	delete [] legs_len;
+	delete [] legs_pri;
 	
 	return res;
 }
@@ -96,6 +98,8 @@ int main(){
 		}
 		
 		cout << getMinPrice(len, price, n) << endl;
+		delete[] len;
+		delete[] price;
 	}
 	
 	return 0;
