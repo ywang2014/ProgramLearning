@@ -65,7 +65,7 @@ stroustrup C++语言，Dennis Ritchie C语言，代码大全，C语言接口与�
 	struct的不同
 	字符数组的不同，C风格字符串，C++的string，这个现在想想，应该不是的。
 	无参函数，C语言必须加void，f()表示任意参数，C++ f()就是无参函数，
-	然后在想，直接pass了。
+	然后再想，直接pass了。
 	
 2.C++11的特性了解吗？
 
