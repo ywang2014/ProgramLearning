@@ -96,8 +96,16 @@ Cracking the Coding Interview 150 Programming Questions and Solutions
 		数组、字符串
 			散列表hashMap、ArrayList(动态数组)、StringBuffer
 		链表
+			单链表、双链表
+			检查空指针，更新头结点(head)、尾节点(tail)
+			快行指针：同时使用两个指针来迭代访问链表，一个指针超前，且走的快
 		栈与队列
+			栈：后进先出
+			队列：先进先出
 		树与图
+			树的遍历：前序、中序、后序
+			树的平衡：红黑树、平衡树
+			单词查找树trie
 	概念和算法：
 		位操作
 		智力题
