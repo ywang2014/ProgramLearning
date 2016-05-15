@@ -106,9 +106,18 @@ Cracking the Coding Interview 150 Programming Questions and Solutions
 			树的遍历：前序、中序、后序
 			树的平衡：红黑树、平衡树
 			单词查找树trie
+			
+			深度优先搜索 DFS
+			广度优先搜搜 BFS
 	概念和算法：
 		位操作
+			^(xor)	~(compl)	
+			a^(~a) = 1 
+			x&(~0 << n) 将x最右边的n位清零
+			| & ~ << 
 		智力题
+			不知道没有关系，大声说出你的思路
+			数学规律和科学规律结合
 		数学与概率
 		面向对象设计
 		递归与动态规划
