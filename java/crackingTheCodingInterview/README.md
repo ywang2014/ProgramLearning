@@ -1,4 +1,4 @@
-#程序员面试金典-McDoweel，李琳骁译
+#程序员面试金典-Gayle Laakmann McDowell，李琳骁译
 Cracking the Coding Interview 150 Programming Questions and Solutions
 
 这是一本关于程序员技术面试指导的书，是我看的第三本专门指导程序员面试的书，非常经典，揭示了许多IT名企招聘的秘密。
