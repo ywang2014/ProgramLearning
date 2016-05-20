@@ -27,4 +27,23 @@ public class Date{
 	public String toString(){
 		return month() + "/" + day() + "/" + year();
 	}
+	
+	public boolean equals(Object x){
+		if (this == x){
+			return true;
+		}
+		if (x == null){
+			return false;
+		}
+		if (this.getClass() != x.getClass()){
+			return false;
+		}
+		
+		Date that = (Date)x;
+		if (this.day != that.day || this.month != that.month || this.year != that.year){
+			return false;
+		}
+		
+		return true;
+	}
 }

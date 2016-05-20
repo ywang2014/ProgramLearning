@@ -55,6 +55,17 @@ Algorithms
 	使用抽象数据类型：使代码更加简洁清晰
 	将大型程序分解为能够独立开发和调试的小型模块
 	接口继承：实现类继承的是接口
+	子类继承：基类派生类
+	Object类 toString() equals() getClass() compareTo() hashCode()...
+	封装类型：Boolean Byte Character Double Float Integer Long Short
+	equals()：定义一种等价关系  自反性、对称性、传递性、一致性、非空性
+	自动内存管理：Java垃圾回收，GC策略，记录孤儿对象，然后释放其内存到内存池
+	异常、断言、契约式设计
+	Java中创建引用只能new，修改引用只能通过赋值
+	
+1.3 背包、队列和栈
+
+	
 	
 	
 第2章 排序
