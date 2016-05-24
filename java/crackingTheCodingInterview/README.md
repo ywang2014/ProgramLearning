@@ -167,8 +167,44 @@ Cracking the Coding Interview 150 Programming Questions and Solutions
 				类，说明该类不能派生子类
 			finally：try catch一起使用，确保代码一定被执行
 			finalize(): 真正销毁对象前，自动垃圾收集器，会调用finalize()方法。(类似于C++析构函数)
+			重载：方法名称相同，函数签名不同
+			重写：方法与父类方法完全相同
+			Java的集合框架：
+				ArrayList：可动态调整数组大小
+				Vector：类似于ArrayList，是同步的(synchronized)
+				LinkedList：迭代器语法 list.iterator()方法，返回迭代器
+				HashMap：put(), get()方法 
 		数据库
+			SQL查询：
+				explicit join:
+					select courseName, teacherName
+					from courses inner join teachers
+					on courses.teacherId = teachers.teacherId 
+				implicit join:
+					select courseName, teacherName
+					from courses, teachers
+					where courses.teacherId = teachers.teacherId 
+				显示连接和隐式连接是等价的
+			非规范化数据库：存在冗余，优化读取时间，构建高可扩展性系统
+			规范化数据库：将冗余降到最低
+			数据库设计：
+				处理不明确的地方 
+				定义核心对象
+				分析表之间的关系
+				有哪些操作
 		线程和锁
+			Java实现线程两种方式：
+				实现java.lang.Runnable接口
+				扩展java.lang.Thread类
+			同步：synchronized 同步方法、同步块
+			锁：lock
+			静态方法会以类锁进行同步
+			死锁：
+				互斥
+				持有并等待
+				没有抢占
+				循环等待
+			预防死锁：避免条件，循环等待最好
 	
 第9章：解题技巧
 
