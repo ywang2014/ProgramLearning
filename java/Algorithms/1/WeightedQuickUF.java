@@ -1,15 +1,18 @@
 /**
 	Union-find算法的实现
-	quick union
+	加权quick union
 */
-public class UnionFind{
+public class WeightedQuickUnionFind{
 	private int[] id;
-	private int count;
+	private int[] sz;	// 各根节点所对应的分量的大小
+	private int count;	// 连通分量的数量
 	
-	public UnionFind(int n){
+	public WeightedQuickUnionFind(int n){
 		id = new int[n];
+		sz = new int[n];
 		for (int i = 0; i < n; i++){
 			id[i] = i;
+			sz[i] = 1;
 		}
 		count = n;
 	}
@@ -37,7 +40,16 @@ public class UnionFind{
 		if (pRoot == qRoot){
 			return ;
 		}
-		id[pRoot] = qRoot;
+		
+		if (sz[pRoot] < sz[qRoot]){
+			id[pRoot] = qRoot;
+			sz[qRoot] += sz[pRoot];
+		}
+		else{
+			id[qRoot] = pRoot;
+			sz[pRoot] += sz[qRoot];
+		}
+		
 		
 		count--;
 	}

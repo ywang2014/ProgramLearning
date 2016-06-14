@@ -1,5 +1,5 @@
 /**
-	Union-find算法的实习
+	Union-find算法的实现
 	
 	quick find
 */

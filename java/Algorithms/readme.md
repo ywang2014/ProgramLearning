@@ -114,10 +114,15 @@ Algorithms
 1.5 Union-find算法
 
 	动态连通性问题
+	quick find 
+	quick union
+	加权quick union 
 	
 第2章 排序
 	
 	插入排序
+	
+	
 	选择排序
 	希尔排序
 	快速排序
