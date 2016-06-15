@@ -6,6 +6,10 @@
 	输入用户名：root
 	输入密码：password
 	
+上传文件 rz(sz)
+
+Linux安装命令：apt-get install lrzsz
+	
 2.下载lnmp
 
 	wget -c http://soft.vpser.net/lnmp/lnmp1.0.tar.gz	(wget url 下载文件)

@@ -46,6 +46,7 @@ ln -s /etc/rc.d/init.d/mysqld /etc/rc.d/rc3.d/mysqld
 	...
 	
 	./configure --prefix=/usr/local/apache2 --with-apr=/usr/local/apr --with-apr-util=/usr/local/apr-util/ --with-pcre=/usr/local/pcre
+	...
 	
 	启动Apache：/usr/local/apache2/bin/apachectl start
 	停止Apache：/usr/local/apache2/bin/apachectl stop
