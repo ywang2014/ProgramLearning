@@ -15,7 +15,8 @@
 windows 下载，然后使用 X-shell rz命令复制上去
 
 #### 解压缩
-tar zxvf *.tar.gz
+tar -zxvf *.tar.gz
+tar -jxvf *.tar.bz2
 
 #### 编译安装
 1.安装apache
@@ -31,6 +32,9 @@ tar zxvf *.tar.gz
 	
 	./configure --prefix=/usr/local/apache2 --with-apr=/usr/local/apr --with-apr-util=/usr/local/apr-util/ --with-pcre=/usr/local/pcre
 	make	make install	make clean
+	
+	/usr/local/apache2/bin/apachectl start
+	/usr/local/apache2/bin/apachectl stop
 
 2. 安装mysql
 	
@@ -48,4 +52,90 @@ tar zxvf *.tar.gz
 	
 	./bin/mysqladmin -u root password '' 	// 修改mysql的root用户密码
 	ln -s /usr/local/mysql/bin/mysql /usr/local/bin/mysql	// 把mysql客户端放到默认路径
+	
+3. 安装PHP
+
+	./configure --prefix=/usr/local/php --with-config-file-path=/usr/local/php/etc --with-apxs2=/usr/local/apache2/bin/apxs --with-mysql=/usr/local/mysql/
+	错误：error: xml2-config not found. Please check your libxml2 installation
+	安装libxml2:
+		1.	apt-get install libxml2
+			sudo apt-get install libxml2-dev
+			失败
+		2. 	tar zxvf libxml2-2.7.0.tar.gz
+			./configure  --prefix=/usr/local 
+			make 	make install 	make clean
+			export  LD_LIBRARY_PATH=/usr/local/lib 	// export 设置环境变量
+			export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig 
+	安装好libxml2后，再次编译，成功
+	
+4. 安装GD库
+
+	1.安装zlib 
+	tar zxvf zlib-1.2.3.tar.gz 
+	cd zlib-1.2.3 
+		./configure --prefix=/usr/local/zlib 	// 这种编译有问题，导致正常系统include中找不到zlib.h 
+		// 安装libpng会报错
+	./configure
+	make 
+	make install 
+	
+	2.安装libpng 
+	tar zxvf libpng-1.2.8.tar.tar 
+	cd libpng-1.2.8 
+	mv ./scripts/makefile.linux ./makefile 
+		错误：png.h:359:18: fatal error: zlib.h: No such file or directory
+		find / -name zlib.h
+		make prefix=/usr/local/lib ZLIBINC=/usr/local/zlib/include ZLIBLIB=/usr/local/lib -f scripts/makefile.linux && make prefix=/usr/local/lib install -f scripts/makefile.linux 
+	make 
+	make install 
+	注意，这里的makefile不是用./configure生成，而是直接从scripts/里拷一个 
+	
+	3.安装freetype 
+	tar zxvf freetype-2.1.10.tar.gz 
+	cd freetype-2.1.10 
+	./configure --prefix=/usr/local/freetype  有错误
+	解决方法：./configure --prefix=/usr/local/freetype --without-png
+	make 
+	make install 
+	
+	4.安装Jpeg 
+	tar zxvf jpegsrc.v6b.tar.gz 
+	cd jpeg-6b/ 
+	./configure --enable-shared 
+	make 
+	make test 
+	make install 
+	注意，这里configure一定要带--enable-shared参数，不然，不会生成共享库 
+
+	5.安装GD 
+	tar zxvf gd-2.0.33.tar.gz 
+	cd gd-2.0.33 
+	./configure --with-png --with-jpeg --with-freetype=/usr/local/freetype 
+	make 
+	make install 
+	
+	重新编译PHP
+	./configure --prefix=/usr/local/php --with-apxs2=/usr/local/apache2/bin/apxs --with-mysql --with-gd --enable-gd-native-ttf --with-zlib-dir=/usr/local/zlib --with-freetype-dir=/usr/local/freetype --disable-fileinfo
+	
+#### 配置基础文件
+1.网站根目录
+
+	/usr/local/apache2/conf/httpd.conf 
+		DocumentRoot "/var/www/html"
+		<Directory "/var/www/html">
+		
+		添加
+		ServerName localhost:80
+		
+		找到 AddType application/x-gzip .gz .tgz 在其下添加如下内容
+　　	AddType application/x-httpd-php .php      (.前面有空格)
+　　	AddType application/x-httpd-php-source .phps        (.前面有空格)
+	
+		DirectoryIndex index.html，把此行修改成
+		“DirectoryIndex index.html index.htm index.php”
+		
+2.创建数据库
+
+	mysql -u root -p
+	source *.sql
 	
