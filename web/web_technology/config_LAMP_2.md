@@ -66,7 +66,13 @@ tar -jxvf *.tar.bz2
 			make 	make install 	make clean
 			export  LD_LIBRARY_PATH=/usr/local/lib 	// export 设置环境变量
 			export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig 
+	
 	安装好libxml2后，再次编译，成功
+	
+		$tar zxvf libxml2-2.6.20.tar.gz
+		./configure  --prefix=/usr/local 
+		export  LD_LIBRARY_PATH=/usr/local/lib 
+		export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig 
 	
 4. 安装GD库
 
@@ -115,7 +121,7 @@ tar -jxvf *.tar.bz2
 	make install 
 	
 	重新编译PHP
-	./configure --prefix=/usr/local/php --with-apxs2=/usr/local/apache2/bin/apxs --with-mysql --with-gd --enable-gd-native-ttf --with-zlib-dir=/usr/local/zlib --with-freetype-dir=/usr/local/freetype --disable-fileinfo
+	./configure --prefix=/usr/local/php --with-config-file-path=/usr/local/php/etc --with-apxs2=/usr/local/apache2/bin/apxs --with-mysql --with-gd --enable-gd-native-ttf --with-zlib-dir=/usr/local/zlib --with-freetype-dir=/usr/local/freetype --disable-fileinfo
 	
 #### 配置基础文件
 1.网站根目录
@@ -138,4 +144,18 @@ tar -jxvf *.tar.bz2
 
 	mysql -u root -p
 	source *.sql
+	
+	错误：Access denied for user 'root'@'localhost' (using password: YES)
+	//update user set host='localhost' where user='root' and host='%';
+	关闭数据库，重启即可
+	
+	/etc/init.d/mysql stop		// 暂停数据库
+	/usr/local/mysql/bin/mysqld_safe --skip-grant-tables		// 启动数据库
+	
+3.修改PHP配置文件
+	
+	/usr/local/php/bin/php --ini	// 查看php.ini的路径
+	从源码包中拷贝php.ini-development到/etc/php.ini
+	找到date.timezone行修改为
+	date.timezone = "UTC"
 	

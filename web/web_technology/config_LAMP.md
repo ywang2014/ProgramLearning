@@ -80,6 +80,7 @@ ln -s /etc/rc.d/init.d/mysqld /etc/rc.d/rc3.d/mysqld
 	
 	./configure --prefix=/usr/local/php --with-apxs2=/usr/local/apache2/bin/apxs --with-mysql	(正确了)
 	
+	// 从源文件中复制过去
 	cp php.ini.development /usr/local/php/lib/php.ini 	// 或者安装的时候，指定目录 --with-config-file-path=/usr/local/php/etc
 	
 	安装GD
