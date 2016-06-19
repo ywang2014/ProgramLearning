@@ -148,9 +148,15 @@ tar -jxvf *.tar.bz2
 	错误：Access denied for user 'root'@'localhost' (using password: YES)
 	//update user set host='localhost' where user='root' and host='%';
 	关闭数据库，重启即可
+	update user set host='localhost' where user='root' and host='%';
+	将%变成localhost，否则必须每次重新启动，使用“mysqld_safe --skip-grant-tables”方式启动才可以！很复杂
 	
+	/etc/init.d/mysql start		// 启动数据库
 	/etc/init.d/mysql stop		// 暂停数据库
+	
 	/usr/local/mysql/bin/mysqld_safe --skip-grant-tables		// 启动数据库
+	
+	insert into user select * from user where User='zedi2016';
 	
 3.修改PHP配置文件
 	
