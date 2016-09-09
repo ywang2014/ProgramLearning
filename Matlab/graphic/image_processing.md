@@ -1,28 +1,28 @@
 # 常用的一些图像处理Matlab源代码
 
-[1.数字图像矩阵数据的显示及其傅立叶变换](https://github.com/ywang2014/ProgramLearning/tree/master/Matlib/graphic/image_processing.md#1)
+[1.数字图像矩阵数据的显示及其傅立叶变换](https://github.com/ywang2014/ProgramLearning/blob/master/Matlib/graphic/image_processing.md#1)
 
-[2.二维离散余弦变换的图像压缩](https://github.com/ywang2014/ProgramLearning/tree/master/Matlib/graphic/image_processing.md#2)
+[2.二维离散余弦变换的图像压缩](https://github.com/ywang2014/ProgramLearning/blob/master/Matlib/graphic/image_processing.md#2)
 
-[3.采用灰度变换的方法增强图像的对比度](https://github.com/ywang2014/ProgramLearning/tree/master/Matlib/graphic/image_processing.md#3)
+[3.采用灰度变换的方法增强图像的对比度](https://github.com/ywang2014/ProgramLearning/blob/master/Matlib/graphic/image_processing.md#3)
 
-[4.直方图均匀化](https://github.com/ywang2014/ProgramLearning/tree/master/Matlib/graphic/image_processing.md#4)
+[4.直方图均匀化](https://github.com/ywang2014/ProgramLearning/blob/master/Matlib/graphic/image_processing.md#4)
 
-[5.模拟图像受高斯白噪声和椒盐噪声的影响](https://github.com/ywang2014/ProgramLearning/tree/master/Matlib/graphic/image_processing.md#5)
+[5.模拟图像受高斯白噪声和椒盐噪声的影响](https://github.com/ywang2014/ProgramLearning/blob/master/Matlib/graphic/image_processing.md#5)
 
-[6.采用二维中值滤波函数medfilt2对受椒盐噪声干扰的图像滤波](https://github.com/ywang2014/ProgramLearning/tree/master/Matlib/graphic/image_processing.md#6)
+[6.采用二维中值滤波函数medfilt2对受椒盐噪声干扰的图像滤波](https://github.com/ywang2014/ProgramLearning/blob/master/Matlib/graphic/image_processing.md#6)
 
-[7.采用MATLAB中的函数filter2对受噪声干扰的图像进行均值滤波](https://github.com/ywang2014/ProgramLearning/tree/master/Matlib/graphic/image_processing.md#7)
+[7.采用MATLAB中的函数filter2对受噪声干扰的图像进行均值滤波](https://github.com/ywang2014/ProgramLearning/blob/master/Matlib/graphic/image_processing.md#7)
 
-[8.图像的自适应魏纳滤波](https://github.com/ywang2014/ProgramLearning/tree/master/Matlib/graphic/image_processing.md#8)
+[8.图像的自适应魏纳滤波](https://github.com/ywang2014/ProgramLearning/blob/master/Matlib/graphic/image_processing.md#8)
 
-[9.运用5种不同的梯度增强法进行图像锐化](https://github.com/ywang2014/ProgramLearning/tree/master/Matlib/graphic/image_processing.md#9)
+[9.运用5种不同的梯度增强法进行图像锐化](https://github.com/ywang2014/ProgramLearning/blob/master/Matlib/graphic/image_processing.md#9)
 
-[10.图像的高通滤波和掩模处理](https://github.com/ywang2014/ProgramLearning/tree/master/Matlib/graphic/image_processing.md#10)
+[10.图像的高通滤波和掩模处理](https://github.com/ywang2014/ProgramLearning/blob/master/Matlib/graphic/image_processing.md#10)
 
-[11.利用巴特沃斯（Butterworth）低通滤波器对受噪声干扰的图像进行平滑处理](https://github.com/ywang2014/ProgramLearning/tree/master/Matlib/graphic/image_processing.md#11)
+[11.利用巴特沃斯（Butterworth）低通滤波器对受噪声干扰的图像进行平滑处理](https://github.com/ywang2014/ProgramLearning/blob/master/Matlib/graphic/image_processing.md#11)
 
-[12.利用巴特沃斯（Butterworth）高通滤波器对受噪声干扰的图像进行平滑处理](https://github.com/ywang2014/ProgramLearning/tree/master/Matlib/graphic/image_processing.md#12)
+[12.利用巴特沃斯（Butterworth）高通滤波器对受噪声干扰的图像进行平滑处理](https://github.com/ywang2014/ProgramLearning/blob/master/Matlib/graphic/image_processing.md#12)
 
  
 #### <a name = "1"> </a>数字图像矩阵数据的显示及其傅立叶变换
