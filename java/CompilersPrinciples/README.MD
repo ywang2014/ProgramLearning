@@ -54,7 +54,7 @@
 				z5: B5 
 	1.6.4：3\n 2\n 
 		
-#### 第2章
+#### 第2章 语法制导翻译器
 
 	语法分析：上下文无关文法--->产生式
 	2.2.1：1.S-->SS*-->(S)S*-->(SS+)S*-->(aS+)S*-->aa+a*	S-->SS*-->(S)a*-->(SS+)a*-->(Sa+)a*-->aa+a*	
@@ -155,11 +155,184 @@
 				}
 			}
 	词法分析：忽略空白符和换行符、抽取token(数字和标识符)
-	2.6.1： 
-	2.6.2：
-	2.6.3： 
+	2.6.1： 2.6.2：2.6.3： 
+	public Token scan() throws IOException, SyntaxException{    
+		for( ; ; peek = (char)stream.read()){
+			if(peek == ' ' || peek == '\t'){        
+				continue;      	
+			}
+			else if(peek == '\n'){
+				line = line + 1;      
+			}
+			else{        
+				break;      
+			}    
+		}
+		
+		// handle comment    
+		if(peek == '/'){      
+			peek = (char) stream.read();      
+			if(peek == '/'){        // single line comment        
+				for( ; ; peek = (char)stream.read()){          
+					if(peek == '\n'){
+						break;          
+					}        
+				}      
+			}
+			else if(peek == '*'){        // block comment        
+				char prevPeek = ' ';        
+				for( ; ; prevPeek = peek, peek = (char)stream.read()){
+					if(prevPeek == '*' && peek == '/'){            
+						break;          
+					}        
+				}
+			}
+			else{
+				throw new SyntaxException();      
+			}    
+		}   
+		
+		// handle relation sign    
+		if("<=!>".indexOf(peek) > -1){      
+			StringBuffer b = new StringBuffer();      
+			b.append(peek);      \
+			peek = (char)stream.read();      
+			if(peek == '='){        
+				b.append(peek);      
+			}      
+			return new Rel(b.toString());    
+		}
+		
+		// handle number, no type sensitive    
+		if(Character.isDigit(peek) || peek == '.'){      
+			Boolean isDotExist = false;      
+			StringBuffer b = new StringBuffer();      
+			do{
+				if(peek == '.'){          
+					isDotExist = true;        
+				}        
+				b.append(peek);        
+				peek = (char)stream.read();      
+			} while (isDotExist == true ? Character.isDigit(peek) : Character.isDigit(peek) || peek == '.');      
 			
-#### 第3章
+			return new Num(new Float(b.toString()));    
+		}      
+		
+		// handle word
+		if(Character.isLetter(peek)){      
+			StringBuffer b = new StringBuffer();      
+			do{        
+				b.append(peek);        
+				peek = (char)stream.read();      
+			} while (Character.isLetterOrDigit(peek));
+			
+			String s = b.toString();      
+			Word w = words.get(s);      
+			if(w == null){        
+				w = new Word(Tag.ID, s);        
+				words.put(s, w);      
+			}      
+			return w;    
+		}      
+		
+		Token t = new Token(peek);    
+		peek = ' ';    
+		return t;  
+	} 		
+	
+	中间代码：抽象语法树、三地址代码
+	类型检查、自动类型转换
+	2.8.1：	class For extends Stmt{
+				Expr e1;
+				Expr e2;
+				Expr e3;
+				Stmt s;
+				
+				public For(Expr expr1, Expr expr2, Expr expr3, Stmt stmt){
+					e1 = expr1;
+					e2 = expr2;
+					e3 = expr3;
+					s = stmt;
+				}
+				
+				public void gen(){
+					e1.gen();
+					Label start = new Label();
+					Label end = new Label();
+					emit("ifFalse " + e2.rvalue().toString() + " goto " + end);
+					s.gen();
+					e3.gen();
+					emit("goto " + start);
+					emit(end + " ");
+				}
+			}
+	2.8.2： emit("isFalse " + E.rvalue().toString() + " goto " + after); 
+			emit("ifNotEqual " + E.rvalue().toString() + " 0 goto " + after); 
+		OR	emit("isNotEqualZero " + E.rvalue().toString() + " goto " + after);
+	
+#### 第3章 词法分析 
+
+	正则表达式 --> 不确定有穷状态自动机 --> 确定有穷状态自动机
+	词法分析器：读入源程序的字符串，将源程序中的字符组成一个个词素，生成对应的词法单元
+	3.1.1：
+	3.1.2：
+	正则表达式：* + ? [a-z]
+	3.3.1： 
+		C：ASCII，标识符只能是(字母|下划线)开头的，(字母|下划线|数字)组成的字符串
+		C++：Unicode，标识符只能是(字母|下划线)开头的，(字母|下划线|数字)组成的字符串
+		C#：
+		Fortran：
+		Java：Unicode，标识符只能是(字母|下划线)开头的，(字母|下划线|数字)组成的字符串
+		Lisp：
+		SQL：
+	3.3.2： 
+		(1).由a开头和结尾，中间有n个a或b构成的字符串
+		(2).由b或者ab一起构成的字符串
+		(3).ab构成的字符串，倒数第三位是a，其他位a|b 
+		(4).有ab构成的字符串，有且仅有三个b
+		(5).有偶数个a和偶数个b构成的字符串
+	3.3.3： n+1, n+1, n-1, (n-1)(n-2)/2+2, 2^n
+	3.3.4：(select) --> [sS][eE][lL][eE][cC][tT]
+		大小写可以混合使用，说明大写字母和小写字母之间的关系是可选择的，但是必须选择其一。
+	3.3.5：
+		(1).(a)+(e)+(i)+(o)+(u)+		uv=[b-df-hj-np-tv-z] uv*auv*euv*iuv*ouv*uuv*
+		(2).(a)+(b)+...(y)+(z)+			a*b*c*....y*z*
+	3.3.6:
+		(1).[a-jA-J]
+		(2).[b-df-hj-np-tv-z]
+		(3).[0-9a-f]
+		(4).[,.!?]
+	3.3.7：
+	3.3.8：
+	3.3.9：
+	3.3.10：
+	3.3.11：
+	3.3.12：
+	状态转换图：词法分析
+	3.4.1： 
+	3.4.2：
+	3.4.3：
+		(1).0 0 1 2 3 4 5 1 2
+		(2).0 1 2 3 4 5
+		(3).0 0 0 1 1 2 3
+	3.4.4： 
+	3.4.5： 
+	3.4.6：(1)是的，(2)不是的
+	3.4.7：
+	3.4.8：
+	3.4.9：
+	3.4.10：
+	3.4.11：
+	3.4.12：
+	词法分析器生成工具Lex
+	3.5.1： 
+		(1).while {return(WHILE);}
+	3.5.2： 
+	3.5.3： 
+	3.5.4： 
+	3.5.5： 
+	
+	
 
 
 #### 第4章
