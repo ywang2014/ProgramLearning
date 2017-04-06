@@ -37,7 +37,17 @@ Unix编程艺术全书共500多页，分4个部分，20章。主要介绍了Unix
 		
 #### 第二章 历史：两个文化的故事
 
+	Unix发展的历史
+		AT&T的Unix
+		BSD
+	Stallman GNU、自由软件、GPL
+	Linus Linux
+	
+#### 第三章 Unix哲学与其他哲学的比较
 
+	Unix统一性：
+		一切皆文件
+		管道
 
 **Date start: 2017-03-31**
 
