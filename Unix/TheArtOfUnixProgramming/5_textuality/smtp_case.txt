@@ -1,0 +1,24 @@
+# SMTP会话示例
+
+C: <client connects to service port 25>
+C: HELO snark.thyrsus.com
+S: 250 OK Hello snark, glad to meet you
+
+C: MAIL FROM: <esr@thyrsus.com>
+S: 250 <esr@thyrsus.com>... Sender ok
+
+C: RCPT TO: cor@cpmy.com
+S: 250 root... Recipient ok
+
+C: DATA
+S: 354 Enter mail, end with "." on a line by itself
+
+C: Scratch called. He wants to share 
+C: a room with us at Balticon.
+C: .
+S: 250 WAA01865 Message accepted for delivery
+
+C: QUIT
+S: 221 cpmy.com closing connection
+
+C: <client hangs up>

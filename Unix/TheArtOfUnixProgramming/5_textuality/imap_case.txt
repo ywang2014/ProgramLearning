@@ -1,0 +1,38 @@
+# IMAP 示例
+
+C: <client connects to service port 143>
+S: * OK example.com IMAP4rev1 v12.264 server ready
+
+C: A0001 USER "frobozz" "xyzzy"
+S: * OK User frobozz authenticated
+
+C: A0002 SELECT INBOX
+S: * 1 EXISTS
+S: * 1 RECENT
+S: * FLAGG (\Answered \Flagged \Deleted \Draft \Seen)
+S: * OK [UNSEEN 1] first unseen message in /var/spool/mail/esr
+S: A0002 OK [READ-WRITE] SELECT completed
+
+C: A0003 FETCH 1 RFC822.SIZE
+S: * 1 FETCH (RFC822.SIZE 2545)
+S: A0003 OK FETCH completed
+
+C: A0004 FETCH 1 BODY[HEADER]
+S: * 1 FETCH (RFC822.HEADER {1425}
+<server sends 1425 octets of message payload>
+S: )
+S: A0004 OK FETCH completed 
+
+C: A0005 FETCH 1 BODY[TEXT]
+S: * 1 FETCH (BODY[TEXT] {1120}
+<server sends 1120 octets of message payload>
+S: )
+S: * 1 FETCH (FLAGG (\Recent \Seen))
+S: A0005 OK FETCH completed
+
+C: A0006 LOGOUT
+S: * BYE example.com IMAP4rev1 server terminating connection
+S: A0006 OK LOGOUT completed
+
+C: <client hangs up>
+
