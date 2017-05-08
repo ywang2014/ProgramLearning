@@ -1,0 +1,94 @@
+<BODY>
+	<select name="example" size="1" onChange="redirect(this.options.selectedIndex)"> 
+		<option>123</option> 
+		<option>456</option> 
+		<option>789</option> 
+	</select> 
+	
+	<SELECT NAME="s1">
+		<option>需要JavaScript才能正确显示 </option>
+		<option>123</option> 
+		<option>456</option> 
+		<option>789</option> 
+	</SELECT>
+	<SELECT NAME="s2"></SELECT>
+	<SELECT NAME="s3"></SELECT>
+	<SELECT NAME="s4"></SELECT>
+
+<SCRIPT LANGUAGE="JavaScript">
+	selector = [ "s1", "s2", "s3", "s4" ];
+	//选择项: "名字", "值", 子选择
+	menu = [
+		"地球","1",
+		[
+			"中国","86",
+			[
+				"北京","BJ",
+				[
+				"--","1",null
+				],
+				"四川","SC",
+				[
+				   "成都","28",null,
+				   "乐山","",null,
+				   "攀枝花","",null,
+				   "自贡","",null,
+				   "德阳","",null,
+				   "绵阳","",null
+				]
+			],
+			"米国","1",
+			[
+				"加利福尼亚","CA",
+				[
+				   "旧金山","1",null,
+				   "洛杉矶","2",null
+				],
+				"华盛顿","WA",
+				[
+					"西雅图","seattle",null
+				]
+			]
+		],
+		"火星","2",
+		[
+			"大峡谷","86",
+			[
+				"小山丘","BJ",
+				[
+					"A地区","28",null,
+					"B地区","",null,
+					"C地区","",null
+				]
+			]
+		]
+	];
+	
+	function wizz(level)
+	{
+		if( level == 0 )
+			a = menu;
+		else
+		{
+			str = "menu";
+			for( i=0; i<level; i++ )
+				str += "[" + (document.all[selector[i]].selectedIndex * 3 + 2)  + "]";
+			a = eval(str);
+		}
+		
+		if( a == null ) return;
+		 
+		s = document.all[selector[level]];
+		i = s.length;
+		while( i > 0 ) s.options[--i] = null;
+		while( i < Math.floor(a.length/3) )
+		s.options[i] = Option( a[i*3], a[i++*3+1] );
+		s.onchange = Function("wizz(" + (level+1) + ")");
+		wizz(level+1);
+	}
+	
+	wizz(0);
+</SCRIPT>
+
+</BODY>
+</HTML>
