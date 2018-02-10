@@ -2,7 +2,7 @@
 	坚持学习，追求卓越的技术
 	
 #### 书单列表
-[Java编程入门](https://github.com/ywang2014/ProgramLearning/tree/master/Java/IntroductionToProgrammingInJava)</br>
+[Java编程入门](https://github.com/ywang2014/ProgramLearning/tree/master/Java/IntroductionToProgrammingInJava_Excercise)</br>
 [算法](https://github.com/ywang2014/ProgramLearning/tree/master/Java/Algorithms)</br>
 [编译原理](https://github.com/ywang2014/ProgramLearning/tree/master/Java/CompilersPrinciples)</br>
 [程序员面试金典](https://github.com/ywang2014/ProgramLearning/tree/master/Java/CrackingTheCodingInterview)</br>
