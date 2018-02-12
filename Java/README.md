@@ -16,7 +16,5 @@
 坚持学习算法，坚持练习算法，保持思维敏捷性！</br>
 [算法积累](https://github.com/ywang2014/ProgramLearning/tree/master/Java/AlgorithmExercise)</br>
 	
-#### 面试算法列表
-[面试-2016](https://github.com/ywang2014/ProgramLearning/tree/master/Java/Interview/2016)</br>
-[面试-2017](https://github.com/ywang2014/ProgramLearning/tree/master/Java/Interview/2017)</br>
+
 	
