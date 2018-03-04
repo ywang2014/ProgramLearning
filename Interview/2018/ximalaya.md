@@ -31,16 +31,32 @@
 		dubbo调用的连接是怎么样的，依赖注册中心交互吗？不是的，客户端和服务端直接建立连接的。
 		
 	5.Socket连接是阻塞的，为什么？
-		单线程在执行它。面试官说是因为协议，TCP连接的原因。但是我认为这不是的，之后说了NIO和AIO，应该也是基于TCP链接的，但是它们和BIO同步阻塞是不一样的。
+		单线程在执行它，一个线程管理着一个socket的整个生命周期。面试官说是因为协议，TCP连接的原因。但是我认为这不是的，之后说了NIO和AIO，应该也是基于TCP链接的，但是它们和BIO同步阻塞是不一样的。
 		
-	6.两个非常大的文件：100G、100G，内存只有2G，如果找到两个文件中相同的记录，输出到一个文件中。
+	6.buffer的作用
+		1.socket里面的buffer作用？
+			操作系统对硬盘的读写是按照磁盘块为单位处理的，存在预读。因为磁盘一般是操作系统的性能瓶颈，批处理能够显著地提高性能等。
+		2.服务端如何实现buffer？
+			服务端在接受socket传过来的流的时候，不是接收一个字节，就立马去解析处理，而是将流的输出放在buffer中，读满一个buffer，或者读完了，再一起去处理这些内容。提高性能和效率。
+		3.客户端如何实现buffer？
+			客户端与服务端建立好连接之后，不是直接向socket发送数据流，而是先将要发送数据往本地的buffer中装，装完或者装满一个buffer之后，一起往socket中传输的。不可能是客户端找到一个字节，就发送一次，再去找或者解析一个字节，再去发送一个字节。
+		
+	7.两个非常大的文件：100G、100G，内存只有2G，如果找到两个文件中相同的记录，输出到一个文件中。
 		思路：使用hash，计算文件记录的hash值，依据hash值，将文件中的记录分类，很容易就可以找到相同的记录。
 	
-	7.数据库事务隔离级别。
+	8.数据库事务隔离级别。
+		7个隔离级别：主要讲解清楚Requires_new 和 nested的相同点和区别点。
 	
-	8.HashMap实现原理，链表转化为红黑树的边界条件。
+	9.HashMap实现原理，链表转化为红黑树的边界条件。
+		数组+链表+红黑树
 	
 	9.线程池了解吗？
+		Java Executors四个线程池：
+			newCachedThreadPool
+			newFixedThreadPool
+			newScheduledThreadPool
+			newSingleThreadExecutor
+			newSingleThreadScheduledExecutor
 	
 	10.Spring源代码有研究吗？
 		没有研究，主要是知道一些注解原理，现在主要是使用SpringBoot，注解非常多。看过《J2EE development without EJB》这本书，了解一些Spring的实现原理。spring有一些模板Template，比如RestTemplate；还有一些support，特别是事务实现中。
